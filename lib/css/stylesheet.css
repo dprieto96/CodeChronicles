@@ -9,7 +9,7 @@ img {
 }
 
 body {
-     background-image: url("rsc/img/web/background.png");
+     background-image: url("../../rsc/img/web/background.png");
         background-repeat: no-repeat;
         background-size: cover;
 }
