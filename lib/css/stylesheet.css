@@ -1,3 +1,8 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 img {
   border: none !important;
   outline: none;
@@ -9,9 +14,10 @@ img {
 }
 
 body {
-     background-image: url("/rsc/img/web/background.png");
-        background-repeat: no-repeat;
-        background-size: cover;
+     background-image: url("../../rsc/img/web/background2.png");
+     background-size: cover;
+     background-position: center;
+     background-repeat: repeat;
 }
 
 img{
@@ -21,4 +27,21 @@ img{
 
 .juego{
 border:5px solid white;
+}
+
+
+footer {
+  background-color: transparent;
+  padding: 20px 0;
+  position: static;
+  bottom: 0;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  margin: 0;
+  background-image: url("../../rsc/img/web/footer.png");
+  text-align: center;
+  padding: 100px;
 }
