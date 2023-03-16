@@ -14,10 +14,13 @@ img {
 }
 
 body {
+
      background-image: url("../../rsc/img/web/background2.png");
      background-size: cover;
      background-position: center;
      background-repeat: repeat;
+
+
 }
 
 img{
@@ -28,6 +31,7 @@ img{
 .juego{
 border:5px solid white;
 }
+
 
 
 footer {
@@ -45,3 +49,4 @@ footer {
   text-align: center;
   padding: 100px;
 }
+
