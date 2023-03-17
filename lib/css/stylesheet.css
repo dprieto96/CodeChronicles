@@ -5,10 +5,10 @@
 }
 
 body {
-     background-image: url("../../rsc/img/web/background2.png");
-     background-size: cover;
-     background-position: center;
-     background-repeat: repeat;
+  background-image: url("../../rsc/img/web/background2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
 }
 
 header{
@@ -67,7 +67,6 @@ footer {
 }
 
 .container {
-  
   margin: 0;
   background-image: url("../../rsc/img/web/footer.png");
   text-align: center;
