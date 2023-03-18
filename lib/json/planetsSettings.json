@@ -5,19 +5,19 @@
         "transparency": 1
     },
     
-    "LUNA": {
+    "MOON": {
         "gravity": 0.165,
         "atmosColor": "0x000000",
         "transparency": 0
     },
 
-    "TIERRA": {
+    "EARTH": {
         "gravity": 1,
         "atmosColor": "0xA4AFFF",
         "transparency": 1
     },
 
-    "MARTE": {
+    "MARS": {
         "gravity": 0.379,
         "atmosColor": "0xFFD7A2",
         "transparency": 1
@@ -29,19 +29,19 @@
         "transparency": 1
     },
 
-    "SATURNO": {
+    "SATURN": {
         "gravity": 1.065,
         "atmosColor": "0xFFD7A2",
         "transparency": 1
     },
 
-    "URANO": {
+    "URANUS": {
         "gravity": 0.904,
         "atmosColor": "0xFFD7A2",
         "transparency": 1
     },
 
-    "NEPTUNO": {
+    "NEPTUNE": {
         "gravity": 1.137,
         "atmosColor": "0xFFD7A2",
         "transparency": 1
