@@ -9,6 +9,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: repeat;
+
 }
 
 header{
@@ -16,8 +17,12 @@ header{
   text-align: center;
 }
 
+button{
+  margin-left: 0%;
+}
+
 .Controles {
-  display: flex;
+
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   align-items: center;
@@ -46,10 +51,18 @@ header{
 
 
 
-#juego {
-  position: relative;
-  height: 100%;
+#juego  {
+ position: relative;
+  width: 100%;
+  height: auto;
+  
 }
+canvas  {
+  position: relative;
+   width: 100%;
+   height: auto;
+   
+ }
 
 #Company img {
   max-width:15%;
