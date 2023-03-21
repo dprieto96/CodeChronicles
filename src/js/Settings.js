@@ -6,8 +6,8 @@ const DEBUG         = false;
 const PIXELART      = true; //para el tema del escalado de imagen
 const ZOOM          = 1;
 
-const SCREEN_WIDTH  = 656;
-const SCREEN_HEIGHT = 373;
+const SCREEN_WIDTH  = 374;
+const SCREEN_HEIGHT = 374;
 
 const VERTICAL_LEVELS_WIDTH  = Math.max(SCREEN_WIDTH,SCREEN_HEIGHT); 
 const VERTICAL_LEVELS_HEIGHT = Math.max(SCREEN_WIDTH,SCREEN_HEIGHT);
@@ -21,14 +21,17 @@ const SCREEN_MAX_HEIGHT = 752;
 const TRANSPARENT = true; //para poner fondo transparente o no
 
 //RUTAS A RECURSOS: ===========================================================
-const IMAGES_PATH = "rsc/img/";
+const ASSETS_PATH = "assets/";
+const CODE_PATH   = "src/js/";
+const CSS____PATH = "src/css/";
+const JSON___PATH = "src/json/";
+
+const IMAGES_PATH = ASSETS_PATH + "img/";
+const MUSIC_PATH  = ASSETS_PATH + "music/";
 const IMAG_PATH_V = IMAGES_PATH + "verticalLevels/";
 const IMAG_PATH_H = IMAGES_PATH + "horizontalLevels/";
-const MUSIC_PATH  = "rsc/music/";
-const CSS____PATH = "lib/css/";
-const OBJECT_PATH = "lib/js/obj/";
-const SCENES_PATH = "lib/js/scenes/";
-const JSON___PATH = "lib/json/";
+const OBJECT_PATH = CODE_PATH + "obj/";
+const SCENES_PATH = CODE_PATH + "scenes/";
 
 const BGM_PATH = MUSIC_PATH + "BGM/"; //Música de fondo (BackGround Music); música de fondo en loop
 const BGS_PATH = MUSIC_PATH + "BGS/"; //Sonido de fondo (BackGround Sound); sonido ambiente de fondo en loop

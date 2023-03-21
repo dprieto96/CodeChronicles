@@ -6,7 +6,6 @@ export default class HorizontalBackground extends Phaser.GameObjects.Sprite{
         this.framesToReachSpace = 300;
 
         // Carga la imagen 'planet' usando 'load'
-        console.log(this.scene.planet);
         this.scene.load.image(this.scene.planet, getImgV(this.scene.planet));
     }
 
