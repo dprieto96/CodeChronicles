@@ -14,6 +14,7 @@ export default class Nivel extends Phaser.Scene {
 		this.introDone 	= false;
 		this.planet 	= planet;
 		this.ctrl		= ctrl;
+		this.key = key;
 	}
 	
 	/**
@@ -30,19 +31,13 @@ export default class Nivel extends Phaser.Scene {
 	*/
 	create() {
 		//this.setCollideWorldBounds(true);
-		//this.add.image(0, 0, 'background').setOrigin(0, 0);
-		
-		
 		this.planetSettings = this.cache.json.get("config");
-		console.log(this.planetSettings);
 
         this.a  = this.input.keyboard.addKey("A");
 		this.s  = this.input.keyboard.addKey("S");
 		this.d  = this.input.keyboard.addKey("D");
 		this.w  = this.input.keyboard.addKey("W");
 		this.sp = this.input.keyboard.addKey("space");
-
-		
 
         /*
 		//Pintamos un botón de Empezar
@@ -53,6 +48,28 @@ export default class Nivel extends Phaser.Scene {
 	    sprite.on('pointerup', pointer      => { this.scene.start('animation'); /*Cambiamos a la escena de juego });
 		sprite.on('pointerover', ()         => { console.log("hola") });
 	    sprite.on('pointerout', ()          => { console.log("adios") });
+
+		//textos:
+		text = this.add.text(x,y,message);
+		text.setFont("Times New Roman");
+		text.setFontSize(50);
+		text.setStroke(20); //borde
+		text.setStroke(hexColor,size); //color borde
+		text.setFill(hexcolor);
+		text.setShadow(posX,posY,hexcolor,alpha);
+
+		//importante:
+		text.setScrollFactor(0,0);
+
+		//camara:
+		//...
+
+		//bitmapTexts:
+		scene.load.bitmapFont("imgKey","path/to/img.png","path/to/xml");
+		this.add.bitmapText(x,y,fontName,message,size);
+
+		//external fonts:
+		this.load.script()
         */
 	}
 
@@ -63,9 +80,8 @@ export default class Nivel extends Phaser.Scene {
 		super.update();
 	
 		//cerrar escena:
-		if(this.sp.isDown){ 
-			//this.scene.stop();
-			this.ctrl.events.emit('finish');
+		if(this.sp.isDown){
+			this.ctrl.startNextLevel(this);			
 		}
 	}
 }
