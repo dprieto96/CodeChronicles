@@ -2,7 +2,7 @@
 const GAME_TITLE   = "Lunar Legends: A Journey Beyond";
 const GAME_VERSION = "0.1.0";
 
-const DEBUG         = false;
+const DEBUG         = true;
 const PIXELART      = true; //para el tema del escalado de imagen
 const ZOOM          = 1;
 
@@ -43,14 +43,15 @@ const SPRITE_WIDTH    = 64;
 const SPRITE_HEIGHT   = 64;
 const IDLE_FRAME_RATE = 20; //duracion de cada postura del sprite durante la animacion de idle       (medido en numero de frames)
 const MOVI_FRAME_RATE = 10; //duracion de cada postura del sprite durante la animacion de movimiento (medido en numero de frames)
+const GRAVITY_FACTOR = 400;
 
 //ASTRONAUT INITIAL POS:
 const AST_INITIAL_X = 100;
 const AST_INITIAL_Y = 300;
 
 //SPACESHIP SPRITE CONFIGURATIONS: ============================================
-const SPACESHIP_WIDTH   = 82;
-const SPACESHIP_HEIGHT  = 86;
+const SPACESHIP_WIDTH   = 80;//82;
+const SPACESHIP_HEIGHT  = 80;//86;
 const SPACESHIP_IDLE_FR = 1;
 const SPACESHIP_MOVI_FR = 10;
 

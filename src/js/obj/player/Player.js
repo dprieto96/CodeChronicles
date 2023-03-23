@@ -1,7 +1,7 @@
-
+import Utils from "../../Utils.js"
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   create_Anim(key,x,y,framerate){
-    createAnim(this.scene, key, this.graphicName, x, y, framerate, -1);
+    Utils.createAnim(this.scene, key, this.graphicName, x, y, framerate, -1);
   }
 
   createAnimations(){}

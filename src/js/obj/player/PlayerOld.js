@@ -81,6 +81,7 @@ class Player {
       //aplicar parábola
       this.y = FLOORHEIGHT + (this.ySpeed*this.airTime - (GRAVITY*this.airTime*this.airTime)/2) * (-1);
       if(this.y > FLOORHEIGHT){
+        //SI TOCA EL SUELO:
         this.onAir   = false;
         this.y       = FLOORHEIGHT;
         this.ySpeed  = 0;

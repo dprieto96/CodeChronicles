@@ -3,6 +3,7 @@
  * @extends Phaser.Scene
  */
 import Nivel from "../Nivel.js"
+import Utils from "../../Utils.js"
 import Astronaut from '../../obj/player/Astronaut.js';
 import HorizontalBackground from './HorizontalBackground.js';
 export default class NivelHorizontal extends Nivel {
@@ -11,7 +12,7 @@ export default class NivelHorizontal extends Nivel {
 	 * @extends Phaser.Scene
 	 */
 	constructor(nivelId,planet,ctrl) {
-		super("nivelHorizontal"+digitsToStr(nivelId,2),planet,ctrl);
+		super("nivelHorizontal"+Utils.digitsToStr(nivelId,2),planet,ctrl);
 		this.introDone 	= false;
 	}
 
@@ -23,7 +24,7 @@ export default class NivelHorizontal extends Nivel {
 		super.preload();
 
 		this.bg 	= new HorizontalBackground(this);
-		this.player = new Astronaut(this,100,300);
+		this.player = new Astronaut(this,100,50);
 	}
 	
 	/**
@@ -31,7 +32,7 @@ export default class NivelHorizontal extends Nivel {
 	*/
 	create() {
 		super.create();
-
+		this.physics.world.gravity.y = this.planetSettings[this.planet]["gravity"] * GRAVITY_FACTOR;
 		this.bg.create();
 		this.player.create();
 	}

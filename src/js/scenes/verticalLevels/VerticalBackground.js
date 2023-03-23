@@ -1,3 +1,4 @@
+import Utils from "../../Utils.js"
 export default class VerticalBackground extends Phaser.GameObjects.Sprite{
     constructor(scene){
         super(scene, 0, 0);
@@ -6,7 +7,7 @@ export default class VerticalBackground extends Phaser.GameObjects.Sprite{
         this.framesToReachSpace = 300;
 
         // Carga la imagen 'planet' usando 'load'
-        this.scene.load.image(this.scene.planet, getImgV(this.scene.planet));
+        this.scene.load.image(this.scene.planet, Utils.getImgV(this.scene.planet));
     }
 
     create(){

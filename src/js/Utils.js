@@ -1,48 +1,62 @@
 //FUNCIONES PARA OBTENER LAS RUTAS A RECURSOS:
-function getImg(name)   { return IMAGES_PATH + name + ".png";  };
-function getImgV(name)  { return IMAG_PATH_V + name + ".png";  };
-function getImgH(name)  { return IMAG_PATH_H + name + ".png";  };
-function getCss(name)   { return CSS____PATH + name + ".css";  };
-function getJson(name)  { return JSON___PATH + name + ".json"; };
-function getObj(name)   { return OBJECT_PATH + name; };
-function getScene(name) { return SCENES_PATH + name; };
-
-function getBGM(name) { return BGM_PATH + name; };
-function getBGS(name) { return BGS_PATH + name; };
-function getME(name)  { return ME_PATH  + name; };
-function getSE(name)  { return SE_PATH  + name; };
-
-function getColor(hexColorStr)  { return Phaser.Display.Color.HexStringToColor(hexColorStr).color; } //where hexColorStr is #0033ff, #03f, 0x0033ff, or 0x03f
-function getColor(r,g,b)  { return Phaser.Display.Color.GetColor(r, g, b);      }
-function getColor(r,g,b,a){ return Phaser.Display.Color.GetColor32(r, g, b, a); }
-
-function digitsToStr(digits,numDigits){
-    let ret = "" + digits;
-    for(let i = ret.length; i < numDigits; i++){ ret = "0" + ret; }
-    return ret;
-}
-
-function createAnim(_scene, _key, _spriteKey, _start, _end, _frameRate, _repeat){
-    _scene.anims.create({
-        key: _key,
-        frames: _scene.anims.generateFrameNumbers(_spriteKey, { start: _start, end: _end}),
-        frameRate: _frameRate,
-        repeat: _repeat
-    });
-}
-
-function createSpriteJson(namesArray, frameWidth, frameHeight, rows, cols){
-    var ret = { "frames": [] };
-    for(var i = 0; i < namesArray.length; i++){
-        ret["frames"][i] = { 
-            "filename": namesArray[i], 
-            "frame": {
-                "x": (i%cols)*frameWidth,
-                "y": Math.floor(i/rows)*frameHeight,
-                "w": frameWidth,
-                "h": frameHeight
-            }
-        };
+export default class Utils{
+    constructor(){}
+    
+    static getImg(assetName)   { return IMAGES_PATH + assetName + ".png";  };
+    static getImgV(assetName)  { return IMAG_PATH_V + assetName + ".png";  };
+    static getImgH(assetName)  { return IMAG_PATH_H + assetName + ".png";  };
+    static getCss(assetName)   { return CSS____PATH + assetName + ".css";  };
+    static getJson(assetName)  { return JSON___PATH + assetName + ".json"; };
+    static getObj(assetName)   { return OBJECT_PATH + assetName; };
+    static getScene(assetName) { return SCENES_PATH + assetName; };
+    
+    static getBGM(assetName) { return BGM_PATH + assetName; };
+    static getBGS(assetName) { return BGS_PATH + assetName; };
+    static getME(assetName)  { return ME_PATH  + assetName; };
+    static getSE(assetName)  { return SE_PATH  + assetName; };
+    
+    static getColor(hexColorStr)  { return Phaser.Display.Color.HexStringToColor(hexColorStr).color; } //where hexColorStr is #0033ff, #03f, 0x0033ff, or 0x03f
+    static getColor(r,g,b)  { return Phaser.Display.Color.GetColor(r, g, b);      }
+    static getColor(r,g,b,a){ return Phaser.Display.Color.GetColor32(r, g, b, a); }
+    
+    static digitsToStr(digits,numDigits){
+        let ret = "" + digits;
+        for(let i = ret.length; i < numDigits; i++){ ret = "0" + ret; }
+        return ret;
     }
-    return ret;
+    
+    static createAnim(_scene, _key, _spriteKey, _start, _end, _frameRate, _repeat){
+        _scene.anims.create({
+            key: _key,
+            frames: _scene.anims.generateFrameNumbers(_spriteKey, { start: _start, end: _end}),
+            frameRate: _frameRate,
+            repeat: _repeat
+        });
+    }
+    
+    static createKeyBindings(obj){
+        obj.a  = obj.input.keyboard.addKey("A");
+        obj.s  = obj.input.keyboard.addKey("S");
+        obj.d  = obj.input.keyboard.addKey("D");
+        obj.w  = obj.input.keyboard.addKey("W");
+        obj.p  = obj.input.keyboard.addKey("P");
+        obj.sp = obj.input.keyboard.addKey("space");
+    }
+    
+    static createSpriteJson(assetNamesArray, frameWidth, frameHeight, rows, cols){
+        var ret = { "frames": [] };
+        for(var i = 0; i < assetNamesArray.length; i++){
+            ret["frames"][i] = { 
+                "fileassetName": assetNamesArray[i], 
+                "frame": {
+                    "x": (i%cols)*frameWidth,
+                    "y": Math.floor(i/rows)*frameHeight,
+                    "w": frameWidth,
+                    "h": frameHeight
+                }
+            };
+        }
+        return ret;
+    }
+
 }

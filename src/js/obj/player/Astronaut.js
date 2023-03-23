@@ -1,12 +1,13 @@
 import Player from "./Player.js";
+import Utils from "../../Utils.js"
 export default class Astronaut extends Player{
 	createAnimations(){      
 		this.create_Anim("standingRight", 0,  3,  IDLE_FRAME_RATE);
 		this.create_Anim("standingLeft",  4,  7,  IDLE_FRAME_RATE);
-		this.create_Anim("upRight",   	 8,  8,  1);
-		this.create_Anim("upLeft",       12, 12,  1);
 		this.create_Anim("runningRight",  8,  11, MOVI_FRAME_RATE);
-		this.create_Anim("runningLeft",   12, 15, MOVI_FRAME_RATE);
+		this.create_Anim("runningLeft",  12, 15,  MOVI_FRAME_RATE);
+		this.create_Anim("upRight",   	  8,  8,  1);
+		this.create_Anim("upLeft",       12, 12,  1);
 	}
 
 	constructor(scene, x, y){
@@ -15,7 +16,7 @@ export default class Astronaut extends Player{
 		this.movement = "standing"
 
 		//load of graphics:
-		this.scene.load.spritesheet(this.graphicName, getImgH(this.graphicName), {
+		this.scene.load.spritesheet(this.graphicName, Utils.getImgH(this.graphicName), {
 			frameWidth: SPRITE_WIDTH,
 			frameHeight: SPRITE_HEIGHT
 		});

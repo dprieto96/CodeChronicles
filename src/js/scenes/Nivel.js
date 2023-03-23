@@ -3,6 +3,7 @@
  * @extends Phaser.Scene
  */
 
+import Utils from "../Utils.js"
 export default class Nivel extends Phaser.Scene {
 	/**
 	 * Escena principal.
@@ -11,7 +12,6 @@ export default class Nivel extends Phaser.Scene {
 
 	constructor(key, planet, ctrl) {
 		super({ key: key });
-		this.introDone 	= false;
 		this.planet 	= planet;
 		this.ctrl		= ctrl;
 		this.key = key;
@@ -22,22 +22,18 @@ export default class Nivel extends Phaser.Scene {
 	*/
 	preload(){
 		//this.load.image('background', getImg("universeBg"));
-		this.load.spritesheet("spaceship",getImgV("spaceship"), {frameWidth: SPACESHIP_WIDTH, frameHeight: SPACESHIP_HEIGHT});
-		this.load.json("config",getJson('planetsSettings'));
+		this.load.spritesheet("spaceship",Utils.getImgV("spaceship"), {frameWidth: SPACESHIP_WIDTH, frameHeight: SPACESHIP_HEIGHT});
+		this.load.json("config",Utils.getJson('planetsSettings'));
 	}
 	
 	/**
 	* Creación de los elementos de la escena principal de juego
 	*/
 	create() {
-		//this.setCollideWorldBounds(true);
 		this.planetSettings = this.cache.json.get("config");
+		Utils.createKeyBindings(this);
+		this.introDone 	= false;
 
-        this.a  = this.input.keyboard.addKey("A");
-		this.s  = this.input.keyboard.addKey("S");
-		this.d  = this.input.keyboard.addKey("D");
-		this.w  = this.input.keyboard.addKey("W");
-		this.sp = this.input.keyboard.addKey("space");
 
         /*
 		//Pintamos un botón de Empezar
@@ -81,7 +77,10 @@ export default class Nivel extends Phaser.Scene {
 	
 		//cerrar escena:
 		if(this.sp.isDown){
-			this.ctrl.startNextLevel(this);			
+			this.sp.reset();
+			this.scene.stop(this.key);
+			this.scene.resume("levelSelector");
+			//this.ctrl.startNextLevel();			
 		}
 	}
 }

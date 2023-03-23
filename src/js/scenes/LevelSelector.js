@@ -4,6 +4,7 @@
  */
 import NivelVertical    from "./verticalLevels/NivelVertical.js"
 import NivelHorizontal  from "./horizontalLevels/NivelHorizontal.js"
+import Utils from "../Utils.js"
 export default class LevelSelector extends Phaser.Scene {
 	/**
 	 * Escena principal.
@@ -11,7 +12,7 @@ export default class LevelSelector extends Phaser.Scene {
 	 */
 	constructor() {
 		super({ key: 'levelSelector' });
-        this.currentSceneIndex = 0;
+        this.currentSceneIndex = -1;
         
         this.nivelV = new NivelVertical(0,"MOON",this);
         this.nivelH = new NivelHorizontal(0,"VENUS",this);
@@ -25,13 +26,24 @@ export default class LevelSelector extends Phaser.Scene {
     
     create(){
         // Iniciar la primera escena
-        this.startNextLevel(this.scenes[this.currentSceneIndex]);
+        Utils.createKeyBindings(this);
+        this.next = 1;
     }
 
-    startNextLevel(level){
+    startNextLevel(){
         this.currentSceneIndex = (this.currentSceneIndex + 1) % this.scenes.length;
-        level.scene.start(this.scenes[this.currentSceneIndex].key);
+        let nextLevel = this.scenes[this.currentSceneIndex];
+        console.log(nextLevel.key);
+        this.scene.pause();
+        this.scene.launch(nextLevel.key);
     }
-
-    update(){}
+    
+    update(){
+        super.update();
+        this.startNextLevel();
+        //if(this.p.isDown){ this.startNextLevel(); }
+        
+        // wait at least 1 second (1000ms) to next shot
+		//cerrar escena:
+    }
 }

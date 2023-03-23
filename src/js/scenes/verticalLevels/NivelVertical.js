@@ -4,6 +4,7 @@
  */
 
 import Nivel from "../Nivel.js"
+import Utils from "../../Utils.js"
 import VerticalBackground from './VerticalBackground.js';
 import Spaceship from '../../obj/player/Spaceship.js';
 export default class NivelVertical extends Nivel {
@@ -13,7 +14,7 @@ export default class NivelVertical extends Nivel {
 	 */
 
 	constructor(nivelId,planet,ctrl) {
-		super("nivelVertical"+digitsToStr(nivelId,2),planet,ctrl);
+		super("nivelVertical"+Utils.digitsToStr(nivelId,2),planet,ctrl);
 		this.introDone 	= false;
 	}
 
@@ -33,7 +34,7 @@ export default class NivelVertical extends Nivel {
 	*/
 	create() {
 		super.create();
-
+		this.physics.world.gravity.y = 0;
 		this.bg.create();
 		this.player.create();
 	}

@@ -1,5 +1,6 @@
 //export default class Spaceship extends Phaser.GameObjects.Sprite{
 import Player from "./Player.js";
+import Utils from "../../Utils.js"
 export default class Spaceship extends Player{
     createAnimations(){      
         this.create_Anim("NE",        1,  1, SPACESHIP_IDLE_FR);
@@ -8,8 +9,8 @@ export default class Spaceship extends Player{
         this.create_Anim("UP",        4,  5, SPACESHIP_MOVI_FR);
         this.create_Anim("DOWN",      6,  7, SPACESHIP_MOVI_FR);
         this.create_Anim("leftUP",    8,  9, SPACESHIP_MOVI_FR);
-        this.create_Anim("rightUP",  12, 13, SPACESHIP_MOVI_FR);
-        this.create_Anim("leftDOWN", 10, 11, SPACESHIP_MOVI_FR);
+        this.create_Anim("rightUP",  10, 11, SPACESHIP_MOVI_FR);
+        this.create_Anim("leftDOWN", 12, 13, SPACESHIP_MOVI_FR);
         this.create_Anim("rightDOWN",14, 15, SPACESHIP_MOVI_FR); 
     }
 
@@ -17,7 +18,7 @@ export default class Spaceship extends Player{
         super(scene, x, y,"spaceship", 1);
         
         //load of graphics:
-        this.scene.load.spritesheet(this.graphicName,getImgV(this.graphicName), {
+        this.scene.load.spritesheet(this.graphicName,Utils.getImgV(this.graphicName), {
             frameWidth: SPACESHIP_WIDTH,
             frameHeight: SPACESHIP_HEIGHT
         });
