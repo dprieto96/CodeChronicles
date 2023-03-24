@@ -16,10 +16,13 @@ header{
   width: 100%;
   text-align: center;
   background-image: url("../../assets/img/web/header.png");
+  background-size: cover;
 }
 
 button{
-  margin-left: 0%;
+  background-size: cover;
+  background-color: transparent;
+  outline: auto;
 }
 
 .Controles {
@@ -28,6 +31,7 @@ button{
   justify-content: center;
   align-items: center;
   grid-gap: 0;  
+  background-image: url("/assets/img/web/pestana.png");
 }
 
 .grid-item {
@@ -49,7 +53,6 @@ button{
   max-width: 100%;
   max-height: 100%;
 }
-
 
 
 #juego  {
@@ -87,3 +90,9 @@ footer {
   padding: 100px;
 }
 
+.left-buttons {
+  
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+}
