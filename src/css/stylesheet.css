@@ -69,7 +69,7 @@ canvas  {
  }
 
 #Company img {
-  max-width:15%;
+  max-width:10%;
   max-height: 15%;
   margin: auto;
   
@@ -81,6 +81,8 @@ footer {
   position: inherit;
   bottom: 0;
   width: 100%;
+   position: absolute;
+  bottom: 0
 }
 
 .container {
@@ -95,4 +97,13 @@ footer {
   justify-content: flex-start;
   align-items: center;
   background-color: transparent;
+}
+.texto{
+text-align: center;
+color: white;
+
+}
+
+.texto img{
+width: 20%;
 }
