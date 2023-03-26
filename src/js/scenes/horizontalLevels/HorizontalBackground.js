@@ -1,21 +1,14 @@
 import Utils from "../../Utils.js"
-export default class HorizontalBackground extends Phaser.GameObjects.Sprite{
+export default class HorizontalBackground extends Background{
     constructor(scene){
-        super(scene, 0, 0);
-        this.scene = scene;
-        this.auxSpeed = 0;
-        this.framesToReachSpace = 300;
+        super(scene);
 
         // Carga la imagen 'planet' usando 'load'
         this.scene.load.image(this.scene.planet, Utils.getImgV(this.scene.planet));
     }
 
     create(){
-        this.graphics = this.scene.add.graphics();
-        let st = this.scene.planetSettings[this.scene.planet];
-		this.graphics.fillStyle(st["atmosColor"], 1);
-		this.atmosphere = this.graphics.fillRect(0, 0, VERTICAL_LEVELS_WIDTH, VERTICAL_LEVELS_HEIGHT);
-        this.atmosphere.alpha = st["transparency"];
+        super.create();
         this.planetImg = this.scene.add.image(0, VERTICAL_LEVELS_HEIGHT, this.scene.planet).setOrigin(0, 1);
     }
 
