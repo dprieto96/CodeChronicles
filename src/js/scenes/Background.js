@@ -1,4 +1,4 @@
-import Utils from "../../Utils.js"
+import Utils from "../Utils.js"
 export default class Background extends Phaser.GameObjects.Sprite{
     constructor(scene){
         super(scene, 0, 0);
