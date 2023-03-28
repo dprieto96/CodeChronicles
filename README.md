@@ -29,10 +29,13 @@ power-up/reward or some negative effect.
 ![](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/DESPEGUE.gif)
 
 ## Ship movement
-![](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/MOVIMIENTO.gif)
-
+<p align="center">
+  <img src="https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/MOVIMIENTO.gif">
+</p>
 
 ## Astronaut movement
-![](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/HORIZONTAL.gif)
+<p align="center">
+  <img src="https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/HORIZONTAL.gif">
+</p>
 
 # <p align="center">GAME DESING [Pdf](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/Memoria_DVI.pdf).</p>
