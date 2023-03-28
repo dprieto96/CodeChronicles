@@ -20,7 +20,7 @@ On the other hand, there would be spacelogs around the Overworld levels that on 
 hand gives the player a hint towards what to do next, and on the other one, either a
 power-up/reward or some negative effect.
 
-# <p align="center">GAME DESING [Pdf](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/Memoria_DVI.pdf).</p>
+# <p align="center"> [GAME DESING](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/Memoria_DVI.pdf).</p>
 
 # <p align="center"> SOME SCREENSHOT OF GAME</p>
 
