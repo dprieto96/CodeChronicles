@@ -12,8 +12,8 @@ export default class Nivel extends Phaser.Scene {
 
 	constructor(key, planet, ctrl) {
 		super({ key: key });
-		this.bg 	= NULL;
-		this.player = NULL;
+		this.bg 	= null;
+		this.player = null;
 		this.planet = planet;
 		this.ctrl	= ctrl;
 		this.key = key;
@@ -29,12 +29,12 @@ export default class Nivel extends Phaser.Scene {
 	}
 	
 	/**
-	* Creación de los elementos de la escena principal de juego
+	 * Creación de los elementos de la escena principal de juego
 	*/
 	create() {
-		this.planetSettings = this.cache.json.get("config")[this.scene.planet];
 		Utils.createKeyBindings(this);
-		this.introDone 	= false;
+		this.planetSettings = this.cache.json.get("config")[this.planet];
+		this.introDone   	= false;
 
 
         /*

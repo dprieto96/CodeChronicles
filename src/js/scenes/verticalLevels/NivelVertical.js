@@ -34,9 +34,9 @@ export default class NivelVertical extends Nivel {
 	*/
 	create() {
 		super.create();
-		this.physics.world.gravity.y = 0;
 		this.bg.create();
 		this.player.create();
+		this.physics.world.gravity.y = 0;
 	}
 
 	/**
