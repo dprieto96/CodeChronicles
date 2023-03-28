@@ -1,10 +1,9 @@
 
 ### *This project is an University assignment made for the subject Desarrollo de Videojuegos.*
 
-Game Link:
-# https://tysonmdg.github.io/CodeChronicles.github.io/Index.html
+# ACCESS THE GAME [CLICK ME](https://tysonmdg.github.io/CodeChronicles.github.io/Index.html).
 
-# Some screenchot of the game
+# SOME SCREENSHOT OF GAME
 
 ## Takeoff of the ship
 ![](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/DESPEGUE.gif)
@@ -15,3 +14,4 @@ Game Link:
 ## Astronaut movement
 ![](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/HORIZONTAL.gif)
 
+# GAME DESING [CLICK ME](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/Memoria_DVI.pdf).
