@@ -20,13 +20,14 @@ On the other hand, there would be spacelogs around the Overworld levels that on 
 hand gives the player a hint towards what to do next, and on the other one, either a
 power-up/reward or some negative effect.
 
+# <p align="center">GAME DESING [Pdf](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/Memoria_DVI.pdf).</p>
+
 # SOME SCREENSHOT OF GAME
 
 ## Takeoff of the ship
 <p align="center">
   <img src="https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/DESPEGUE.gif">
 </p>
-![](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/DESPEGUE.gif)
 
 ## Ship movement
 <p align="center">
@@ -38,4 +39,3 @@ power-up/reward or some negative effect.
   <img src="https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/HORIZONTAL.gif">
 </p>
 
-# <p align="center">GAME DESING [Pdf](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/Memoria_DVI.pdf).</p>
