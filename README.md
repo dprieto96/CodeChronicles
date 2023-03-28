@@ -1,7 +1,7 @@
 
 ### <p align="center"> *This project is an University assignment made for the subject Desarrollo de Videojuegos.* </p>
 
-# <p align="center"> ACCESS THE GAME [CLICK ME](https://tysonmdg.github.io/CodeChronicles.github.io/Index.html). </p>
+# <p align="center">  [ACCESS THE GAME](https://tysonmdg.github.io/CodeChronicles.github.io/Index.html). </p>
 
 # <p align="center"> THE GAME </p>
 Lunar Legend: A journey Beyond is 3rd person experience for web browsers. The
