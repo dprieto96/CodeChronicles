@@ -24,7 +24,7 @@ export default class NivelHorizontal extends Nivel {
 		super.preload();
 
 		this.bg 	= new HorizontalBackground(this);
-		this.player = new Astronaut(this,100,50);
+		this.player = new Astronaut(this,0,320);
 	}
 	
 	/**

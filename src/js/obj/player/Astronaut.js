@@ -15,6 +15,7 @@ export default class Astronaut extends Player{
 		this.jumpVelocity = -300;
 		this.movement = "standing";
 		this.isJumping = false;
+		this.scene.introDone = false;
 
 		//load of graphics:
 		this.scene.load.spritesheet(this.graphicName, Utils.getImgH(this.graphicName), {
@@ -54,12 +55,12 @@ export default class Astronaut extends Player{
 	            if(this.scene.a.isDown){
 	            	if(!this.isJumping)this.movement = "running";
 	                this.hDirection = "Left";
-	                this.speedX = -ASTRONAUT_SPEED;
+	                this.speedX = -ASTRONAUT_SPEED / this.scene.planetSettings["gravity"];
 	            }
 	            else if(this.scene.d.isDown){
 	            	if(!this.isJumping) this.movement = "running";
 	                this.hDirection = "Right";
-	                this.speedX = ASTRONAUT_SPEED;
+	                this.speedX = ASTRONAUT_SPEED / this.scene.planetSettings["gravity"];
 	            }
 	            else{
 	            	if(!this.isJumping) this.movement = "standing";
@@ -73,7 +74,14 @@ export default class Astronaut extends Player{
         }
         else { 
 			//initial running cutscene:
+			console.log("se hace");
 			this.scene.player.play("runningRight",true);
+			this.x += ASTRONAUT_SPEED - 0.8;
+			if(this.x >= AST_INITIAL_X - 20) 
+				{
+					this.scene.introDone = true;
+
+				}
 			//this.play(""+this.movement+this.hDirection,true);
 		}
     }
