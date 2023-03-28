@@ -32,7 +32,7 @@ export default class NivelHorizontal extends Nivel {
 	*/
 	create() {
 		super.create();
-		this.physics.world.gravity.y = this.planetSettings[this.planet]["gravity"] * GRAVITY_FACTOR;
+		this.physics.world.gravity.y = this.planetSettings["gravity"] * GRAVITY_FACTOR;
 		this.bg.create();
 		this.player.create();
 	}
