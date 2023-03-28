@@ -22,20 +22,20 @@ power-up/reward or some negative effect.
 
 # <p align="center">GAME DESING [Pdf](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/Memoria_DVI.pdf).</p>
 
-# SOME SCREENSHOT OF GAME
+# <p align="center"> SOME SCREENSHOT OF GAME</p>
+
+## <p align="center">Takeoff of the ship</p>
 <p align="center">
-## Takeoff of the ship
-
   <img src="https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/DESPEGUE.gif">
+</p>
 
-
-## Ship movement
-
+## <p align="center"> Ship movement</p>
+<p align="center">
   <img src="https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/MOVIMIENTO.gif">
+</p>
 
-
-## Astronaut movement
-
+## <p align="center"> Astronaut movement</p>
+<p align="center">
   <img src="https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/HORIZONTAL.gif">
 </p>
 
