@@ -24,17 +24,15 @@ power-up/reward or some negative effect.
 
 ## Takeoff of the ship
 <p align="center">
+  <img src="https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/DESPEGUE.gif">
+</p>
 ![](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/DESPEGUE.gif)
- </p>
 
 ## Ship movement
-<p align="center">
 ![](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/MOVIMIENTO.gif)
-  </p>
+
 
 ## Astronaut movement
-<p align="center">
 ![](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/HORIZONTAL.gif)
-  </p>
 
 # <p align="center">GAME DESING [Pdf](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/Memoria_DVI.pdf).</p>
