@@ -76,13 +76,9 @@ canvas  {
 }
 
 footer {
-  background-color: transparent;
-  padding: unset;
   position: inherit;
   bottom: 0;
   width: 100%;
-   position: absolute;
-  bottom: 0
 }
 
 .container {
