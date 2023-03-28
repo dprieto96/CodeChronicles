@@ -1,9 +1,9 @@
 
-### *This project is an University assignment made for the subject Desarrollo de Videojuegos.*
+### <p align="center"> *This project is an University assignment made for the subject Desarrollo de Videojuegos.* </p>
 
 # <p align="center"> ACCESS THE GAME [CLICK ME](https://tysonmdg.github.io/CodeChronicles.github.io/Index.html). </p>
 
-# THE GAME
+# <p align="center"> THE GAME </p>
 Lunar Legend: A journey Beyond is 3rd person experience for web browsers. The
 goal of the game relies on getting the main character, called Alonso Quijano, from Earth
 to Neptuno, retrieving a space probe, the “Voyager 3”, and getting back. The main
@@ -23,12 +23,18 @@ power-up/reward or some negative effect.
 # SOME SCREENSHOT OF GAME
 
 ## Takeoff of the ship
+<p align="center">
 ![](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/DESPEGUE.gif)
+ </p>
 
 ## Ship movement
+<p align="center">
 ![](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/MOVIMIENTO.gif)
+  </p>
 
 ## Astronaut movement
+<p align="center">
 ![](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/HORIZONTAL.gif)
+  </p>
 
-# GAME DESING [Pdf](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/Memoria_DVI.pdf).
+# <p align="center">GAME DESING [Pdf](https://github.com/tysonmdg/CodeChronicles.github.io/blob/main/assets/readMe/Memoria_DVI.pdf).</p>
