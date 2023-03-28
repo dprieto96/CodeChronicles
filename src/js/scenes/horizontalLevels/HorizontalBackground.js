@@ -1,4 +1,5 @@
-import Utils from "../../Utils.js"
+import Utils from "../../Utils";
+import Background from "../Background";
 export default class HorizontalBackground extends Background{
     constructor(scene){
         super(scene);
