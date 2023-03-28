@@ -12,8 +12,9 @@ export default class Astronaut extends Player{
 
 	constructor(scene, x, y){
 		super(scene, x, y, "astronaut", 0);
-		this.jump 	  = 300;
-		this.movement = "standing"
+		this.jumpVelocity = -300;
+		this.movement = "standing";
+		this.isJumping = false;
 
 		//load of graphics:
 		this.scene.load.spritesheet(this.graphicName, Utils.getImgH(this.graphicName), {
@@ -29,37 +30,41 @@ export default class Astronaut extends Player{
             
             //velocidad vertical:
             if(this.scene.w.isDown){ 
-                this.movement = "up";
-                this.speedY -= SPACESHIP_SPEED;
+            	if(!this.isJumping)
+            	{
+                	this.movement = "up";
+                	this.body.velocity.y = this.jumpVelocity;
+   					this.isJumping = true;
+            	} 
             }
-            else            {
-            	this.movement = "standing";
-            	this.speedY = 0;
-            }
-            
+          
+            //if(this.body.touching.down)
+            if(this.y >= SCREEN_HEIGHT-35)
+	        {
+	           	this.movement = "standing";
+	            this.isJumping = false;
+	        }
+
             if(this.scene.a.isDown && this.scene.d.isDown){
-            	this.movement = "standing";
+            	if(!this.isJumping) this.movement = "standing";
             	this.speedX = 0;
             }
 			else {
             	//velocidad horizontal:
 	            if(this.scene.a.isDown){
-	            	this.movement = "running";
+	            	if(!this.isJumping)this.movement = "running";
 	                this.hDirection = "Left";
-	                this.speedX -= SPACESHIP_SPEED;
+	                this.speedX = -ASTRONAUT_SPEED;
 	            }
 	            else if(this.scene.d.isDown){
-	            	this.movement = "running";
+	            	if(!this.isJumping) this.movement = "running";
 	                this.hDirection = "Right";
-	                this.speedX += SPACESHIP_SPEED;
+	                this.speedX = ASTRONAUT_SPEED;
 	            }
 	            else{
-	            	this.movement = "standing";
+	            	if(!this.isJumping) this.movement = "standing";
             		this.speedX = 0;
 	            }
-
-	            //si toca suelo:
-	            //this.movement = "standing"
             }
 
             this.x += this.speedX;
