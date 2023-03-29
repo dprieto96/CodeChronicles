@@ -13,9 +13,13 @@ export default class NivelVertical extends Nivel {
 	 * @extends Phaser.Scene
 	 */
 
-	constructor(nivelId,planet,ctrl) {
-		super("nivelVertical"+Utils.digitsToStr(nivelId,2),planet,ctrl);
+	constructor(planet,ctrl) {
+		super("nivelVertical"+Utils.digitsToStr(ctrl.getCurrentVId(),2),planet,ctrl);
 		this.introDone 	= false;
+	}
+
+	updateParticles(){
+		
 	}
 
 	init(){}

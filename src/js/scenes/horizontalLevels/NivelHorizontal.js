@@ -11,8 +11,8 @@ export default class NivelHorizontal extends Nivel {
 	 * Escena principal.
 	 * @extends Phaser.Scene
 	 */
-	constructor(nivelId,planet,ctrl) {
-		super("nivelHorizontal"+Utils.digitsToStr(nivelId,2),planet,ctrl);
+	constructor(planet,ctrl) {
+		super("nivelHorizontal"+Utils.digitsToStr(ctrl.getCurrentHId(),2),planet,ctrl);
 		this.introDone 	= false;
 	}
 

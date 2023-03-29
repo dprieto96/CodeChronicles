@@ -29,7 +29,7 @@ let config = {
         },
 		zoom: ZOOM
     },
-    scene: [LevelSelector, NivelVertical, NivelHorizontal],
+    scene: [LevelSelector],
     physics: { 
         default: 'arcade', 
         arcade: { 

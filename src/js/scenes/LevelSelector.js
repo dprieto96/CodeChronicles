@@ -13,26 +13,51 @@ export default class LevelSelector extends Phaser.Scene {
 	constructor() {
 		super({ key: 'levelSelector' });
         this.currentSceneIndex = -1;
+        this.verticalIdx   = 0;
+        this.horizontalIdx = 0;
         
-        this.nivelV = new NivelVertical(0,"MOON",this);
-        this.nivelH = new NivelHorizontal(0,"VENUS",this);
-        this.scenes = [ this.nivelV, this.nivelH ];
+        this.levels = [ 
+            new NivelVertical("MOON",this),
+            new NivelHorizontal("VENUS",this),
+            new NivelVertical("MARS",this)
+        ];
 	}
     
+    getCurrentVId(){
+        let ret = this.verticalIdx;
+        console.log("current Vertical idx: " + this.verticalIdx);
+        this.verticalIdx++;
+        return ret;
+    }
+    
+    getCurrentHId(){
+        let ret = this.horizontalIdx;
+        console.log("current Horizontal idx: " + this.horizontalIdx);
+        this.horizontalIdx++;
+        return ret;
+    }
+
     init(){
-        this.scene.add(this.nivelV.key, this.nivelV, false);
-        this.scene.add(this.nivelH.key, this.nivelH, false);
+        for (let i = 0; i < this.levels.length; i++){ 
+            this.scene.add(this.levels[i].key, this.levels[i], false);
+        }
+    }
+
+    preload(){
+		this.load.json("config",Utils.getJson('planetsSettings'));
+		this.load.json("levels",Utils.getJson('levels'));
     }
     
     create(){
         // Iniciar la primera escena
         Utils.createKeyBindings(this);
-        this.next = 1;
+        this.planetSettings = this.cache.json.get("config");
+		this.levelDetails   = this.cache.json.get("levels");
     }
 
     startNextLevel(){
-        this.currentSceneIndex = (this.currentSceneIndex + 1) % this.scenes.length;
-        let nextLevel = this.scenes[this.currentSceneIndex];
+        this.currentSceneIndex = (this.currentSceneIndex + 1) % this.levels.length;
+        let nextLevel = this.levels[this.currentSceneIndex];
         console.log(nextLevel.key);
         this.scene.pause();
         this.scene.launch(nextLevel.key);
@@ -41,9 +66,5 @@ export default class LevelSelector extends Phaser.Scene {
     update(){
         super.update();
         this.startNextLevel();
-        //if(this.p.isDown){ this.startNextLevel(); }
-        
-        // wait at least 1 second (1000ms) to next shot
-		//cerrar escena:
     }
 }

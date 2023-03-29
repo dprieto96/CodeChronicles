@@ -25,7 +25,6 @@ export default class Nivel extends Phaser.Scene {
 	preload(){
 		//this.load.image('background', getImg("universeBg"));
 		this.load.spritesheet("spaceship",Utils.getImgV("spaceship"), {frameWidth: SPACESHIP_WIDTH, frameHeight: SPACESHIP_HEIGHT});
-		this.load.json("config",Utils.getJson('planetsSettings'));
 	}
 	
 	/**
@@ -33,7 +32,8 @@ export default class Nivel extends Phaser.Scene {
 	*/
 	create() {
 		Utils.createKeyBindings(this);
-		this.planetSettings = this.cache.json.get("config")[this.planet];
+		this.planetSettings = this.ctrl.planetSettings[this.planet]
+		this.levels			= this.ctrl.levelDetails[this.key];
 		this.introDone   	= false;
 
 
