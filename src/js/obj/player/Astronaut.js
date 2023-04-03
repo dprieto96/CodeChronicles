@@ -73,7 +73,7 @@ export default class Astronaut extends Player{
         }
         else { 
 			//initial running cutscene:
-			this.scene.player.play("runningRight",true);
+			this.play("runningRight",true);
 			this.x += ASTRONAUT_SPEED - 0.8;
 			if(this.x >= AST_INITIAL_X - 20) {
 				this.scene.introDone = true;

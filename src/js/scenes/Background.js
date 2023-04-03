@@ -17,8 +17,4 @@ export default class Background extends Phaser.GameObjects.Sprite{
 
     launch(){}
     endOfGame(){}
-
-    createAnimFromAtlas(key,begin,numFrames,framerate,spriteSheet){
-        Utils.createAnimFromAtlas(this.scene, key, spriteSheet, begin, begin+numFrames, framerate, -1);
-    }
 }

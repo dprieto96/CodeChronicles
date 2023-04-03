@@ -1,10 +1,12 @@
 {
     "nivelVertical00":{
-        "levelLength": 1000,
-        "rockminSpeed":   2,
-        "rockmaxSpeed":   5,
-        "numAsteroids":  50,
-        "density":       10,
+        "levelLength":  1000,
+        "rockMinSpeedX":  10,
+        "rockMaxSpeedX":  30,
+        "rockMinSpeedY":  20,
+        "rockMaxSpeedY": 100,
+        "numAsteroids":   50,
+        "density":         5,
         "destination": "MARS",
         "decorations": {
             "planets": [

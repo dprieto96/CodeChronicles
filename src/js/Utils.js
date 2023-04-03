@@ -45,7 +45,7 @@ export default class Utils{
             }),
             frameRate: _frameRate,
             repeat: _repeat,
-          });
+        });
     }
     
     static createKeyBindings(obj){

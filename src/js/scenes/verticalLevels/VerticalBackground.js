@@ -1,4 +1,3 @@
-import Asteroid from "../../obj/Asteroid.js";
 import Utils from "../../Utils.js"
 import Background from "../Background.js"
 export default class VerticalBackground extends Background{

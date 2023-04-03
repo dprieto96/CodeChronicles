@@ -44,7 +44,6 @@ export default class LevelSelector extends Phaser.Scene {
     preload(){
 		this.load.json("config",Utils.getJson('planetsSettings'));
 		this.load.json("levels",Utils.getJson('levels'));
-        this.load.atlas('atlas', Utils.getImgV("templates"), Utils.getJson("verticalLevelElements"));
     }
     
     create(){
