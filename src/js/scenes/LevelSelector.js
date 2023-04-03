@@ -17,22 +17,20 @@ export default class LevelSelector extends Phaser.Scene {
         this.horizontalIdx = 0;
         
         this.levels = [ 
-            new NivelVertical("MOON",this),
+            new NivelVertical("MOON","MARS",this),
             new NivelHorizontal("VENUS",this),
-            new NivelVertical("MARS",this)
+            new NivelVertical("MARS","MOON",this)
         ];
 	}
     
     getCurrentVId(){
         let ret = this.verticalIdx;
-        console.log("current Vertical idx: " + this.verticalIdx);
         this.verticalIdx++;
         return ret;
     }
     
     getCurrentHId(){
         let ret = this.horizontalIdx;
-        console.log("current Horizontal idx: " + this.horizontalIdx);
         this.horizontalIdx++;
         return ret;
     }
@@ -46,19 +44,20 @@ export default class LevelSelector extends Phaser.Scene {
     preload(){
 		this.load.json("config",Utils.getJson('planetsSettings'));
 		this.load.json("levels",Utils.getJson('levels'));
+        this.load.atlas('atlas', Utils.getImgV("templates"), Utils.getJson("verticalLevelElements"));
     }
     
     create(){
         // Iniciar la primera escena
         Utils.createKeyBindings(this);
         this.planetSettings = this.cache.json.get("config");
-		this.levelDetails   = this.cache.json.get("levels");
+		this.levelSettings   = this.cache.json.get("levels");
     }
 
     startNextLevel(){
         this.currentSceneIndex = (this.currentSceneIndex + 1) % this.levels.length;
         let nextLevel = this.levels[this.currentSceneIndex];
-        console.log(nextLevel.key);
+        //console.log(nextLevel.key);
         this.scene.pause();
         this.scene.launch(nextLevel.key);
     }

@@ -31,8 +31,7 @@ export default class Astronaut extends Player{
             
             //velocidad vertical:
             if(this.scene.w.isDown){ 
-            	if(!this.isJumping)
-            	{
+            	if(!this.isJumping){
                 	this.movement = "up";
                 	this.body.velocity.y = this.jumpVelocity;
    					this.isJumping = true;
@@ -76,11 +75,9 @@ export default class Astronaut extends Player{
 			//initial running cutscene:
 			this.scene.player.play("runningRight",true);
 			this.x += ASTRONAUT_SPEED - 0.8;
-			if(this.x >= AST_INITIAL_X - 20) 
-				{
-					this.scene.introDone = true;
-
-				}
+			if(this.x >= AST_INITIAL_X - 20) {
+				this.scene.introDone = true;
+			}
 			//this.play(""+this.movement+this.hDirection,true);
 		}
     }

@@ -11,8 +11,8 @@ let config = {
     parent: 'juego',
     // type: Phaser.CANVAS,
     // canvas: document.getElementById("juego"),
-    width:  VERTICAL_LEVELS_WIDTH,
-    height: VERTICAL_LEVELS_HEIGHT,
+    width:  SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
     pixelArt: PIXELART,
 	scale: {
 		autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,

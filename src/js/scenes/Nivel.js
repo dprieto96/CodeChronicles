@@ -33,8 +33,10 @@ export default class Nivel extends Phaser.Scene {
 	create() {
 		Utils.createKeyBindings(this);
 		this.planetSettings = this.ctrl.planetSettings[this.planet]
-		this.levels			= this.ctrl.levelDetails[this.key];
+		this.levels			= this.ctrl.levelSettings[this.key];
 		this.introDone   	= false;
+		this.playerWon		= false;
+		this.levelCleared   = false;
 
 
         /*
@@ -70,7 +72,13 @@ export default class Nivel extends Phaser.Scene {
 		this.load.script()
         */
 	}
-
+	
+	finishLevel(){
+		console.log("Level '" + this.scene.key + "' cleared.");
+		this.sp.reset();
+		this.scene.stop(this.key);
+		this.scene.resume("levelSelector");	
+	}
 	/**
 	* Loop del juego
 	*/
@@ -78,11 +86,14 @@ export default class Nivel extends Phaser.Scene {
 		super.update();
 	
 		//cerrar escena:
-		if(this.sp.isDown){
-			this.sp.reset();
-			this.scene.stop(this.key);
-			this.scene.resume("levelSelector");
-			//this.ctrl.startNextLevel();			
-		}
+		if(this.sp.isDown){ this.finishLevel(); }
+	}
+
+	playerIsDead() {return false; } //to be overriden by the subclasses
+	victoryCondition(){ return false; } //to be overriden by the subclasses
+
+	checkEndOfGame(){
+		this.playerWon = this.victoryCondition();
+		return this.playerIsDead() || this.playerWon;
 	}
 }

@@ -2,12 +2,12 @@
 const GAME_TITLE   = "Lunar Legends: A Journey Beyond";
 const GAME_VERSION = "0.1.0";
 
-const DEBUG         = false;
+const DEBUG         = true;
 const PIXELART      = true; //para el tema del escalado de imagen
 const ZOOM          = 1;
 
-const SCREEN_WIDTH  = 374;
-const SCREEN_HEIGHT = 374;
+const SCREEN_WIDTH  = 340;
+const SCREEN_HEIGHT = 340;
 
 const VERTICAL_LEVELS_WIDTH  = Math.max(SCREEN_WIDTH,SCREEN_HEIGHT); 
 const VERTICAL_LEVELS_HEIGHT = Math.max(SCREEN_WIDTH,SCREEN_HEIGHT);
@@ -15,8 +15,8 @@ const VERTICAL_LEVELS_HEIGHT = Math.max(SCREEN_WIDTH,SCREEN_HEIGHT);
 const SCREEN_MIN_WIDTH  = 328;
 const SCREEN_MIN_HEIGHT = 188;
 
-const SCREEN_MAX_WIDTH  = 1312;
-const SCREEN_MAX_HEIGHT = 752;
+const SCREEN_MAX_WIDTH  = 660;
+const SCREEN_MAX_HEIGHT = 660;
 
 const TRANSPARENT = true; //para poner fondo transparente o no
 

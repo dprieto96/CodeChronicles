@@ -33,6 +33,20 @@ export default class Utils{
             repeat: _repeat
         });
     }
+
+    static createAnimFromAtlas(_scene, _key, _spriteKey, _prefix, _end, _zeroPad, _frameRate, _repeat){
+        _scene.anims.create({
+            key: _key,
+            frames: _scene.anims.generateFrameNames(_spriteKey, {
+              prefix: _prefix,
+              start: 0,
+              end: _end,
+              zeroPad: _zeroPad,
+            }),
+            frameRate: _frameRate,
+            repeat: _repeat,
+          });
+    }
     
     static createKeyBindings(obj){
         obj.a  = obj.input.keyboard.addKey("A");
