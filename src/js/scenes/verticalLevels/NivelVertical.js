@@ -14,9 +14,8 @@ export default class NivelVertical extends Nivel {
 	 * @extends Phaser.Scene
 	 */
 
-	constructor(planet,destination,ctrl) {
-		super("nivelVertical"+Utils.digitsToStr(ctrl.getCurrentVId(),2),planet,ctrl);
-		this.destination 	 = destination;
+	constructor(ctrl) {
+		super("nivelVertical"+Utils.digitsToStr(ctrl.getCurrentVId(),2),ctrl);
 	}
 
 	updateParticles(){
@@ -31,6 +30,8 @@ export default class NivelVertical extends Nivel {
 	preload(){
 		super.preload();
 		this.load.atlas('verticalAtlas', Utils.getImgV("templates"), Utils.getJson("verticalLevelElements"));
+		this.destination = this.st["destination"];
+		
 		this.bg 	= new VerticalBackground(this);
 		this.player = new Spaceship(this,SPACESHIP_INIT_X, SPACESHIP_INIT_Y);
 	}
@@ -40,12 +41,13 @@ export default class NivelVertical extends Nivel {
 	*/
 	create() {
 		super.create();
+
 		this.bg.create();
 		this.player.create();
-		this.enemiesGroup=this.add.group();
+
+		this.enemiesGroup = this.add.group();
 		this.physics.world.gravity.y = 0;
 
-        this.st = this.ctrl.levelSettings[this.key];
         //this.numRocks = st["numAsteroids"];
         this.density  = this.st["density"];
         this.thrownAsteroids = 0;
@@ -60,13 +62,14 @@ export default class NivelVertical extends Nivel {
 
 			// crea un nuevo enemigo en la posición aleatoria y agrégalo al grupo de enemigos
 			let id = Math.floor(Phaser.Math.Between(0, 5));
-			let signX = Math.floor(Phaser.Math.Between(0,1)) % 2 == 0 ? -1 : 1;
+			let signX 		 = Math.floor(Phaser.Math.Between(0,1)) % 2 == 0 ? -1 : 1;
+			let signRotation = Math.floor(Phaser.Math.Between(0,1)) % 2 == 0 ? -1 : 1;
 			let newVector = [
 				Math.floor(Phaser.Math.Between(this.st["rockMinSpeedX"],this.st["rockMaxSpeedX"]))*signX,
 				Math.floor(Phaser.Math.Between(this.st["rockMinSpeedY"],this.st["rockMaxSpeedY"])),
-				Math.random()*8+2
+				(Math.random()*8+5)*signRotation
 			]
-			this.newAsteroid = new Asteroid(this, newX, -30, "asteroid0"+id, newVector);
+			this.newAsteroid = new Asteroid(this, newX, -60, "asteroid0"+id, newVector);
 			this.newAsteroid.create();
 			this.enemiesGroup.add(this.newAsteroid);
 			console.log(id, newX);

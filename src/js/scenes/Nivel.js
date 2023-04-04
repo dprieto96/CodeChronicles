@@ -10,11 +10,10 @@ export default class Nivel extends Phaser.Scene {
 	 * @extends Phaser.Scene
 	 */
 
-	constructor(key, planet, ctrl) {
+	constructor(key, ctrl) {
 		super({ key: key });
 		this.bg 	= null;
 		this.player = null;
-		this.planet = planet;
 		this.ctrl	= ctrl;
 		this.key = key;
 	}
@@ -25,6 +24,8 @@ export default class Nivel extends Phaser.Scene {
 	preload(){
 		//this.load.image('background', getImg("universeBg"));
 		this.load.spritesheet("spaceship",Utils.getImgV("spaceship"), {frameWidth: SPACESHIP_WIDTH, frameHeight: SPACESHIP_HEIGHT});
+		this.st	= this.ctrl.levelSettings[this.key];
+		this.planet = this.st["planet"];
 	}
 	
 	/**
@@ -33,7 +34,6 @@ export default class Nivel extends Phaser.Scene {
 	create() {
 		Utils.createKeyBindings(this);
 		this.planetSettings = this.ctrl.planetSettings[this.planet]
-		this.levels			= this.ctrl.levelSettings[this.key];
 		this.introDone   	= false;
 		this.playerWon		= false;
 		this.levelCleared   = false;

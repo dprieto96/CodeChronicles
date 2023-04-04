@@ -11,8 +11,8 @@ export default class NivelHorizontal extends Nivel {
 	 * Escena principal.
 	 * @extends Phaser.Scene
 	 */
-	constructor(planet,ctrl) {
-		super("nivelHorizontal"+Utils.digitsToStr(ctrl.getCurrentHId(),2),planet,ctrl);
+	constructor(ctrl) {
+		super("nivelHorizontal"+Utils.digitsToStr(ctrl.getCurrentHId(),2),ctrl);
 		this.introDone 	= false;
 	}
 
@@ -23,6 +23,7 @@ export default class NivelHorizontal extends Nivel {
 	preload(){
 		super.preload();
 
+		this.planet = this.st["planet"];
 		this.bg 	= new HorizontalBackground(this);
 		this.player = new Astronaut(this,0,320);
 	}

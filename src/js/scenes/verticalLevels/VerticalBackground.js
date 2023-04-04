@@ -4,7 +4,7 @@ export default class VerticalBackground extends Background{
     constructor(scene){
         super(scene);
         this.framesToReachSpace = 300;
-        
+
         // Carga la imagen 'planet' usando 'load'
         this.scene.load.image(this.scene.planet,      Utils.getImgV(this.scene.planet));
         this.scene.load.image(this.scene.destination, Utils.getImgV(this.scene.destination));

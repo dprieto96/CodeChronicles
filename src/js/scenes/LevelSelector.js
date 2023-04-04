@@ -17,9 +17,12 @@ export default class LevelSelector extends Phaser.Scene {
         this.horizontalIdx = 0;
         
         this.levels = [ 
-            new NivelVertical("MOON","MARS",this),
-            new NivelHorizontal("VENUS",this),
-            new NivelVertical("MARS","MOON",this)
+            new NivelVertical(this),
+            new NivelHorizontal(this),
+            new NivelVertical(this),
+            new NivelHorizontal(this),
+            new NivelVertical(this),
+            new NivelHorizontal(this)
         ];
 	}
     
@@ -43,20 +46,24 @@ export default class LevelSelector extends Phaser.Scene {
 
     preload(){
 		this.load.json("config",Utils.getJson('planetsSettings'));
-		this.load.json("levels",Utils.getJson('levels'));
+		this.load.json("levelSettings",Utils.getJson('levelSettings'));
+
+        //for(let i = 0; i < this.levels.length; i++){ this.levels[i].preload(); }
     }
     
     create(){
+        console.log("a")
         // Iniciar la primera escena
         Utils.createKeyBindings(this);
         this.planetSettings = this.cache.json.get("config");
-		this.levelSettings   = this.cache.json.get("levels");
+		this.levelSettings  = this.cache.json.get("levelSettings");
     }
 
     startNextLevel(){
         this.currentSceneIndex = (this.currentSceneIndex + 1) % this.levels.length;
         let nextLevel = this.levels[this.currentSceneIndex];
         //console.log(nextLevel.key);
+        console.log("b")
         this.scene.pause();
         this.scene.launch(nextLevel.key);
     }

@@ -1,0 +1,82 @@
+{
+    "nivelVertical00":{
+        "levelLength":  5000,
+        "rockMinSpeedX":  10,
+        "rockMaxSpeedX":  30,
+        "rockMinSpeedY":  20,
+        "rockMaxSpeedY": 100,
+        "numAsteroids":   30,
+        "density":         5,
+        "planet":      "MOON",
+        "destination": "MARS",
+        "decorations": {
+            "planets": [
+                { "sprite": "saturn.png", "x": 10, "y":  5, "z": 100, "speedX":  0, "speedY":  0},
+                { "sprite": "comet.png",  "x": 60, "y": 25, "z": 150, "speedX": -2, "speedY":  6}
+            ],
+
+            "particles": [
+                { "sprite": "particles0.png", "speedX": 0, "speedY":  6 },
+                { "sprite": "particles1.png", "speedX": 0, "speedY": 10 }
+            ]
+        }
+    },
+
+    "nivelVertical01":{
+        "levelLength":  5000,
+        "rockMinSpeedX":  10,
+        "rockMaxSpeedX":  30,
+        "rockMinSpeedY":  40,
+        "rockMaxSpeedY": 100,
+        "numAsteroids":   50,
+        "density":         6,
+        "planet":      "MARS",
+        "destination": "VENUS",
+        "decorations": {
+            "planets": [
+                { "sprite": "saturn.png", "x": 10, "y":  5, "z": 100, "speedX":  0, "speedY":  0},
+                { "sprite": "comet.png",  "x": 60, "y": 25, "z": 150, "speedX": -2, "speedY":  6}
+            ],
+
+            "particles": [
+                { "sprite": "particles0.png", "speedX": 0, "speedY":  6 },
+                { "sprite": "particles1.png", "speedX": 0, "speedY": 10 }
+            ]
+        }
+    },
+
+    "nivelVertical02":{
+        "levelLength":  5000,
+        "rockMinSpeedX":  10,
+        "rockMaxSpeedX":  30,
+        "rockMinSpeedY":  40,
+        "rockMaxSpeedY": 100,
+        "numAsteroids":   50,
+        "density":         6,
+        "planet":      "VENUS",
+        "destination": "MOON",
+        "decorations": {
+            "planets": [
+                { "sprite": "saturn.png", "x": 10, "y":  5, "z": 100, "speedX":  0, "speedY":  0},
+                { "sprite": "comet.png",  "x": 60, "y": 25, "z": 150, "speedX": -2, "speedY":  6}
+            ],
+
+            "particles": [
+                { "sprite": "particles0.png", "speedX": 0, "speedY":  6 },
+                { "sprite": "particles1.png", "speedX": 0, "speedY": 10 }
+            ]
+        }
+    },
+
+    "nivelHorizontal00":{
+        "planet": "MARS"
+    },
+
+    "nivelHorizontal01":{
+        "planet": "VENUS"
+    },
+
+    "nivelHorizontal02":{
+        "planet": "MOON"
+    }
+}
