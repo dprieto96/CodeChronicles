@@ -11,25 +11,6 @@ export default class Asteroid extends Enemy {
     this.speed   = 20; // velocidad 
   }
 
-    /*
-    constructor(scene, x, y){
-      super(scene, x, y,"spaceship", 1);
-      
-      //load of graphics:
-      this.scene.load.spritesheet(this.graphicName,Utils.getImgV(this.graphicName), {
-          frameWidth: SPACESHIP_WIDTH,
-          frameHeight: SPACESHIP_HEIGHT
-      });
-    }
-    
-    
-    spawnEnemy() {
-      const x = Phaser.Math.Between(0, game.config.width);
-      const y = Phaser.Math.Between(0, game.config.height);
-      const enemy = new Enemy(this, x, y, 'enemyTexture');
-    }
-  */
-
   create(){
     super.create();  
       
@@ -41,8 +22,6 @@ export default class Asteroid extends Enemy {
   }
 
   update() {
-    //this.rotation += this.vector[2];
-    // código que se ejecuta en cada fotograma del juego
     // aquí podrías poner el movimiento y la lógica específica del jefe
   }
 

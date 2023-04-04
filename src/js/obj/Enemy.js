@@ -21,11 +21,8 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds(false); // los enemigos ss salen de los límites del mundo
   }
 
-  create(){
-    //this.setTexture(this.graphicName);
-    //this.setFrame(this.initFrame);    
+  create(){   
     this.scene.physics.world.enable(this);   
     this.setDepth(998); //prioridad de capa
   }
-
 }
