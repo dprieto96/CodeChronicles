@@ -3,6 +3,7 @@ import Enemy from "./Enemy.js"
 export default class Asteroid extends Enemy {
   constructor(scene, x, y, texture, vector) {
     super(scene, x, y, "verticalAtlas", texture);
+    //this.spriteBounds = sprite.getBounds();
     this.texture = texture;
     this.vector  = vector;
     this.health  = 100; // aumentamos la salud del jefe
@@ -30,10 +31,13 @@ export default class Asteroid extends Enemy {
   */
 
   create(){
-    super.create();    
+    super.create();  
+      
     this.body.allowRotation = true;
     this.setVelocity(this.vector[0], this.vector[1]);
     this.setAngularVelocity(this.vector[2]);
+    this.body.setCircle(undefined);
+    
   }
 
   update() {

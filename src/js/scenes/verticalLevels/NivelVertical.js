@@ -47,12 +47,32 @@ export default class NivelVertical extends Nivel {
 
 		this.enemiesGroup = this.add.group();
 		this.physics.world.gravity.y = 0;
+		
 
         //this.numRocks = st["numAsteroids"];
         this.density  = this.st["density"];
         this.thrownAsteroids = 0;
 		this.distanceReached = 0;
+
+		this.physics.add.collider(this.player,this.enemiesGroup);
+		this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
+
+	
+
+	//	this.physics.add.overlap(this.player, this.enemiesGroup, this.colision() , null, this);
 	}
+
+	colision(){
+		// calcula el ángulo de la colisión
+		this.angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, this.enemiesGroup.x, this.enemiesGroup.y);
+		
+		// ajusta los vectores de velocidad de los objetos
+		this.player.speedX = Math.cos(this.angle) * this.player.speed;
+		this.player.speedY = Math.sin(this.angle) * this.player.speed;
+		//this.enemiesGroup.setVelocity(Math.cos(this.angle + Math.PI) * this.enemiesGroup.speed,Math.sin(this.angle + Math.PI) * this.enemiesGroup.speed );
+		/*this.enemiesGroup.velocity.x = Math.cos(this.angle + Math.PI) * this.enemiesGroup.speed;
+		this.enemiesGroup.velocity.y = Math.sin(this.angle + Math.PI) * this.enemiesGroup.speed;*/
+	  }
 
 	generateEnemy() {
 		//generar una nueva roca:

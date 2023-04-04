@@ -18,7 +18,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.setScale(2); // escala inicial de cada enemigo
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
-    this.setCollideWorldBounds(false); // los enemigos no salen de los límites del mundo
+    this.setCollideWorldBounds(false); // los enemigos ss salen de los límites del mundo
   }
 
   create(){
