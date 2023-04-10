@@ -86,7 +86,9 @@ export default class Nivel extends Phaser.Scene {
 		super.update();
 	
 		//cerrar escena:
-		if(this.sp.isDown){ this.finishLevel(); }
+		//this.teclas = this.input.keyboard.addKeys('ENTER');
+		//if (this.teclas.ENTER.isDown) {this.finishLevel(); }
+		if(this.enter.isDown){ this.finishLevel(); }
 	}
 
 	playerIsDead() {return false; } //to be overriden by the subclasses

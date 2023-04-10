@@ -8,6 +8,7 @@ import Utils from "../../Utils.js"
 import VerticalBackground from './VerticalBackground.js';
 import Spaceship from '../../obj/player/Spaceship.js';
 import Asteroid from "../../obj/Asteroid.js";
+import Bullet from "../../obj/player/Bullet.js"
 export default class NivelVertical extends Nivel {
 	/**
 	 * Escena principal.
@@ -29,6 +30,11 @@ export default class NivelVertical extends Nivel {
 	 */
 	preload(){
 		super.preload();
+
+		//this.load.image("bullet","assets\img\verticalLevels\bulletold.png");
+
+
+
 		this.load.atlas('verticalAtlas', Utils.getImgV("templates"), Utils.getJson("verticalLevelElements"));
 		this.destination = this.st["destination"];
 		
@@ -53,6 +59,10 @@ export default class NivelVertical extends Nivel {
         this.density  = this.st["density"];
         this.thrownAsteroids = 0;
 		this.distanceReached = 0;
+
+
+		this.cursors = this.input.keyboard.createCursorKeys();
+		this.bulletsGroup = new Bullet(this.physics.world, this);
 
 		this.physics.add.collider(this.player,this.enemiesGroup);
 		this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
@@ -107,8 +117,19 @@ export default class NivelVertical extends Nivel {
         }
 	}
 
+	fire(){
+		this.bulletsGroup.newItem();
+	}
+
     update(){
 		super.update();
+		this.physics.add.collider(this.player,this.enemiesGroup);
+		this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
+
+		if (this.input.keyboard.checkDown(this.cursors.space, 250)) {
+            this.fire();
+        }
+		//this.fire();
 		
 		if(!this.introDone){ this.bg.launch(); }
 		else{ this.generateEnemy(); }
