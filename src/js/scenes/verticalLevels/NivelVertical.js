@@ -121,10 +121,22 @@ export default class NivelVertical extends Nivel {
 		this.bulletsGroup.newItem();
 	}
 
+	hitEnemies(bullet, enemy) {
+        bullet.setVisible(false);
+        bullet.setActive(false);
+        bullet.destroy();
+
+       
+            enemy.destroy();
+
+    
+    }
+
     update(){
 		super.update();
 		this.physics.add.collider(this.player,this.enemiesGroup);
 		this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
+		this.physics.add.collider(this.bulletsGroup, this.enemiesGroup, this.hitEnemies, null, this);
 
 		if (this.input.keyboard.checkDown(this.cursors.space, 250)) {
             this.fire();
