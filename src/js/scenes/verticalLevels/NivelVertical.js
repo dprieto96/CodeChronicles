@@ -79,8 +79,8 @@ export default class NivelVertical extends Nivel {
 		this.bulletsGroup = new Bullet(this.physics.world, this);
 		
 
-		this.physics.add.collider(this.player,this.enemiesGroup);
-		this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
+		//this.physics.add.collider(this.player,this.enemiesGroup);
+		//this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
 
 	
 
@@ -116,15 +116,15 @@ export default class NivelVertical extends Nivel {
 			]
 			this.newAsteroid = new Asteroid(this, newX, -60, "asteroid0"+id, newVector);
 			this.newAsteroid.create();
+
+
 			this.enemiesGroup.add(this.newAsteroid);
-			console.log(id, newX);
         }
 
 		//comprobar si se sale del mapa para eliminar la roca:
         for (let i = 0; i < this.enemiesGroup.getLength(); i++){
 			let child = this.enemiesGroup.getChildren()[i];
-            if(child.y >= VERTICAL_LEVELS_HEIGHT || child.x >= VERTICAL_LEVELS_WIDTH || child.x < 0){ 
-				console.log("an asteroid flew away...");
+            if(child.y >= VERTICAL_LEVELS_HEIGHT || child.x >= VERTICAL_LEVELS_WIDTH || child.x < 0){
 				this.enemiesGroup.remove(child);
 				this.thrownAsteroids++;
                 i--;
@@ -132,14 +132,15 @@ export default class NivelVertical extends Nivel {
         }
 	}
 
-	fire(){
-		this.bulletsGroup.newItem();
-	}
+	fire(){ this.bulletsGroup.newItem(); }
 
-	hitEnemies(bullet, enemy) {
+	hitEnemies(enemy, bullet) {
 		bullet.setVisible(false);
         bullet.setActive(false);
         bullet.destroy();
+		enemy.setAngularVelocity(0);
+		enemy.setVelocity(0,0);
+		enemy.angle = 0;
 		enemy.play("boomBeach");
     }
 
@@ -158,16 +159,18 @@ export default class NivelVertical extends Nivel {
 			this.player.play("UP",true);
 		}
 		else if (!this.checkEndOfGame() || this.enemiesGroup.getLength() > 0) {
+			//progress bar logic:
 			if (this.icon.y > 10){
 				this.icon.y = 10 + this.pBar.height - Math.floor((this.distanceReached / this.st["levelLength"])*this.pBar.height);
 			}
 
+			//check space key to shoot bullet:
 			if (this.input.keyboard.checkDown(this.cursors.space, 250) && this.numBullets>0) {
 				this.fire();
 				this.numBullets--;
 				this.scoreText.setText('BULLETS: ' + this.numBullets);
 			}
-			
+
 			this.player.handleMovement(); 
 			this.distanceReached++;
 		}

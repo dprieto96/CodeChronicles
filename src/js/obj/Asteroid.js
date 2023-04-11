@@ -18,17 +18,15 @@ export default class Asteroid extends Enemy {
     this.setVelocity(this.vector[0], this.vector[1]);
     this.setAngularVelocity(this.vector[2]);
     this.body.setCircle(undefined);
-    this.setActive(true)
-    this.setVisible(true)
-    this.setDepth(2);
-    
-    Utils.createAnimFromAtlas(this.scene, "boomBeach", "verticalAtlas", "boom", 8, 2, 20, 0);
-    this.on('animationcomplete-boomBeach', () => { 
-      console.log("holu");
-      this.visible(false);
-      this.setActive(false);
+    //this.setActive(true)
+    //this.setVisible(true)
+    //his.setDepth(2);
+
+    Utils.createAnimFromAtlas(this, "boomBeach", "verticalAtlas", "boom", 8, 2, 20, 0);
+
+    this.on('animationcomplete-boomBeach', () => {
       this.destroy(); 
-    }, this);
+    }, this.scene);
   }
 
   update() {
