@@ -1,4 +1,3 @@
-import Utils from "../Utils.js"
 import Enemy from "./Enemy.js"
 export default class Asteroid extends Enemy {
   constructor(scene, x, y, texture, vector) {
@@ -24,5 +23,4 @@ export default class Asteroid extends Enemy {
   update() {
     // aquí podrías poner el movimiento y la lógica específica del jefe
   }
-
 }

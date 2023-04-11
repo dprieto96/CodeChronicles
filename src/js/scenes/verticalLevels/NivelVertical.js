@@ -33,8 +33,6 @@ export default class NivelVertical extends Nivel {
 
 		//this.load.image("bullet","assets\img\verticalLevels\bulletold.png");
 
-
-
 		this.load.atlas('verticalAtlas', Utils.getImgV("templates"), Utils.getJson("verticalLevelElements"));
 		this.destination = this.st["destination"];
 		
