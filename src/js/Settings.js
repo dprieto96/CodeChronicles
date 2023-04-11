@@ -2,7 +2,7 @@
 const GAME_TITLE   = "Lunar Legends: A Journey Beyond";
 const GAME_VERSION = "0.1.0";
 
-const DEBUG         = false;
+const DEBUG         = true;
 const PIXELART      = true; //para el tema del escalado de imagen
 const ZOOM          = 1;
 

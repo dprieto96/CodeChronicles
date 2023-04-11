@@ -1,4 +1,5 @@
 import Enemy from "./Enemy.js"
+import Utils from "../Utils.js"
 export default class Asteroid extends Enemy {
   constructor(scene, x, y, texture, vector) {
     super(scene, x, y, "verticalAtlas", texture);
@@ -17,7 +18,17 @@ export default class Asteroid extends Enemy {
     this.setVelocity(this.vector[0], this.vector[1]);
     this.setAngularVelocity(this.vector[2]);
     this.body.setCircle(undefined);
+    this.setActive(true)
+    this.setVisible(true)
+    this.setDepth(2);
     
+    Utils.createAnimFromAtlas(this.scene, "boomBeach", "verticalAtlas", "boom", 8, 2, 20, 0);
+    this.on('animationcomplete-boomBeach', () => { 
+      console.log("holu");
+      this.visible(false);
+      this.setActive(false);
+      this.destroy(); 
+    }, this);
   }
 
   update() {

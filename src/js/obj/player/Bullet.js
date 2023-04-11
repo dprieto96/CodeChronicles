@@ -13,7 +13,7 @@ export default class Bullet extends Phaser.Physics.Arcade.Group {
             .setDepth(2);
 
         Utils.createAnimFromAtlas(this.scene, "shootBegin", "verticalAtlas", "shoot", 4, 2, 15, 0);
-        Utils.createAnimFromAtlas(this.scene, "shootEnd",   "verticalAtlas", "shootEnd", 2, 2, 20, -1);
+        Utils.createAnimFromAtlas(this.scene, "shootEnd",   "verticalAtlas", "shootEnd", 1, 2, 20, -1);
 
         item.setScale(2);
         item.body.velocity.y = -200;

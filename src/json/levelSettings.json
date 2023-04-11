@@ -1,6 +1,6 @@
 {
     "nivelVertical00":{
-        "levelLength":  5000,
+        "levelLength":  1000,
         "rockMinSpeedX":  10,
         "rockMaxSpeedX":  30,
         "rockMinSpeedY":  20,

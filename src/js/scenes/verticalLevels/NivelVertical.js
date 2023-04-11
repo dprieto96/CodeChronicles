@@ -49,9 +49,21 @@ export default class NivelVertical extends Nivel {
 		super.create();
 		this.numBullets=100;
 		this.scoreText = this.add.text(this.sys.game.canvas.width / 2 - 65, 0, 'BULLETS: ' + this.numBullets, { fontStyle: 'strong', font: '19px Arial', fill: '#6368BC' });
-
+		
 		this.bg.create();
 		this.player.create();
+
+		//progress bar:
+		this.pBar = this.add.sprite(5, 10, 'verticalAtlas', 'progressBar');
+		this.pBar.x += this.pBar.width/2;
+		this.pBar.y += this.pBar.height/2;
+		this.pBar.setDepth(999);
+
+		//spaceship icon:
+		this.icon = this.add.sprite(5, 10, 'verticalAtlas', 'spaceshipIcon');
+		this.icon.x += this.pBar.width/2;
+		this.icon.y += this.pBar.height;
+		this.icon.setDepth(999);
 
 		this.enemiesGroup = this.add.group();
 		this.physics.world.gravity.y = 0;
@@ -125,10 +137,10 @@ export default class NivelVertical extends Nivel {
 	}
 
 	hitEnemies(bullet, enemy) {
-        bullet.setVisible(false);
+		bullet.setVisible(false);
         bullet.setActive(false);
         bullet.destroy();
-        enemy.destroy();
+		enemy.play("boomBeach");
     }
 
     update(){
@@ -137,13 +149,6 @@ export default class NivelVertical extends Nivel {
 		this.physics.add.collider(this.player,this.enemiesGroup);
 		this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
 		this.physics.add.collider(this.bulletsGroup, this.enemiesGroup, this.hitEnemies, null, this);
-
-		if (this.input.keyboard.checkDown(this.cursors.space, 250) && this.numBullets>0) {
-            this.fire();
-			this.numBullets--;
-			this.scoreText.setText('BULLETS: ' + this.numBullets);
-        }
-		//this.fire();
 		
 		if(!this.introDone){ this.bg.launch(); }
 		else{ this.generateEnemy(); }
@@ -152,7 +157,17 @@ export default class NivelVertical extends Nivel {
 			this.bg.launch();
 			this.player.play("UP",true);
 		}
-		else if (!this.checkEndOfGame() || this.enemiesGroup.getLength() > 0) { 
+		else if (!this.checkEndOfGame() || this.enemiesGroup.getLength() > 0) {
+			if (this.icon.y > 10){
+				this.icon.y = 10 + this.pBar.height - Math.floor((this.distanceReached / this.st["levelLength"])*this.pBar.height);
+			}
+
+			if (this.input.keyboard.checkDown(this.cursors.space, 250) && this.numBullets>0) {
+				this.fire();
+				this.numBullets--;
+				this.scoreText.setText('BULLETS: ' + this.numBullets);
+			}
+			
 			this.player.handleMovement(); 
 			this.distanceReached++;
 		}
@@ -163,5 +178,5 @@ export default class NivelVertical extends Nivel {
 		else{ this.finishLevel(); }
 	}
 		
-	victoryCondition(){ return this.thrownAsteroids >= this.st["numAsteroids"] && this.distanceReached >= this.st["levelLength"]; }
+	victoryCondition(){ return this.distanceReached >= this.st["levelLength"]; }
 }
