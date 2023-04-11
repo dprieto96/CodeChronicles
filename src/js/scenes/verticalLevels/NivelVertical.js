@@ -33,6 +33,8 @@ export default class NivelVertical extends Nivel {
 
 		//this.load.image("bullet","assets\img\verticalLevels\bulletold.png");
 
+
+
 		this.load.atlas('verticalAtlas', Utils.getImgV("templates"), Utils.getJson("verticalLevelElements"));
 		this.destination = this.st["destination"];
 		
@@ -45,6 +47,8 @@ export default class NivelVertical extends Nivel {
 	*/
 	create() {
 		super.create();
+		this.numBullets=100;
+		this.scoreText = this.add.text(this.sys.game.canvas.width / 2 - 65, 0, 'BULLETS: ' + this.numBullets, { fontStyle: 'strong', font: '19px Arial', fill: '#6368BC' });
 
 		this.bg.create();
 		this.player.create();
@@ -61,6 +65,7 @@ export default class NivelVertical extends Nivel {
 
 		this.cursors = this.input.keyboard.createCursorKeys();
 		this.bulletsGroup = new Bullet(this.physics.world, this);
+		
 
 		this.physics.add.collider(this.player,this.enemiesGroup);
 		this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
@@ -123,21 +128,20 @@ export default class NivelVertical extends Nivel {
         bullet.setVisible(false);
         bullet.setActive(false);
         bullet.destroy();
-
-       
-            enemy.destroy();
-
-    
+        enemy.destroy();
     }
 
     update(){
 		super.update();
+		
 		this.physics.add.collider(this.player,this.enemiesGroup);
 		this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
 		this.physics.add.collider(this.bulletsGroup, this.enemiesGroup, this.hitEnemies, null, this);
 
-		if (this.input.keyboard.checkDown(this.cursors.space, 250)) {
+		if (this.input.keyboard.checkDown(this.cursors.space, 250) && this.numBullets>0) {
             this.fire();
+			this.numBullets--;
+			this.scoreText.setText('BULLETS: ' + this.numBullets);
         }
 		//this.fire();
 		
