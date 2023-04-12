@@ -1,12 +1,11 @@
 {
     "nivelVertical00":{
-        "levelLength":  1000,
+        "levelLength":  3000,
         "rockMinSpeedX":  10,
         "rockMaxSpeedX":  30,
         "rockMinSpeedY":  20,
         "rockMaxSpeedY": 100,
-        "numAsteroids":   30,
-        "density":         5,
+        "density":        8,
         "planet":      "MOON",
         "destination": "MARS",
         "decorations": {
@@ -28,8 +27,7 @@
         "rockMaxSpeedX":  30,
         "rockMinSpeedY":  40,
         "rockMaxSpeedY": 100,
-        "numAsteroids":   50,
-        "density":         6,
+        "density":        18,
         "planet":      "MARS",
         "destination": "VENUS",
         "decorations": {

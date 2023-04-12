@@ -77,8 +77,9 @@ export default class NivelVertical extends Nivel {
 
 		this.cursors = this.input.keyboard.createCursorKeys();
 		this.bulletsGroup = new Bullet(this.physics.world, this);
-		
+		Utils.createAnimFromAtlas(this, "boomBeach", "verticalAtlas", "boom", 8, 2, 20, 0);
 
+		this.physics.world.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 		//this.physics.add.collider(this.player,this.enemiesGroup);
 		//this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
 
@@ -138,9 +139,11 @@ export default class NivelVertical extends Nivel {
 		bullet.setVisible(false);
         bullet.setActive(false);
         bullet.destroy();
+
 		enemy.setAngularVelocity(0);
 		enemy.setVelocity(0,0);
 		enemy.angle = 0;
+		enemy.body.checkCollision.none = true;
 		enemy.play("boomBeach");
     }
 

@@ -25,6 +25,15 @@ export default class Bullet extends Phaser.Physics.Arcade.Group {
             item.play('shootEnd', { loop: true });
         }, this);
 
+        item.setCollideWorldBounds(true);
+        item.body.onWorldBounds = true;
+        item.body.world.on('worldbounds', function(body) {
+            if (body.gameObject === item && body.blocked.up) {
+                console.log('El objeto ha salido de la pantalla hacia arriba!');
+                item.destroy();
+            }
+        });
+
         // Inicia la animación 1
         item.play('shootBegin');
     }
