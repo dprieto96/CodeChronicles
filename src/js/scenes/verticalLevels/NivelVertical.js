@@ -47,9 +47,11 @@ export default class NivelVertical extends Nivel {
 	*/
 	create() {
 		super.create();
+
 		this.numBullets=100;
 		this.scoreText = this.add.text(this.sys.game.canvas.width / 2 - 65, 0, 'BULLETS: ' + this.numBullets, { fontStyle: 'strong', font: '19px Arial', fill: '#6368BC' });
-		
+		this.scoreText.setDepth(1000);
+
 		this.bg.create();
 		this.player.create();
 
@@ -80,12 +82,10 @@ export default class NivelVertical extends Nivel {
 		Utils.createAnimFromAtlas(this, "boomBeach", "verticalAtlas", "boom", 8, 2, 20, 0);
 
 		this.physics.world.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-		//this.physics.add.collider(this.player,this.enemiesGroup);
-		//this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
 
-	
-
-	//	this.physics.add.overlap(this.player, this.enemiesGroup, this.colision() , null, this);
+		this.physics.add.collider(this.player,this.enemiesGroup);
+		this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
+		this.physics.add.collider(this.bulletsGroup, this.enemiesGroup, this.hitEnemies, null, this);
 	}
 
 	colision(){
@@ -149,10 +149,7 @@ export default class NivelVertical extends Nivel {
 
     update(){
 		super.update();
-		
-		this.physics.add.collider(this.player,this.enemiesGroup);
-		this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
-		this.physics.add.collider(this.bulletsGroup, this.enemiesGroup, this.hitEnemies, null, this);
+		this.bg.update();
 		
 		if(!this.introDone){ this.bg.launch(); }
 		else{ this.generateEnemy(); }
@@ -162,6 +159,7 @@ export default class NivelVertical extends Nivel {
 			this.player.play("UP",true);
 		}
 		else if (!this.checkEndOfGame() || this.enemiesGroup.getLength() > 0) {
+
 			//progress bar logic:
 			if (this.icon.y > 10){
 				this.icon.y = 10 + this.pBar.height - Math.floor((this.distanceReached / this.st["levelLength"])*this.pBar.height);

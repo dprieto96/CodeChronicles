@@ -1,11 +1,11 @@
 {
     "frames": [
+        { "filename": "saturn00",      "frame": { "x":   0, "y":   0, "w": 90, "h": 47 }},
         { "filename": "particles00",   "frame": { "x":  17, "y":  64, "w": 27, "h": 27 }},
         { "filename": "particles01",   "frame": { "x":  44, "y":  64, "w": 27, "h": 27 }},
         { "filename": "particles02",   "frame": { "x":  71, "y":  64, "w": 27, "h": 27 }},
         { "filename": "particles03",   "frame": { "x":  44, "y":  64, "w": 27, "h": 27 }},
         { "filename": "particles04",   "frame": { "x":   7, "y":  64, "w":  8, "h": 26 }},
-        { "filename": "saturn00",      "frame": { "x":   0, "y":   0, "w": 90, "h": 47 }},
         { "filename": "asteroid00",    "frame": { "x":   0, "y": 246, "w": 58, "h": 53 }},
         { "filename": "asteroid01",    "frame": { "x":  64, "y": 262, "w": 30, "h": 31 }},
         { "filename": "asteroid02",    "frame": { "x": 107, "y": 270, "w": 30, "h": 31 }},
