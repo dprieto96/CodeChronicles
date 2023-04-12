@@ -102,7 +102,7 @@ export default class NivelVertical extends Nivel {
 
 	generateEnemy() {
 		//generar una nueva roca:
-		if(this.enemiesGroup.getLength() < this.density && !this.victoryCondition()){
+		if(this.enemiesGroup.getLength() < this.density && this.distanceReached + 200 < this.st["levelLength"] ){
 			// determina una posición aleatoria para el nuevo enemigo
 			let newX = Phaser.Math.Between(0, this.game.config.width);
 
@@ -148,38 +148,34 @@ export default class NivelVertical extends Nivel {
     }
 
     update(){
-		super.update();
-		this.bg.update();
-		
-		if(!this.introDone){ this.bg.launch(); }
-		else{ this.generateEnemy(); }
-
-		if(!this.introDone) { 
-			this.bg.launch();
-			this.player.play("UP",true);
-		}
-		else if (!this.checkEndOfGame() || this.enemiesGroup.getLength() > 0) {
-
-			//progress bar logic:
-			if (this.icon.y > 10){
-				this.icon.y = 10 + this.pBar.height - Math.floor((this.distanceReached / this.st["levelLength"])*this.pBar.height);
+		super.update();		
+		if(!this.introDone) { this.bg.launch(); }
+		else {
+			this.bg.update();
+			this.generateEnemy();
+			
+			if (!this.checkEndOfGame() || this.enemiesGroup.getLength() > 0) {
+				//progress bar logic:
+				if (this.icon.y > 10){
+					this.icon.y = 10 + this.pBar.height - Math.floor((this.distanceReached / this.st["levelLength"])*this.pBar.height);
+				}
+	
+				//check space key to shoot bullet:
+				if (this.input.keyboard.checkDown(this.cursors.space, 250) && this.numBullets>0) {
+					this.fire();
+					this.numBullets--;
+					this.scoreText.setText('BULLETS: ' + this.numBullets);
+				}
+	
+				this.player.handleMovement(); 
+				this.distanceReached++;
 			}
-
-			//check space key to shoot bullet:
-			if (this.input.keyboard.checkDown(this.cursors.space, 250) && this.numBullets>0) {
-				this.fire();
-				this.numBullets--;
-				this.scoreText.setText('BULLETS: ' + this.numBullets);
+			else if(!this.levelCleared){ 
+				this.player.play("DOWN",true);
+				this.bg.endOfGame();
 			}
-
-			this.player.handleMovement(); 
-			this.distanceReached++;
+			else{ this.finishLevel(); }
 		}
-		else if(!this.levelCleared){ 
-			this.player.play("DOWN",true);
-			this.bg.endOfGame();
-		}
-		else{ this.finishLevel(); }
 	}
 		
 	victoryCondition(){ return this.distanceReached >= this.st["levelLength"]; }
