@@ -15,8 +15,9 @@ export default class NivelVertical extends Nivel {
 	 * @extends Phaser.Scene
 	 */
 
-	constructor(ctrl) {
+	constructor(ctrl,bullets) {
 		super("nivelVertical"+Utils.digitsToStr(ctrl.getCurrentVId(),2),ctrl);
+		this.numBullets=bullets;
 	}
 
 	updateParticles(){
@@ -40,6 +41,8 @@ export default class NivelVertical extends Nivel {
 		
 		this.bg 	= new VerticalBackground(this);
 		this.player = new Spaceship(this,SPACESHIP_INIT_X, SPACESHIP_INIT_Y);
+		
+		this.extraBullets=10;
 	}
 	
 	/**
@@ -48,7 +51,7 @@ export default class NivelVertical extends Nivel {
 	create() {
 		super.create();
 
-		this.numBullets=100;
+		//this.numBullets=this.bullets;
 		this.scoreText = this.add.text(this.sys.game.canvas.width / 2 - 65, 0, 'BULLETS: ' + this.numBullets, { fontStyle: 'strong', font: '12px Arial', fill: '#6368BC' });
 		this.scoreText.setDepth(1000);
 
@@ -181,6 +184,7 @@ export default class NivelVertical extends Nivel {
 				if (this.input.keyboard.checkDown(this.cursors.space, 250) && this.numBullets>0) {
 					this.fire();
 					this.numBullets--;
+					this.bullets--;
 					this.scoreText.setText('BULLETS: ' + this.numBullets);
 				}
 	
@@ -191,8 +195,12 @@ export default class NivelVertical extends Nivel {
 			else if(!this.levelCleared){ 
 				this.player.play("DOWN",true);
 				this.bg.endOfGame();
+				
 			}
-			else{ this.finishLevel(); }
+			else{ 
+				
+				this.finishLevel(); 
+				}
 		}
 	}
 		
