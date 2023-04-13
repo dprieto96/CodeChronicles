@@ -43,7 +43,7 @@ const SPRITE_WIDTH    = 64;
 const SPRITE_HEIGHT   = 64;
 const IDLE_FRAME_RATE = 7; //duracion de cada postura del sprite durante la animacion de idle       (medido en numero de frames)
 const MOVI_FRAME_RATE = 10; //duracion de cada postura del sprite durante la animacion de movimiento (medido en numero de frames)
-const GRAVITY_FACTOR = 400;
+const GRAVITY_FACTOR = 1000;
 
 //ASTRONAUT INITIAL POS:
 const AST_INITIAL_X = 100;
@@ -58,7 +58,7 @@ const SPACESHIP_MOVI_FR = 10;
 const SPACESHIP_SPEED   = 0.2;
 const SPACESHIP_INIT_X  = VERTICAL_LEVELS_WIDTH/2;
 const SPACESHIP_INIT_Y  = VERTICAL_LEVELS_HEIGHT- 100;
-const ASTRONAUT_SPEED  = 1.2;
+const ASTRONAUT_SPEED  = 2;
 
 //PHYSICS (by default): =======================================================
 const GRAVITIES     = { "LUNA": 0.165, "TIERRA": 1, "MARTE": 0.379, "JUPITER": 2.528, "SATURNO": 1.065, "URANO": 0.904, "NEPTUNO": 1.137 };

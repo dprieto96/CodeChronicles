@@ -69,7 +69,12 @@
     },
 
     "nivelHorizontal00":{
-        "planet": "MARS"
+        "planet": "MARS",
+        "decorations": {
+            "platform": [
+                { "sprite": "moonPlatforms.png", "x": 10, "y":  5}
+            ]}
+
     },
 
     "nivelHorizontal01":{
