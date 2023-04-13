@@ -32,7 +32,7 @@ let config = {
         default: 'arcade', 
         arcade: { 
             gravity: { y: 0 }, 
-            debug: DEBUG 
+            debug: true 
         },
         checkCollision: {
             up: true,

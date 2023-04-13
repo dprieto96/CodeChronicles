@@ -49,8 +49,12 @@ export default class NivelVertical extends Nivel {
 		super.create();
 
 		this.numBullets=100;
-		this.scoreText = this.add.text(this.sys.game.canvas.width / 2 - 65, 0, 'BULLETS: ' + this.numBullets, { fontStyle: 'strong', font: '19px Arial', fill: '#6368BC' });
+		this.scoreText = this.add.text(this.sys.game.canvas.width / 2 - 65, 0, 'BULLETS: ' + this.numBullets, { fontStyle: 'strong', font: '12px Arial', fill: '#6368BC' });
 		this.scoreText.setDepth(1000);
+
+		this.numLifes=3;
+		this.lifesText = this.add.text(this.sys.game.canvas.width-65,0, 'LIFE X ' + this.numLifes, { fontStyle: 'strong', align: 'right',font: '12px Arial', fill: '#6368BC' });
+		this.lifesText.setDepth(1000);
 
 		this.bg.create();
 		this.player.create();
@@ -83,9 +87,10 @@ export default class NivelVertical extends Nivel {
 
 		this.physics.world.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-		this.physics.add.collider(this.player,this.enemiesGroup);
+		//this.physics.add.collider(this.player,this.enemiesGroup);
 		this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
 		this.physics.add.collider(this.bulletsGroup, this.enemiesGroup, this.hitEnemies, null, this);
+		this.physics.add.collider(this.enemiesGroup, this.player, this.hitPlayer, null, this);
 	}
 
 	colision(){
@@ -147,13 +152,25 @@ export default class NivelVertical extends Nivel {
 		enemy.play("boomBeach");
     }
 
+	hitPlayer(enemy, player) {
+		if(this.numLifes>0)this.numLifes--;
+
+		enemy.setAngularVelocity(0);
+		enemy.setVelocity(0,0);
+		enemy.angle = 0;
+		enemy.body.checkCollision.none = true;
+		enemy.play("boomBeach");
+    }
+
+
     update(){
 		super.update();		
 		if(!this.introDone) { this.bg.launch(); }
 		else {
 			this.bg.update();
 			this.generateEnemy();
-			
+			this.lifesText.setText('LIFE X ' + this.numLifes);
+
 			if (!this.checkEndOfGame() || this.enemiesGroup.getLength() > 0) {
 				//progress bar logic:
 				if (this.icon.y > 10){
@@ -170,6 +187,7 @@ export default class NivelVertical extends Nivel {
 				this.player.handleMovement(); 
 				this.distanceReached++;
 			}
+
 			else if(!this.levelCleared){ 
 				this.player.play("DOWN",true);
 				this.bg.endOfGame();
