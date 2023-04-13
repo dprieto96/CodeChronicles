@@ -15,7 +15,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     super(scene, x, y, imageSrc, frame);
     this.scene = scene;
     this.speed = 50; // velocidad de movimiento de cada enemigo
-    this.setScale(1); // escala inicial de cada enemigo
+    this.setScale(2); // escala inicial de cada enemigo
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
     this.setCollideWorldBounds(false); // los enemigos ss salen de los límites del mundo

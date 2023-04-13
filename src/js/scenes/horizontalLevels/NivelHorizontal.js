@@ -47,6 +47,9 @@ export default class NivelHorizontal extends Nivel {
 		});
 		platGroup.enableBody = true;
 		this.physics.add.collider(this.player,platGroup);
+
+		this.cameras.main.setBounds(0, 0, 8000, 6000);
+  		this.cameras.main.startFollow(this.player, true, 0.08, 0.08);
 	}
 
 	/**

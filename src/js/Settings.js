@@ -6,8 +6,8 @@ const DEBUG         = false;
 const PIXELART      = true; //para el tema del escalado de imagen
 const ZOOM          = 1;
 
-const SCREEN_WIDTH  = 340;
-const SCREEN_HEIGHT = 340;
+const SCREEN_WIDTH  = 800;
+const SCREEN_HEIGHT = 800;
 
 const VERTICAL_LEVELS_WIDTH  = Math.max(SCREEN_WIDTH,SCREEN_HEIGHT); 
 const VERTICAL_LEVELS_HEIGHT = Math.max(SCREEN_WIDTH,SCREEN_HEIGHT);
@@ -58,7 +58,7 @@ const SPACESHIP_MOVI_FR = 10;
 const SPACESHIP_SPEED   = 0.2;
 const SPACESHIP_INIT_X  = VERTICAL_LEVELS_WIDTH/2;
 const SPACESHIP_INIT_Y  = VERTICAL_LEVELS_HEIGHT- 100;
-const ASTRONAUT_SPEED  = 2;
+const ASTRONAUT_SPEED  = 200;
 
 //PHYSICS (by default): =======================================================
 const GRAVITIES     = { "LUNA": 0.165, "TIERRA": 1, "MARTE": 0.379, "JUPITER": 2.528, "SATURNO": 1.065, "URANO": 0.904, "NEPTUNO": 1.137 };

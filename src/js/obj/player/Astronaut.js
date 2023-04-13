@@ -2,10 +2,10 @@ import Player from "./Player.js";
 import Utils from "../../Utils.js"
 export default class Astronaut extends Player{
 	createAnimations(){      
-		this.create_Anim("standingRight", 0,  3,  IDLE_FRAME_RATE * this.scene.planetSettings["gravity"]);
-		this.create_Anim("standingLeft",  4,  7,  IDLE_FRAME_RATE * this.scene.planetSettings["gravity"]);
-		this.create_Anim("runningRight",  8,  11, MOVI_FRAME_RATE * this.scene.planetSettings["gravity"]);
-		this.create_Anim("runningLeft",  12, 15,  MOVI_FRAME_RATE * this.scene.planetSettings["gravity"]);
+		this.create_Anim("standingRight", 0,  3,  IDLE_FRAME_RATE * this.scene.planetSettings["gravity"]*2);
+		this.create_Anim("standingLeft",  4,  7,  IDLE_FRAME_RATE * this.scene.planetSettings["gravity"]*2);
+		this.create_Anim("runningRight",  8,  11, MOVI_FRAME_RATE * this.scene.planetSettings["gravity"]*2);
+		this.create_Anim("runningLeft",  12, 15,  MOVI_FRAME_RATE * this.scene.planetSettings["gravity"]*2);
 		this.create_Anim("upRight",   	  8,  8,  1);
 		this.create_Anim("upLeft",       12, 12,  1);
 	}
@@ -73,14 +73,13 @@ export default class Astronaut extends Player{
 	            }
             }
 
-            this.x += this.speedX;
-            this.y += this.speedY;
+            this.body.velocity.x = this.speedX;
             this.play(this.movement+this.hDirection,true);
         }
         else { 
 			//initial running cutscene:
 			this.play("runningRight",true);
-			this.x += ASTRONAUT_SPEED - 0.8;
+			this.body.velocity.x = ASTRONAUT_SPEED - 150;
 			if(this.x >= AST_INITIAL_X - 20) {
 				this.scene.introDone = true;
 			}
