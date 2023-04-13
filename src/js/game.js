@@ -1,5 +1,3 @@
-import NivelVertical   from './scenes/verticalLevels/NivelVertical.js';
-import NivelHorizontal from './scenes/horizontalLevels/NivelHorizontal.js';
 import LevelSelector   from './scenes/LevelSelector.js';
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos

@@ -11,7 +11,6 @@ export default class HorizontalBackground extends Background{
 
     create(){
         super.create();
-        this.planetImg = this.scene.add.image(0, VERTICAL_LEVELS_HEIGHT, this.scene.planet).setOrigin(0, 1);
     }
 
     launch(){

@@ -1,46 +1,47 @@
 {
     "nivelVertical00":{
-        "levelLength":  5000,
+        "levelLength":  2000,
         "rockMinSpeedX":  10,
         "rockMaxSpeedX":  30,
         "rockMinSpeedY":  20,
         "rockMaxSpeedY": 100,
-        "numAsteroids":   30,
-        "density":         5,
+        "density":        8,
         "planet":      "MOON",
         "destination": "MARS",
         "decorations": {
             "planets": [
-                { "sprite": "saturn.png", "x": 10, "y":  5, "z": 100, "speedX":  0, "speedY":  0},
-                { "sprite": "comet.png",  "x": 60, "y": 25, "z": 150, "speedX": -2, "speedY":  6}
+                { "sprite": "earth", "x": 250, "y": 200, "z": 50, "speedX":  0, "speedY":  0},
+                { "sprite": "comet",  "x": 400, "y":  -20, "z": 100, "speedX":  -10, "speedY":  9, "frames": 4}
             ],
 
             "particles": [
-                { "sprite": "particles0.png", "speedX": 0, "speedY":  6 },
-                { "sprite": "particles1.png", "speedX": 0, "speedY": 10 }
+                { "sprite": "particles", "minSpeedY": 3, "maxSpeedY": 7, "density": 2 },
+                { "sprite": "particles", "minSpeedY": 4, "maxSpeedY": 8, "density": 2 },
+                { "sprite": "particles", "minSpeedY": 2, "maxSpeedY": 6, "density": 2 },
+                { "sprite": "particles", "minSpeedY": 3, "maxSpeedY": 9, "density": 2 }
             ]
         }
     },
 
     "nivelVertical01":{
-        "levelLength":  5000,
+        "levelLength":  3000,
         "rockMinSpeedX":  10,
         "rockMaxSpeedX":  30,
         "rockMinSpeedY":  40,
         "rockMaxSpeedY": 100,
-        "numAsteroids":   50,
-        "density":         6,
+        "density":        12,
         "planet":      "MARS",
         "destination": "VENUS",
         "decorations": {
             "planets": [
-                { "sprite": "saturn.png", "x": 10, "y":  5, "z": 100, "speedX":  0, "speedY":  0},
-                { "sprite": "comet.png",  "x": 60, "y": 25, "z": 150, "speedX": -2, "speedY":  6}
+                { "sprite": "saturn", "x": 100, "y": 50, "z": 100, "speedX":  0, "speedY":  0}
             ],
 
             "particles": [
-                { "sprite": "particles0.png", "speedX": 0, "speedY":  6 },
-                { "sprite": "particles1.png", "speedX": 0, "speedY": 10 }
+                { "sprite": "particles", "minSpeedY": 3, "maxSpeedY": 7, "density": 2 },
+                { "sprite": "particles", "minSpeedY": 4, "maxSpeedY": 8, "density": 2 },
+                { "sprite": "particles", "minSpeedY": 2, "maxSpeedY": 6, "density": 2 },
+                { "sprite": "particles", "minSpeedY": 3, "maxSpeedY": 9, "density": 2 }
             ]
         }
     },
@@ -50,20 +51,20 @@
         "rockMinSpeedX":  10,
         "rockMaxSpeedX":  30,
         "rockMinSpeedY":  40,
-        "rockMaxSpeedY": 100,
-        "numAsteroids":   50,
-        "density":         6,
+        "rockMaxSpeedY": 120,
+        "density":        18,
         "planet":      "VENUS",
         "destination": "MOON",
         "decorations": {
             "planets": [
-                { "sprite": "saturn.png", "x": 10, "y":  5, "z": 100, "speedX":  0, "speedY":  0},
-                { "sprite": "comet.png",  "x": 60, "y": 25, "z": 150, "speedX": -2, "speedY":  6}
+                { "sprite": "saturn", "x": 10, "y":  5, "z": 100, "speedX":  0, "speedY":  0}
             ],
 
             "particles": [
-                { "sprite": "particles0.png", "speedX": 0, "speedY":  6 },
-                { "sprite": "particles1.png", "speedX": 0, "speedY": 10 }
+                { "sprite": "particles", "minSpeedY": 3, "maxSpeedY": 7, "density": 2 },
+                { "sprite": "particles", "minSpeedY": 4, "maxSpeedY": 8, "density": 2 },
+                { "sprite": "particles", "minSpeedY": 2, "maxSpeedY": 6, "density": 2 },
+                { "sprite": "particles", "minSpeedY": 3, "maxSpeedY": 9, "density": 2 }
             ]
         }
     },

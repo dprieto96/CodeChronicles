@@ -13,6 +13,11 @@ export default class Background extends Phaser.GameObjects.Sprite{
 		this.graphics.fillStyle(st["atmosColor"], 1);
 		this.atmosphere = this.graphics.fillRect(0, 0, VERTICAL_LEVELS_WIDTH, VERTICAL_LEVELS_HEIGHT);
         this.atmosphere.alpha = st["transparency"];
+        this.atmosphere.setDepth(1);
+
+        //main planet:
+        this.planetImg = this.scene.add.image(0, VERTICAL_LEVELS_HEIGHT, this.scene.planet).setOrigin(0, 1);
+        this.planetImg.setDepth(2);
     }
 
     launch(){}

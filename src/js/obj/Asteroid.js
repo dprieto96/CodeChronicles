@@ -1,5 +1,5 @@
-import Utils from "../Utils.js"
 import Enemy from "./Enemy.js"
+import Utils from "../Utils.js"
 export default class Asteroid extends Enemy {
   constructor(scene, x, y, texture, vector) {
     super(scene, x, y, "verticalAtlas", texture);
@@ -18,11 +18,14 @@ export default class Asteroid extends Enemy {
     this.setVelocity(this.vector[0], this.vector[1]);
     this.setAngularVelocity(this.vector[2]);
     this.body.setCircle(undefined);
-    
+
+    this.on('animationcomplete-boomBeach', () => {
+      this.scene.enemiesGroup.remove(this);
+      this.destroy(); 
+    }, this);
   }
 
   update() {
     // aquí podrías poner el movimiento y la lógica específica del jefe
   }
-
 }
