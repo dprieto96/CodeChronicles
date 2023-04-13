@@ -6,7 +6,7 @@ export default class Bullet extends Phaser.Physics.Arcade.Group {
         this.scene = scene;
     }
 
-    newItem(x = 17, y = 30) {
+    newItem(x = 0, y = 30) {
         var item = this.create(this.scene.player.x + x, this.scene.player.y - y, "verticalAtlas","shoot00")
             .setActive(true)
             .setVisible(true)

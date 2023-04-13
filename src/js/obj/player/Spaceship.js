@@ -51,14 +51,14 @@ this.physics.add.collider(this.player,layer);
             this.vDirection = "UP";
             this.speedY -= SPACESHIP_SPEED;
 
-            if(this.y - centerY <= Math.abs(this.speedY)) { this.speedY = 0; }
+            //if(this.y - centerY <= Math.abs(this.speedY)) { this.speedY = 0; }
         }
         else if(this.scene.s.isDown){
             this.vDirection = "DOWN";
             this.speedY += SPACESHIP_SPEED;
 
             let btmLimit = VERTICAL_LEVELS_HEIGHT - centerY;
-            if(this.y + centerY + this.speedY >= btmLimit) { this.speedY = 0; }
+            //if(this.y + centerY + this.speedY >= btmLimit) { this.speedY = 0; }
         }
             
         //velocidad horizontal:
@@ -66,19 +66,18 @@ this.physics.add.collider(this.player,layer);
             this.hDirection = "left";
             this.speedX -= SPACESHIP_SPEED;
 
-            if(this.x - centerX <= Math.abs(this.speedX)) { this.speedX = 0; }
+            //if(this.x - centerX <= Math.abs(this.speedX)) { this.speedX = 0; }
         }
         else if(this.scene.d.isDown){
             this.hDirection = "right";
             this.speedX += SPACESHIP_SPEED;
-
             let rightLimit = VERTICAL_LEVELS_WIDTH - centerX;
-            if(this.x + centerX + this.speedX >= rightLimit) { this.speedX = 0; }
+            //if(this.x + centerX + this.speedX >= rightLimit) { this.speedX = 0; }
         }
         else{ this.hDirection = ""; }
-        
-        this.x += this.speedX;
-        this.y += this.speedY;
+
+        this.setVelocity(this.speedX,this.speedY);
+        //this.y += this.speedY;
         this.play(this.hDirection+this.vDirection,true);
     }
 }

@@ -16,6 +16,7 @@ export default class Nivel extends Phaser.Scene {
 		this.player = null;
 		this.ctrl	= ctrl;
 		this.key = key;
+		
 	}
 	
 	/**
@@ -37,6 +38,7 @@ export default class Nivel extends Phaser.Scene {
 		this.introDone   	= false;
 		this.playerWon		= false;
 		this.levelCleared   = false;
+		this.bullets=0;
 
 
         /*
