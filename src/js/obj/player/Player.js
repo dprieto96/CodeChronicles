@@ -28,5 +28,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.scene.physics.world.enable(this);   
     this.setDepth(999); //prioridad de capa
     this.setCollideWorldBounds(true);
+    //this.body.setCircle(20,20,20);
   }
 }

@@ -35,6 +35,8 @@
         { "filename": "boom05",        "frame": { "x":  54, "y": 195, "w":  53, "h": 49 }},
         { "filename": "boom06",        "frame": { "x": 125, "y": 195, "w":  53, "h": 49 }},
         { "filename": "boom07",        "frame": { "x": 193, "y": 198, "w":  53, "h": 46 }},
-        { "filename": "boom08",        "frame": { "x":   0, "y":   0, "w":   1, "h":  1 }}
+        { "filename": "boom08",        "frame": { "x":   0, "y":   0, "w":   1, "h":  1 }},
+        { "filename": "life",    "frame": { "x":   177, "y":   117, "w":   30, "h":  30 }}
+
     ]
 }

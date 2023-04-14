@@ -43,6 +43,7 @@ export default class NivelVertical extends Nivel {
 		this.player = new Spaceship(this,SPACESHIP_INIT_X, SPACESHIP_INIT_Y);
 		
 		this.extraBullets=10;
+		
 	}
 	
 	/**
@@ -50,29 +51,46 @@ export default class NivelVertical extends Nivel {
 	*/
 	create() {
 		super.create();
+		this.scaleProgress=3.5;//AÑADIR ESCALADO BARRA PROGRASO
 
 		//this.numBullets=this.bullets;
-		this.scoreText = this.add.text(this.sys.game.canvas.width / 2 - 65, 0, 'BULLETS: ' + this.numBullets, { fontStyle: 'strong', font: '12px Arial', fill: '#6368BC' });
+		this.scoreText = this.add.text(this.sys.game.canvas.width / 2 +20, 20, 'X' + this.numBullets, { fontStyle: 'strong', font: '30px Arial', fill: '#ffffff'});
 		this.scoreText.setDepth(1000);
 
 		this.numLifes=3;
-		this.lifesText = this.add.text(this.sys.game.canvas.width-65,0, 'LIFE X ' + this.numLifes, { fontStyle: 'strong', align: 'right',font: '12px Arial', fill: '#6368BC' });
+		this.lifesText = this.add.text(this.sys.game.canvas.width-90,20, 'X' + this.numLifes, { fontStyle: 'strong', align: 'right',font: '30px Arial', fill: '#ffffff' });
 		this.lifesText.setDepth(1000);
 
 		this.bg.create();
-		this.player.create();
+		this.player.create();	
+		//bullet icon
+		this.bulletIcon=this.add.sprite(5, 10, 'verticalAtlas', 'shoot00');
+		this.bulletIcon.x=SCREEN_WIDTH /2;
+		this.bulletIcon.y=60;
+		this.bulletIcon.setDepth(999);
+		this.bulletIcon.setScale(this.scaleProgress*1.5);	
+
+		//health icon
+		this.lifeIcon=this.add.sprite(5, 10, 'verticalAtlas', 'life');
+		this.lifeIcon.x=SCREEN_WIDTH -120;
+		this.lifeIcon.y=50;
+		this.lifeIcon.setDepth(999);
+		this.lifeIcon.setScale(this.scaleProgress*0.7);
+
 
 		//progress bar:
 		this.pBar = this.add.sprite(5, 10, 'verticalAtlas', 'progressBar');
-		this.pBar.x += this.pBar.width/2;
-		this.pBar.y += this.pBar.height/2;
+		this.pBar.x += (this.pBar.width)*this.scaleProgress;
+		this.pBar.y += (this.pBar.height/2)*this.scaleProgress;
 		this.pBar.setDepth(999);
+		this.pBar.setScale(this.scaleProgress);
 
 		//spaceship icon:
 		this.icon = this.add.sprite(5, 10, 'verticalAtlas', 'spaceshipIcon');
-		this.icon.x += this.pBar.width/2;
-		this.icon.y += this.pBar.height;
+		this.icon.x += (this.pBar.width)*this.scaleProgress;
+		this.icon.y += (this.pBar.height)*this.scaleProgress;
 		this.icon.setDepth(999);
+		this.icon.setScale(this.scaleProgress);
 
 		this.enemiesGroup = this.add.group();
 		this.physics.world.gravity.y = 0;
@@ -168,24 +186,42 @@ export default class NivelVertical extends Nivel {
 
     update(){
 		super.update();		
-		if(!this.introDone) { this.bg.launch(); }
+		if(!this.introDone) { 
+			this.bg.launch();
+			this.pBar.setVisible(false);
+			this.icon.setVisible(false);
+			this.lifeIcon.setVisible(false);
+			this.bulletIcon.setVisible(false);
+			this.lifesText.setVisible(false);
+			this.scoreText.setVisible(false);
+		 }
+
 		else {
 			this.bg.update();
+			this.pBar.setVisible(true);
+			this.icon.setVisible(true);
+			this.lifeIcon.setVisible(true);
+			this.bulletIcon.setVisible(true);
+			this.lifesText.setVisible(true);
+			this.scoreText.setVisible(true);
+
 			this.generateEnemy();
-			this.lifesText.setText('LIFE X ' + this.numLifes);
+			this.lifesText.setText('X' + this.numLifes);
 
 			if (!this.checkEndOfGame() || this.enemiesGroup.getLength() > 0) {
 				//progress bar logic:
 				if (this.icon.y > 10){
 					this.icon.y = 10 + this.pBar.height - Math.floor((this.distanceReached / this.st["levelLength"])*this.pBar.height);
+					this.icon.y *=this.scaleProgress;
+					
 				}
 	
 				//check space key to shoot bullet:
-				if (this.input.keyboard.checkDown(this.cursors.space, 250) && this.numBullets>0) {
+				if (this.input.keyboard.checkDown(this.cursors.space, 500) && this.numBullets>0) {
 					this.fire();
 					this.numBullets--;
 					this.bullets--;
-					this.scoreText.setText('BULLETS: ' + this.numBullets);
+					this.scoreText.setText('X' + this.numBullets);
 				}
 	
 				this.player.handleMovement(); 

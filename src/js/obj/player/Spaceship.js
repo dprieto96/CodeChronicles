@@ -23,7 +23,16 @@ export default class Spaceship extends Player{
             frameHeight: SPACESHIP_HEIGHT
         });
     }
-
+    create(){
+        this.setTexture(this.graphicName);
+        this.setFrame(this.initFrame);    
+        this.createAnimations();
+        this.scene.physics.add.existing(this);
+        this.scene.physics.world.enable(this);   
+        this.setDepth(999); //prioridad de capa
+        this.setCollideWorldBounds(true);
+        this.body.setCircle(20,20,20);
+      }
 
 /*
 //var bg_1 = this.add.tileSprite(0,0,this.sys.game.canvas,width,this.sys.game.height,"spriteFileName"); //para crear un fondo "tileado"
