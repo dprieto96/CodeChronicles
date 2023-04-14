@@ -1,4 +1,5 @@
 import LevelSelector   from './scenes/LevelSelector.js';
+import MenuScene from './scenes/MenuScene.js';
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
@@ -27,12 +28,12 @@ let config = {
         },
 		zoom: ZOOM
     },
-    scene: [LevelSelector],
+    scene: [MenuScene,LevelSelector],
     physics: { 
         default: 'arcade', 
         arcade: { 
             gravity: { y: 0 }, 
-            debug: DEBUG 
+            debug: true 
         },
         checkCollision: {
             up: true,
