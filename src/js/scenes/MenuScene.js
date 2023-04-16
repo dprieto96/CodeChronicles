@@ -3,7 +3,8 @@
  * @extends Phaser.Scene
  */
 import LevelSelector from "./LevelSelector.js";
-
+import ControlsScene from "./ControlsScene.js";
+import HistoryScene from "./HistoryScene.js";
 
 export default class MenuScene extends Phaser.Scene {
 	/**
@@ -13,7 +14,8 @@ export default class MenuScene extends Phaser.Scene {
 	constructor() {
 		super({ key: 'menuScene' });    
         this.levels = [ 
-            new LevelSelector()
+            new LevelSelector(),
+            new ControlsScene()
         ];  
 	}
 
@@ -21,12 +23,12 @@ export default class MenuScene extends Phaser.Scene {
         this.load.image('button', 'assets/img/button.png');
         this.load.image('icon', 'assets/img/web/CodeChronicles.png');
         this.load.image('created', 'assets/img/web/Game-created-by.png');
+        this.load.image('git','assets/img/git.png');
     }
 
     create(){
         this.scale=0.3;
 
-        
         
         //BUTTON START
         this.buttonSTART = this.add.image(SCREEN_MAX_WIDTH/2+100,200,'button');
@@ -42,7 +44,7 @@ export default class MenuScene extends Phaser.Scene {
         this.buttonCONTROLS.setDepth(998);
         this.buttonCONTROLS.setScale(this.scale);
         this.buttonCONTROLS.setInteractive();
-        //this.buttonCONTROLS.on('pointerup', function () {this.redirectToWeb()}, this);
+        this.buttonCONTROLS.on('pointerup', function () {this.scene.start('ControlsScene')}, this);
         this.textCONTROL=this.add.text(SCREEN_MAX_WIDTH/2+20,285, "CONTROLS",{ fontStyle: 'strong',font: '30px Arial', fill: '#ffffff' });
         this.textCONTROL.setDepth(999);
 
@@ -51,7 +53,7 @@ export default class MenuScene extends Phaser.Scene {
         this.buttonHISTORY.setDepth(998);
         this.buttonHISTORY.setScale(this.scale);
         this.buttonHISTORY.setInteractive();
-        //this.buttonHISTORY.on('pointerup', function () {this.scene.start('levelSelector')}, this);
+        this.buttonHISTORY.on('pointerup', function () {this.scene.start('HistoryScene')}, this);
         this.textHISTORY=this.add.text(SCREEN_MAX_WIDTH/2+40,385, "HISTORY",{ fontStyle: 'strong',font: '30px Arial', fill: '#ffffff' });
         this.textHISTORY.setDepth(999);
 
@@ -61,20 +63,20 @@ export default class MenuScene extends Phaser.Scene {
         this.buttonGITYCREATORS.setScale(this.scale);
         this.buttonGITYCREATORS.setInteractive();
         this.buttonGITYCREATORS.on('pointerup', function () {this.redirectToWeb()}, this);
-        this.textGITYCREATORS=this.add.text(SCREEN_MAX_WIDTH/2+40,470, "GITHUB &\nCREATORS",{ fontStyle: 'strong',font: '25px Arial', fill: '#ffffff' });
+        this.textGITYCREATORS=this.add.text(SCREEN_MAX_WIDTH/2+55,470, "GITHUB &\nCREATORS",{ fontStyle: 'strong',font: '25px Arial', fill: '#ffffff' });
         this.textGITYCREATORS.setDepth(999);
+        this.git = this.add.image(SCREEN_MAX_WIDTH/2+30,500,'git');
+        this.git.setDepth(999);
+        this.git.setScale(this.scale-0.2);
 
         //CodeChronicles
         this.icon = this.add.image(SCREEN_MAX_WIDTH/2+100,SCREEN_MAX_HEIGHT,'icon');
         this.icon.setDepth(999);
         this.icon.setScale(this.scale+0.3);
-
         this.created = this.add.image(SCREEN_MAX_WIDTH/2+100,SCREEN_MAX_HEIGHT-50,'created');
         this.created.setDepth(999);
         this.created.setScale(this.scale+0.3);
 
-
-    
     }
 
     update(){
@@ -83,7 +85,7 @@ export default class MenuScene extends Phaser.Scene {
 
     redirectToWeb() {
         // Redirige a una página web
-        window.open('https://github.com/tysonmdg/CodeChronicles.github.io   ', '_blank');
+        window.open('https://github.com/tysonmdg/CodeChronicles.github.io', '_blank');
     }
 }
     

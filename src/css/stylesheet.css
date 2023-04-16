@@ -6,7 +6,7 @@
 
 body {
   background-image: url("../../assets/img/web/background2.png");
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: repeat;
 
@@ -14,12 +14,17 @@ body {
 
 header{
   width: 100%;
+  height: 120px;
   text-align: center;
   background-image: url("../../assets/img/web/header.png");
-  background-size: cover;
+  background-size: inherit;
 }
 
-a
+header img {
+  height: 100%; /* establece la altura de la imagen al 100% de la altura del encabezado */
+  width: auto; /* hace que el ancho de la imagen se ajuste automáticamente proporcionalmente al nuevo tamaño de la altura */
+}
+
 button{
   background-size: cover;
   background-color: transparent;
