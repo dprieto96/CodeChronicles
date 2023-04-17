@@ -1,6 +1,6 @@
- [<h1>LINK TO GAME</h1>](https://tysonmdg.github.io/CodeChronicles.github.io/Index.html)
+# <p align="center"> ACCESS THE GAME [CLICK ME](https://tysonmdg.github.io/CodeChronicles.github.io/Index.html). </p>
  
- Facultad de Informatica´![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.001.png)
+ Facultad de Informática[](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.001.png)
 
 ![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.002.png)
 
