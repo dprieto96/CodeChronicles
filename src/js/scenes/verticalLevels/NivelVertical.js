@@ -33,7 +33,7 @@ export default class NivelVertical extends Nivel {
 		super.preload();
 
 		//this.load.image("bullet","assets\img\verticalLevels\bulletold.png");
-
+		this.load.image('button', 'assets/img/button.png');
 
 
 		this.load.atlas('verticalAtlas', Utils.getImgV("templates"), Utils.getJson("verticalLevelElements"));
@@ -52,6 +52,45 @@ export default class NivelVertical extends Nivel {
 	create() {
 		super.create();
 		this.scaleProgress=3.5;//AÑADIR ESCALADO BARRA PROGRASO
+
+		this.gameState = 'running';
+
+		this.pauseButton = this.add.image(SCREEN_MAX_WIDTH,SCREEN_MAX_HEIGHT+100,'button').setInteractive();;
+			this.pauseButton.setDepth(999);
+			this.pauseButton.setScale(0.1);
+			//this.buttonSTART.setInteractive();
+			this.pauseButton.inputEnabled = true;
+			this.gameState = 'running';
+    
+			// define el texto inicial del botón
+			this.pauseButton.text = this.add.text(0, 0, 'Pausar');
+			
+			// agrega un evento al botón para cambiar el estado del juego
+			this.pauseButton.on('pointerdown', function () {
+				if (this.gameState === 'running') {
+				  // pausa el juego
+				 // this.physics.pause();
+				  // detiene la actualización de la lógica del juego
+				  this.scene.pause();
+				  // cambia el texto del botón y actualiza el estado del juego
+				  this.pauseButton.text.setText('Reanudar');
+				  this.gameState = 'paused';
+				} else if (this.gameState === 'paused') {
+				  // reanuda la actualización de la lógica del juego
+				  this.scene.resume();
+				  // reanuda la simulación física del juego
+				 // this.physics.resume();
+				  // cambia el texto del botón y actualiza el estado del juego
+				  this.pauseButton.text.setText('Pausar');
+				  this.gameState = 'running';
+				}
+			  }, this);
+
+			  if(this.gameState==='running')console.log('CORRIENDO');
+			  else console.log('PAUSA');
+
+			
+				
 
 		//this.numBullets=this.bullets;
 		this.scoreText = this.add.text(this.sys.game.canvas.width / 2 +20, 20, 'X' + this.numBullets, { fontStyle: 'strong', font: '30px Arial', fill: '#ffffff'});
@@ -162,6 +201,7 @@ export default class NivelVertical extends Nivel {
 	fire(){ this.bulletsGroup.newItem(); }
 
 	hitEnemies(enemy, bullet) {
+		//this.pauseButton.setVisible(false);
 		bullet.setVisible(false);
         bullet.setActive(false);
         bullet.destroy();
@@ -197,6 +237,7 @@ export default class NivelVertical extends Nivel {
 		 }
 
 		else {
+			//this.buttonSTART.setVisible(true);
 			this.bg.update();
 			this.pBar.setVisible(true);
 			this.icon.setVisible(true);
@@ -204,6 +245,11 @@ export default class NivelVertical extends Nivel {
 			this.bulletIcon.setVisible(true);
 			this.lifesText.setVisible(true);
 			this.scoreText.setVisible(true);
+			
+			if(this.gameState==='running')console.log('CORRIENDO');
+			else console.log('PAUSA');
+			
+			
 
 			this.generateEnemy();
 			this.lifesText.setText('X' + this.numLifes);
