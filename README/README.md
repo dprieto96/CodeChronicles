@@ -22,7 +22,7 @@ Tabla de contenidos
 4. [Music and Sound effects ](#_page6_x59.53_y424.29). . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
 
 [2 Game Mechanics](#_page7_x119.06_y84.19) 6
-
+ 
 1. [Game flow ](#_page7_x119.06_y186.80). . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
 1. [Planet-to-Planet (PtP) . .](#_page7_x119.06_y355.01) . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
 1. [Overworld Levels (OwL) .](#_page8_x59.53_y84.19) . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
