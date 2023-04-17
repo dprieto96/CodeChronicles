@@ -29,13 +29,11 @@ export default class Astronaut extends Player{
 		super.handleMovement();
         if(this.scene.introDone){
 
-            if(this.y >= SCREEN_HEIGHT-35 || this.body.touching.down)
-	        {
+            if(this.y >= SCREEN_HEIGHT-35 || this.body.touching.down){
 	           	this.movement = "standing";
 	            this.isJumping = false;
 	        }
-	        else
-	        {
+	        else{
 	        	this.movement = "up";
 	        	this.isJumping = true;
 	        }
