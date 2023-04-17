@@ -1,8 +1,8 @@
 ﻿Facultad de Informatica´![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.001.png)
 
-![](Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.002.png)
+![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.002.png)
 
-Memoria DVI![](Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.003.png)
+Memoria DVI![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.003.png)
 
 Authors: Samuel Santos Hern´an, Tyson Mendes y Daniel Prieto Remacha
 
@@ -90,13 +90,13 @@ Note: During debug, the dev can skip levels by pressing the Carriage Return key.
 
 On the other hand, apart from the excuse of “He can’t breathe other planets’ air”, the idea of having the helmet on helps us simplifying the sprite, since making a expressive human face, and let alone in pixelart, can become very tough.
 
-![](Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.004.jpeg) ![](Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.005.png)
+![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.004.jpeg) ![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.005.png)
 
 Figure 1.1: Sketch concept for Alonso Quijano and final version
 
 5. Music and Sound effects
 
-![](Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.006.png) ![](Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.007.png)
+![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.006.png) ![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.007.png)
 
 Figure 1.2: Reference for the spaceship and final version
 
@@ -143,13 +143,13 @@ Movement and abilities:
 
 Here we can see several screenshots of the different levels (still in progress):
 
-![](Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.008.jpeg) ![](Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.009.jpeg)
+![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.008.jpeg) ![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.009.jpeg)
 
-![](Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.010.jpeg)
+![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.010.jpeg)
 
 Figure 3.1: Vertical levels
 
-![](Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.011.jpeg) ![](Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.012.jpeg)
+![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.011.jpeg) ![](README/Aspose.Words.d00c839d-a0ca-404c-9d85-918fd57013ac.012.jpeg)
 
 Figure 3.2: Horizontal levels
 9
