@@ -250,7 +250,6 @@ export default class NivelVertical extends Nivel {
 			else console.log('PAUSA');
 			
 			
-
 			this.generateEnemy();
 			this.lifesText.setText('X' + this.numLifes);
 
@@ -275,9 +274,9 @@ export default class NivelVertical extends Nivel {
 			}
 
 			else if(!this.levelCleared){ 
+				this.player.setVelocity(0,0);
 				this.player.play("DOWN",true);
 				this.bg.endOfGame();
-				
 			}
 			else{ 
 				
