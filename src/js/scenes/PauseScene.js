@@ -4,37 +4,37 @@
  */
 
 //import MenuScene from "../scenes/MenuScene";
+//import NivelVertical from "./verticalLevels/NivelVertical";
 
 
-export default class HistoryScene extends Phaser.Scene {
+
+export default class PauseScene extends NivelVertical {
 	/**
 	 * Escena principal.
 	 * @extends Phaser.Scene
 	 */
 	constructor() {
-		super({ key: 'HistoryScene' });    
+		super({ key: 'PauseScene' });    
 	}
 
     preload(){
         this.load.image('cross', 'assets/img/cross.png');
-        this.load.image('Xote', 'assets/img/Xote.jpeg');
     }
 
     create(){
         this.scale=0.03;
 
+        this.funcion=this.scene.settings.escena;
         
         //BUTTON CROSS
         this.buttonCROSS = this.add.image(SCREEN_MAX_WIDTH,100,'cross');
         this.buttonCROSS.setDepth(999);
         this.buttonCROSS.setScale(0.03);
         this.buttonCROSS.setInteractive();
-        this.buttonCROSS.on('pointerup', function () {this.scene.start('menuScene')}, this);
-
-        this.bg=this.add.image(SCREEN_MAX_WIDTH/2,SCREEN_MAX_HEIGHT/2,'Xote');
-        this.bg.setDepth(1);
-        this.bg.setScale(1);
-
+        this.buttonCROSS.on('pointerup', function () {
+            //this.scene.resume(this.escena);	
+            this.resume();
+        }, this);
 
     }
 
