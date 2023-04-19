@@ -138,11 +138,6 @@ export default class MenuScene extends Phaser.Scene {
             //this.buttonSTART.setVisible(true); // muestra la imagen del botón original
           });
 
-          
-        
-
-        
-
     }
 
     update(){

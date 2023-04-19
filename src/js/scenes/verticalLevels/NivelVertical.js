@@ -67,23 +67,9 @@ export default class NivelVertical extends Nivel {
 			
 			// agrega un evento al botón para cambiar el estado del juego
 			this.pauseButton.on('pointerdown', function () {
-				if (this.gameState === 'running') {
-				  // pausa el juego
-				 // this.physics.pause();
-				  // detiene la actualización de la lógica del juego
-				  this.scene.pause();
-				  // cambia el texto del botón y actualiza el estado del juego
-				  this.pauseButton.text.setText('Reanudar');
-				  this.gameState = 'paused';
-				} else if (this.gameState === 'paused') {
-				  // reanuda la actualización de la lógica del juego
-				  this.scene.resume();
-				  // reanuda la simulación física del juego
-				 // this.physics.resume();
-				  // cambia el texto del botón y actualiza el estado del juego
-				  this.pauseButton.text.setText('Pausar');
-				  this.gameState = 'running';
-				}
+				this.scene.launch('PauseScene');
+				this.scene.pause();
+				this.gameState = 'paused'
 			  }, this);
 
 			  if(this.gameState==='running')console.log('CORRIENDO');
@@ -225,7 +211,10 @@ export default class NivelVertical extends Nivel {
 
 
     update(){
-		super.update();		
+		super.update();	
+		if(this.gameState==='running')console.log('CORRIENDO');
+			  else console.log('PAUSA');
+
 		if(!this.introDone) { 
 			this.bg.launch();
 			this.pBar.setVisible(false);
