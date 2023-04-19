@@ -24,24 +24,27 @@ export default class MenuScene extends Phaser.Scene {
         this.load.image('icon', 'assets/img/web/CodeChronicles.png');
         this.load.image('created', 'assets/img/web/Game-created-by.png');
         this.load.image('git','assets/img/git.png');
+        this.load.image('cover','assets/img/buttonHover.png');
     }
 
     create(){
         this.scale=0.3;
 
-        
+
         //BUTTON START
         this.buttonSTART = this.add.image(SCREEN_MAX_WIDTH/2+100,200,'button');
-        this.buttonSTART.setDepth(998);
+       // this.buttonSTART.setDepth(998);
         this.buttonSTART.setScale(this.scale);
         this.buttonSTART.setInteractive();
         this.buttonSTART.on('pointerup', function () {this.scene.start('levelSelector')}, this);
         this.textSTART=this.add.text(SCREEN_MAX_WIDTH/2+50,185, "START",{ fontStyle: 'strong',font: '30px Arial', fill: '#ffffff' });
         this.textSTART.setDepth(999);
 
+        
+
         //BUTTON CONTROL
         this.buttonCONTROLS = this.add.image(SCREEN_MAX_WIDTH/2+100,300,'button');
-        this.buttonCONTROLS.setDepth(998);
+        //this.buttonCONTROLS.setDepth(998);
         this.buttonCONTROLS.setScale(this.scale);
         this.buttonCONTROLS.setInteractive();
         this.buttonCONTROLS.on('pointerup', function () {this.scene.start('ControlsScene')}, this);
@@ -50,7 +53,7 @@ export default class MenuScene extends Phaser.Scene {
 
         //BUTTON HISTORY
         this.buttonHISTORY = this.add.image(SCREEN_MAX_WIDTH/2+100,400,'button');
-        this.buttonHISTORY.setDepth(998);
+        //this.buttonHISTORY.setDepth(998);
         this.buttonHISTORY.setScale(this.scale);
         this.buttonHISTORY.setInteractive();
         this.buttonHISTORY.on('pointerup', function () {this.scene.start('HistoryScene')}, this);
@@ -59,7 +62,7 @@ export default class MenuScene extends Phaser.Scene {
 
         //BUTTON GITYCREATORS
         this.buttonGITYCREATORS = this.add.image(SCREEN_MAX_WIDTH/2+100,500,'button');
-        this.buttonGITYCREATORS.setDepth(998);
+        //this.buttonGITYCREATORS.setDepth(998);
         this.buttonGITYCREATORS.setScale(this.scale);
         this.buttonGITYCREATORS.setInteractive();
         this.buttonGITYCREATORS.on('pointerup', function () {this.redirectToWeb()}, this);
@@ -77,10 +80,75 @@ export default class MenuScene extends Phaser.Scene {
         this.created.setDepth(999);
         this.created.setScale(this.scale+0.3);
 
+        //BUTTON COVER
+        this.buttonCOVER = this.add.image(SCREEN_MAX_WIDTH/2+100,200,'cover');
+        this.buttonCOVER.setScale(this.scale);
+        this.buttonCOVER.setVisible(false);
+
+        this.buttonCOVER2 = this.add.image(SCREEN_MAX_WIDTH/2+100,300,'cover');
+        this.buttonCOVER2.setScale(this.scale);
+        this.buttonCOVER2.setVisible(false);
+
+        this.buttonCOVER3 = this.add.image(SCREEN_MAX_WIDTH/2+100,400,'cover');
+        this.buttonCOVER3.setScale(this.scale);
+        this.buttonCOVER3.setVisible(false);
+
+        this.buttonCOVER4 = this.add.image(SCREEN_MAX_WIDTH/2+100,500,'cover');
+        this.buttonCOVER4.setScale(this.scale);
+        this.buttonCOVER4.setVisible(false);
+    
+
+
+        this.buttonSTART.on('pointerover', () => {
+            this.buttonCOVER.setVisible(true); // muestra la imagen del botón al colocar el cursor sobre él
+           // this.buttonSTART.setVisible(false); // oculta la imagen del botón original
+          });
+          
+          this.buttonSTART.on('pointerout', () => {
+            this.buttonCOVER.setVisible(false); // oculta la imagen del botón cuando el cursor sale de él
+            //this.buttonSTART.setVisible(true); // muestra la imagen del botón original
+          });
+        
+          this.buttonHISTORY.on('pointerover', () => {
+            this.buttonCOVER3.setVisible(true); // muestra la imagen del botón al colocar el cursor sobre él
+           // this.buttonSTART.setVisible(false); // oculta la imagen del botón original
+          });
+          
+          this.buttonHISTORY.on('pointerout', () => {
+            this.buttonCOVER3.setVisible(false); // oculta la imagen del botón cuando el cursor sale de él
+            //this.buttonSTART.setVisible(true); // muestra la imagen del botón original
+          });
+
+          this.buttonCONTROLS.on('pointerover', () => {
+            this.buttonCOVER2.setVisible(true); // muestra la imagen del botón al colocar el cursor sobre él
+           // this.buttonSTART.setVisible(false); // oculta la imagen del botón original
+          });
+          
+          this.buttonCONTROLS.on('pointerout', () => {
+            this.buttonCOVER2.setVisible(false); // oculta la imagen del botón cuando el cursor sale de él
+            //this.buttonSTART.setVisible(true); // muestra la imagen del botón original
+          });
+          this.buttonGITYCREATORS.on('pointerover', () => {
+            this.buttonCOVER4.setVisible(true); // muestra la imagen del botón al colocar el cursor sobre él
+           // this.buttonSTART.setVisible(false); // oculta la imagen del botón original
+          });
+          
+          this.buttonGITYCREATORS.on('pointerout', () => {
+            this.buttonCOVER4.setVisible(false); // oculta la imagen del botón cuando el cursor sale de él
+            //this.buttonSTART.setVisible(true); // muestra la imagen del botón original
+          });
+
+          
+        
+
+        
+
     }
 
     update(){
         super.update();
+
+       
     }
 
     redirectToWeb() {
