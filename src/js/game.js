@@ -17,11 +17,13 @@ let config = {
     width:  SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
     pixelArt: PIXELART,
+    
 	scale: {
-		autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
+        mode: Phaser.Scale.ScaleModes.FIT,
+		autoCenter: Phaser.Scale.CENTER_BOTH,   
 		// Configuramos phaser para que se adapte al tamaño de pantalla donde ejecutadmos
 		// con un mínimo y un máximo de tamaño
-		mode: Phaser.Scale.FIT,
+        
 		min: {
             width: SCREEN_MIN_WIDTH,
             height: SCREEN_MIN_HEIGHT
@@ -50,6 +52,7 @@ let config = {
             right: true
         }
     },
+        
     title: GAME_TITLE,
     version: GAME_VERSION,
     transparent: TRANSPARENT

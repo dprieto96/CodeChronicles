@@ -77,13 +77,8 @@ export default class NivelVertical extends Nivel {
 				//this.scene.launch('PauseScene',{escena:this.scene});
 				//PauseScene.launchPauseScene(this);
 				
-				this.gameState = 'paused'
+				this.gameState = 'paused';
 			  }, this);
-
-			  
-
-			
-				
 
 		//this.numBullets=this.bullets;
 		this.scoreText = this.add.text(this.sys.game.canvas.width / 2 +20, 20, 'X' + this.numBullets, { fontStyle: 'strong', font: '30px Arial', fill: '#ffffff'});
@@ -240,11 +235,7 @@ export default class NivelVertical extends Nivel {
 			this.bulletIcon.setVisible(true);
 			this.lifesText.setVisible(true);
 			this.scoreText.setVisible(true);
-			
-			if(this.gameState==='running')console.log('CORRIENDO');
-			else console.log('PAUSA');
-			
-			
+						
 			this.generateEnemy();
 			this.lifesText.setText('X' + this.numLifes);
 

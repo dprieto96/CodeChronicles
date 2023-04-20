@@ -19,17 +19,26 @@ export default class MenuScene extends Phaser.Scene {
         ];  
 	}
 
+
     preload(){
         this.load.image('button', 'assets/img/button.png');
         this.load.image('icon', 'assets/img/web/CodeChronicles.png');
         this.load.image('created', 'assets/img/web/Game-created-by.png');
         this.load.image('git','assets/img/git.png');
         this.load.image('cover','assets/img/buttonHover.png');
+        this.load.image('screen','assets/img/screen.png');
     }
 
     create(){
         this.scale=0.3;
+        
 
+        this.buttonSCREEN = this.add.image(SCREEN_MAX_WIDTH,100,'screen');
+       // this.buttonSTART.setDepth(998);
+        this.buttonSCREEN.setScale(this.scale-0.2);
+        this.buttonSCREEN.setInteractive();
+        //this.buttonSCREEN.on('pointerup', function () {this.scale.startFullscreen();}, this);
+    
 
         //BUTTON START
         this.buttonSTART = this.add.image(SCREEN_MAX_WIDTH/2+100,200,'button');
@@ -137,6 +146,13 @@ export default class MenuScene extends Phaser.Scene {
             this.buttonCOVER4.setVisible(false); // oculta la imagen del botón cuando el cursor sale de él
             //this.buttonSTART.setVisible(true); // muestra la imagen del botón original
           });
+
+          
+          //console.log("LA VARIABLE ES: "+ this.game.scale.isFullscreen);
+          this.buttonSCREEN.on('pointerup', function ()  {
+            if (this.game.scale.isFullscreen)this.game.scale.startFullscreen();
+            else this.game.scale.startFullscreen();
+        }, this);
 
     }
 
