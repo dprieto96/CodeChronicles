@@ -9,6 +9,8 @@ import VerticalBackground from './VerticalBackground.js';
 import Spaceship from '../../obj/player/Spaceship.js';
 import Asteroid from "../../obj/Asteroid.js";
 import Bullet from "../../obj/player/Bullet.js"
+
+
 export default class NivelVertical extends Nivel {
 	/**
 	 * Escena principal.
@@ -25,6 +27,10 @@ export default class NivelVertical extends Nivel {
 	}
 
 	init(){}
+
+	continuar(){
+		this.resume();
+	}
 
 	/**
 	 * Cargamos todos los assets que vamos a necesitar
@@ -52,7 +58,7 @@ export default class NivelVertical extends Nivel {
 	create() {
 		super.create();
 		this.scaleProgress=3.5;//AÑADIR ESCALADO BARRA PROGRASO
-
+		this.clave=this.key;
 		this.gameState = 'running';
 
 		this.pauseButton = this.add.image(SCREEN_MAX_WIDTH,SCREEN_MAX_HEIGHT+100,'button').setInteractive();;
@@ -62,18 +68,19 @@ export default class NivelVertical extends Nivel {
 			this.pauseButton.inputEnabled = true;
 			this.gameState = 'running';
     
-			// define el texto inicial del botón
-			this.pauseButton.text = this.add.text(0, 0, 'Pausar');
 			
 			// agrega un evento al botón para cambiar el estado del juego
 			this.pauseButton.on('pointerdown', function () {
-				this.scene.launch('PauseScene');
-				this.scene.pause();
+
+				this.scene.pause(this.key);
+				this.scene.launch('PauseScene',{clave:this.clave});
+				//this.scene.launch('PauseScene',{escena:this.scene});
+				//PauseScene.launchPauseScene(this);
+				
 				this.gameState = 'paused'
 			  }, this);
 
-			  if(this.gameState==='running')console.log('CORRIENDO');
-			  else console.log('PAUSA');
+			  
 
 			
 				
@@ -212,8 +219,7 @@ export default class NivelVertical extends Nivel {
 
     update(){
 		super.update();	
-		if(this.gameState==='running')console.log('CORRIENDO');
-			  else console.log('PAUSA');
+		
 
 		if(!this.introDone) { 
 			this.bg.launch();
