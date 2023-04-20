@@ -17,7 +17,7 @@ export default class HistoryScene extends Phaser.Scene {
 
     preload(){
         this.load.image('cross', 'assets/img/cross.png');
-        this.load.image('Xote', 'assets/img/Xote.jpeg');
+        this.load.image('Xote', 'assets/img/Xote.png');
         this.load.image('book', 'assets/img/book.gif');
     }
 
