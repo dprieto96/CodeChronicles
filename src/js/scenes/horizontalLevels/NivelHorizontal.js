@@ -34,12 +34,19 @@ export default class NivelHorizontal extends Nivel {
 	create() {
 		super.create();
 		this.physics.world.gravity.y = GRAVITY_FACTOR * this.planetSettings["gravity"] ;
-		this.bg.create();
 		this.player.create();
+		this.bg.create();
 		var platGroup = this.physics.add.staticGroup();
+		var posx = 10;
 
-		platGroup.create(200, 200, 'platform');
-		platGroup.create(200, 100, 'platform');
+
+		for(var i = 0; i < 12; i++ )
+		{
+			platGroup.create(posx, 760, 'platform');
+			posx += 90;
+			
+		}
+
 		platGroup.create(50, 100, 'platform');
 
 		platGroup.children.iterate(function(plat) {
@@ -47,6 +54,7 @@ export default class NivelHorizontal extends Nivel {
 		});
 		platGroup.enableBody = true;
 		this.physics.add.collider(this.player,platGroup);
+
 
 		this.cameras.main.setBounds(0, 0, 8000, 6000);
   		this.cameras.main.startFollow(this.player, true, 0.08, 0.08);

@@ -73,7 +73,15 @@
         "planet": "MARS",
         "decorations": {
             "platform": [
-                { "sprite": "moonPlatforms.png", "x": 10, "y":  5}
+                { "sprite": "moonPlatforms.png", "x": 10, "y":  760},
+                { "sprite": "moonPlatforms.png", "x": 100, "y":  760},
+                { "sprite": "moonPlatforms.png", "x": 190, "y":  760},
+                { "sprite": "moonPlatforms.png", "x": 280, "y":  760},
+                { "sprite": "moonPlatforms.png", "x": 370, "y":  760},
+                { "sprite": "moonPlatforms.png", "x": 460, "y":  760},
+                { "sprite": "moonPlatforms.png", "x": 550, "y":  760},
+                { "sprite": "moonPlatforms.png", "x": 640, "y":  760},
+                { "sprite": "moonPlatforms.png", "x": 730, "y":  760}
             ]}
 
     },
