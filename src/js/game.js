@@ -3,6 +3,7 @@ import MenuScene from './scenes/MenuScene.js';
 import ControlsScene from './scenes/ControlsScene.js';
 import HistoryScene from './scenes/HistoryScene.js';
 import PauseScene from './scenes/PauseScene.js';
+import ProgressScene from './scenes/ProgessScene.js';
 
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
@@ -34,7 +35,9 @@ let config = {
         },
 		zoom: ZOOM
     },
-    scene: [MenuScene,
+    scene: [
+        ProgressScene,
+        MenuScene,
         ControlsScene,
         HistoryScene,
         PauseScene,

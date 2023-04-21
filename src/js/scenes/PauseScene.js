@@ -58,7 +58,7 @@ export default class PauseScene extends Phaser.Scene{
             //this.scene.remove(this.key);
             this.scene.start('menuScene');
             this.scene.stop(this.escena);
-            window.location.reload();
+            //window.location.reload();
             //window.location.reload();
         }, this);
 

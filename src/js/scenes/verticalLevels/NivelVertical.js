@@ -40,6 +40,7 @@ export default class NivelVertical extends Nivel {
 
 		//this.load.image("bullet","assets\img\verticalLevels\bulletold.png");
 		this.load.image('button', 'assets/img/button.png');
+		this.load.audio('bgmusic', 'assets/music/bgm/bgVertical.mp3');
 
 
 		this.load.atlas('verticalAtlas', Utils.getImgV("templates"), Utils.getJson("verticalLevelElements"));
@@ -49,6 +50,7 @@ export default class NivelVertical extends Nivel {
 		this.player = new Spaceship(this,SPACESHIP_INIT_X, SPACESHIP_INIT_Y);
 		
 		this.extraBullets=10;
+		this.gameState='runnung';
 		
 	}
 	
@@ -57,11 +59,16 @@ export default class NivelVertical extends Nivel {
 	*/
 	create() {
 		super.create();
+
+		this.musicBG=this.sound.add('bgmusic');
+		
+
+	
 		this.scaleProgress=3.5;//AÑADIR ESCALADO BARRA PROGRASO
 		this.clave=this.key;
-		this.gameState = 'running';
+		//this.gameState = 'running';
 
-		this.pauseButton = this.add.image(SCREEN_MAX_WIDTH,SCREEN_MAX_HEIGHT+100,'button').setInteractive();;
+		this.pauseButton = this.add.image(SCREEN_MAX_WIDTH,SCREEN_MAX_HEIGHT+100,'button').setInteractive();
 			this.pauseButton.setDepth(999);
 			this.pauseButton.setScale(0.1);
 			//this.buttonSTART.setInteractive();
@@ -71,14 +78,12 @@ export default class NivelVertical extends Nivel {
 			
 			// agrega un evento al botón para cambiar el estado del juego
 			this.pauseButton.on('pointerdown', function () {
-
+				this.musicBG.pause();
 				this.scene.pause(this.key);
-				this.scene.launch('PauseScene',{clave:this.clave});
-				//this.scene.launch('PauseScene',{escena:this.scene});
-				//PauseScene.launchPauseScene(this);
-				
+				this.scene.launch('PauseScene',{clave:this.clave});				
 				this.gameState = 'paused';
 			  }, this);
+
 
 		//this.numBullets=this.bullets;
 		this.scoreText = this.add.text(this.sys.game.canvas.width / 2 +20, 20, 'X' + this.numBullets, { fontStyle: 'strong', font: '30px Arial', fill: '#ffffff'});
@@ -214,6 +219,10 @@ export default class NivelVertical extends Nivel {
 
     update(){
 		super.update();	
+
+			
+		if(this.gameState==='paused')this.musicBG.resume();
+		console.log('ESTADO: '+this.gameState);
 		
 
 		if(!this.introDone) { 
@@ -224,6 +233,7 @@ export default class NivelVertical extends Nivel {
 			this.bulletIcon.setVisible(false);
 			this.lifesText.setVisible(false);
 			this.scoreText.setVisible(false);
+			this.musicBG.play();
 		 }
 
 		else {
@@ -265,7 +275,7 @@ export default class NivelVertical extends Nivel {
 				this.bg.endOfGame();
 			}
 			else{ 
-				
+				console.log('ENTRA');
 				this.finishLevel(); 
 				}
 		}

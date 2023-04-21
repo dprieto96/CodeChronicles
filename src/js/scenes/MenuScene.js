@@ -21,7 +21,7 @@ export default class MenuScene extends Phaser.Scene {
 
 
     preload(){
-        this.load.image('button', 'assets/img/button.png');
+      
         this.load.image('icon', 'assets/img/web/CodeChronicles.png');
         this.load.image('created', 'assets/img/web/Game-created-by.png');
         this.load.image('git','assets/img/git.png');
