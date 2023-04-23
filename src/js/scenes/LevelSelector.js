@@ -62,11 +62,9 @@ export default class LevelSelector extends Phaser.Scene {
     startNextLevel(){
         this.currentSceneIndex = (this.currentSceneIndex + 1) % this.levels.length;
         let nextLevel = this.levels[this.currentSceneIndex];
-        //console.log(nextLevel.key);
-        console.log("b")
         this.scene.pause();
 
-
+        console.log('LA proxima escena es: '+ nextLevel.key);
         this.scene.launch(nextLevel.key);
     }
     

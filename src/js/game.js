@@ -4,6 +4,7 @@ import ControlsScene from './scenes/ControlsScene.js';
 import HistoryScene from './scenes/HistoryScene.js';
 import PauseScene from './scenes/PauseScene.js';
 import ProgressScene from './scenes/ProgessScene.js';
+import GameOverScene from './scenes/GameOverScene.js';
 
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
@@ -41,6 +42,7 @@ let config = {
         ControlsScene,
         HistoryScene,
         PauseScene,
+        GameOverScene,
         LevelSelector],
     physics: { 
         default: 'arcade', 

@@ -59,7 +59,7 @@ export default class NivelVertical extends Nivel {
 	*/
 	create() {
 		super.create();
-
+		
 		this.musicBG=this.sound.add('bgmusic');
 		
 
@@ -207,7 +207,7 @@ export default class NivelVertical extends Nivel {
     }
 
 	hitPlayer(enemy, player) {
-		if(this.numLifes>0)this.numLifes--;
+		if(this.numLifes>=0)this.numLifes--;
 
 		enemy.setAngularVelocity(0);
 		enemy.setVelocity(0,0);
@@ -219,6 +219,13 @@ export default class NivelVertical extends Nivel {
 
     update(){
 		super.update();	
+		
+		if(this.numLifes<0){
+			this.musicBG.pause();
+			this.scene.launch('gameOverScene',{clave:this.clave});
+			this.scene.pause(this.key);			
+			this.gameState = 'paused';
+		}
 
 			
 		if(this.gameState==='paused')this.musicBG.resume();
@@ -247,7 +254,8 @@ export default class NivelVertical extends Nivel {
 			this.scoreText.setVisible(true);
 						
 			this.generateEnemy();
-			this.lifesText.setText('X' + this.numLifes);
+			
+			if(this.numLifes>=0)this.lifesText.setText('X' + this.numLifes);
 
 			if (!this.checkEndOfGame() || this.enemiesGroup.getLength() > 0) {
 				//progress bar logic:

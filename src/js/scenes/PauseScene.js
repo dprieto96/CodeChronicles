@@ -21,8 +21,6 @@ export default class PauseScene extends Phaser.Scene{
 
     init(settings){
         this.escena=settings.clave;
-        
-        
     }
 
     preload(){
@@ -49,33 +47,35 @@ export default class PauseScene extends Phaser.Scene{
         this.bg = this.add.image(SCREEN_MAX_WIDTH/2+80,SCREEN_MAX_HEIGHT/2+80,'bg');
         this.bg.setDepth(1);
 
+
+        //HOME
         this.buttonHOME = this.add.image(SCREEN_MAX_WIDTH/2-80,SCREEN_MAX_HEIGHT/2+80,'home');
         this.buttonHOME.setDepth(999);
         this.buttonHOME.setScale(0.3);
         this.buttonHOME.setInteractive();
 
         this.buttonHOME.on('pointerdown', function () {
-            //this.scene.remove(this.key);
+             location.reload();  
+            /*
             this.scene.start('menuScene');
-            this.scene.stop(this.escena);
+            console.log('La escena que paro es: ' + this.escena);
+            this.scene.remove(this.escena);
+            this.scene.stop('levelSelector');
+            this.scene.stop();*/
+
             //window.location.reload();
             //window.location.reload();
         }, this);
 
+        //RELOAD
         this.buttonRELOAD = this.add.image(SCREEN_MAX_WIDTH/2+250,SCREEN_MAX_HEIGHT/2+80,'reload');
         this.buttonRELOAD.setDepth(999);
         this.buttonRELOAD.setScale(0.3);
         this.buttonRELOAD.setInteractive();
 
         this.buttonRELOAD.on('pointerdown', function () {
-            //this.scene.remove(this.key);
-            //this.scene.start('menuScene');
-            
             this.scene.start(this.escena);
-            //this.scene.resume(this.escena);
             this.scene.stop();
-            console.log('ENTRA');
-            //window.location.reload();
         }, this);
         
 
