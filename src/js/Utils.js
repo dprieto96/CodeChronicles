@@ -56,8 +56,9 @@ export default class Utils{
         obj.p  = obj.input.keyboard.addKey("P");
         obj.sp = obj.input.keyboard.addKey("space");
         obj.enter = obj.input.keyboard.addKey("enter");
-        
     }
+
+
     
     static createSpriteJson(assetNamesArray, frameWidth, frameHeight, rows, cols){
         var ret = { "frames": [] };

@@ -38,6 +38,10 @@ export default class NivelVertical extends Nivel {
 	preload(){
 		super.preload();
 
+		let url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js';
+   	    this.load.plugin('rexvirtualjoystickplugin', url, true);
+
+
 		//this.load.image("bullet","assets\img\verticalLevels\bulletold.png");
 		this.load.image('button', 'assets/img/button.png');
 		this.load.audio('bgmusic', 'assets/music/bgm/bgVertical.mp3');
@@ -59,6 +63,20 @@ export default class NivelVertical extends Nivel {
 	*/
 	create() {
 		super.create();
+
+		this.joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
+			x: 155,
+			y: SCREEN_HEIGHT-155,
+			radius: 100,
+			base: this.add.circle(0, 0, 50, 0x888888),
+			thumb: this.add.circle(0, 0, 25, 0xcccccc),
+	  });
+
+	  this.joystickCursors = this.joyStick.createCursorKeys();
+
+	  this.jostickmovement='null';
+
+	 
 		
 		this.musicBG=this.sound.add('bgmusic');
 		
@@ -216,6 +234,33 @@ export default class NivelVertical extends Nivel {
 		enemy.play("boomBeach");
     }
 
+	jostickMovement(){
+
+		if (this.joystickCursors.up.isDown){
+			this.jostickmovement='UP';
+
+		}
+
+		if (this.joystickCursors.down.isDown){
+			this.jostickmovement='DOWN';
+			
+		}
+
+		if (this.joystickCursors.left.isDown){
+			this.jostickmovement='LEFT';
+		}
+
+		if (this.joystickCursors.right.isDown){
+			this.jostickmovement='RIGHT';
+			
+		}
+
+		console.log('EL JOSCTICK ES: '+this.jostickmovement);
+		this.player.jostickMovement(this.jostickmovement);
+		this.jostickmovement='null';
+
+	}
+
 
     update(){
 		super.update();	
@@ -272,8 +317,12 @@ export default class NivelVertical extends Nivel {
 					this.bullets--;
 					this.scoreText.setText('X' + this.numBullets);
 				}
-	
+				if (this.cursors.up.isDown){
+					
+				}
+				this.jostickMovement();
 				this.player.handleMovement(); 
+				
 				this.distanceReached++;
 			}
 
