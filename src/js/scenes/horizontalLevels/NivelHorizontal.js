@@ -28,6 +28,10 @@ export default class NivelHorizontal extends Nivel {
 		this.player = new Astronaut(this,0,320);
 	}
 	
+	continuar(){
+		this.resume();
+	}
+
 	/**
 	* Creación de los elementos de la escena principal de juego
 	*/
@@ -42,8 +46,8 @@ export default class NivelHorizontal extends Nivel {
 
 		for(var i = 0; i < 12; i++ )
 		{
-			platGroup.create(posx, 760, 'platform');
-			posx += 90;
+			platGroup.create(posx, 800, 'platform');
+			posx += 85;
 			
 		}
 
@@ -53,11 +57,15 @@ export default class NivelHorizontal extends Nivel {
     		plat.body.immovable = true;
 		});
 		platGroup.enableBody = true;
+		platGroup.setDepth(999); 
 		this.physics.add.collider(this.player,platGroup);
 
 
-		this.cameras.main.setBounds(0, 0, 8000, 6000);
-  		this.cameras.main.startFollow(this.player, true, 0.08, 0.08);
+		this.cameras.main.setBounds(0, 0, 8000, 8000);
+		this.cameras.main.setZoom(1.5);
+  		this.cameras.main.startFollow(this.player, true,true);
+  		this.cameras.main.setDeadzone(SCREEN_WIDTH/2 - 400, SCREEN_HEIGHT/2+20 ,150, 300);
+
 	}
 
 	/**
