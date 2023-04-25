@@ -49,6 +49,7 @@ export default class NivelHorizontal extends Nivel {
 	create() {
 		super.create();
 
+
 		this.joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
 			x: 200,
 			y: SCREEN_HEIGHT-200,
@@ -110,6 +111,7 @@ export default class NivelHorizontal extends Nivel {
 
 		this.pauseButton.setScrollFactor(0);
 		this.pauseButton.setPosition(SCREEN_WIDTH - 200, SCREEN_HEIGHT/2  - 220);
+
 	}
 
 	jostickMovement(){
@@ -143,7 +145,13 @@ export default class NivelHorizontal extends Nivel {
 	*/
     update(){ 
     	super.update();
-		
+		//console.log(this.player.anims.currentAnim);
+
+
+		//this.player.anims.currentAnim.setFrameRate(IDLE_FRAME_RATE * GRAVITIES[this.planet]);
+		//this.player.anims.get("standingLeft").setFrameRate(IDLE_FRAME_RATE * GRAVITIES[this.planet]);
+		//this.player.anims.get("runningRight").setFrameRate(MOVI_FRAME_RATE * GRAVITIES[this.planet]);
+		//this.player.anims.get("runningLeft").setFrameRate(MOVI_FRAME_RATE * GRAVITIES[this.planet]);
 		if(this.gameState==='paused')this.musicBG.resume();
 		console.log('ESTADO: '+this.gameState);
 
@@ -155,8 +163,7 @@ export default class NivelHorizontal extends Nivel {
 			this.cameras.main.zoomTo(1.5, 2500);
 		}
 		else{
-			this.player.moviframe *= this.planetSettings["gravity"];
-    		this.player.idleframe *= this.planetSettings["gravity"];
+		
 			this.pauseButton.setVisible(true);
 			this.joyStick.setVisible(true);
 		}

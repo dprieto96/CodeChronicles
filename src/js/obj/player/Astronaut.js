@@ -1,6 +1,7 @@
 import Player from "./Player.js";
 import Utils from "../../Utils.js"
 export default class Astronaut extends Player{
+
 	createAnimations(){      
 		this.create_Anim("standingRight", 0,  3,  IDLE_FRAME_RATE);
 		this.create_Anim("standingLeft",  4,  7,  IDLE_FRAME_RATE);
@@ -12,7 +13,7 @@ export default class Astronaut extends Player{
 
 	constructor(scene, x, y){
 		super(scene, x, y, "astronaut", 0);
-		this.jumpVelocity = -200;
+		this.jumpVelocity = -300;
 		this.movement = "standing";
 		this.isJumping = false;
 		this.scene.introDone = false;
@@ -22,7 +23,9 @@ export default class Astronaut extends Player{
 			frameWidth: SPRITE_WIDTH,
 			frameHeight: SPRITE_HEIGHT
 		});
+		
 	}
+
 
 
 	handleMovement(t, dt){
@@ -58,12 +61,12 @@ export default class Astronaut extends Player{
 	            if(this.scene.a.isDown){
 	            	if(!this.isJumping)this.movement = "running";
 	                this.hDirection = "Left";
-	                this.speedX = (-ASTRONAUT_SPEED );
+	                this.speedX = (-ASTRONAUT_SPEED * GRAVITIES[this.scene.planet] );
 	            }
 	            else if(this.scene.d.isDown){
 	            	if(!this.isJumping) this.movement = "running";
 	                this.hDirection = "Right";
-	                this.speedX = (ASTRONAUT_SPEED );
+	                this.speedX = (ASTRONAUT_SPEED * GRAVITIES[this.scene.planet]);
 	            }
 	            else{
 	            	if(!this.isJumping) this.movement = "standing";
