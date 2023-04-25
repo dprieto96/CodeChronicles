@@ -46,7 +46,7 @@ const MOVI_FRAME_RATE = 10; //duracion de cada postura del sprite durante la ani
 const GRAVITY_FACTOR = 1000;
 
 //ASTRONAUT INITIAL POS:
-const AST_INITIAL_X = 100;
+const AST_INITIAL_X = 200;
 const AST_INITIAL_Y = 300;
 
 //SPACESHIP SPRITE CONFIGURATIONS: ============================================

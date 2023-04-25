@@ -14,16 +14,7 @@ export default class HorizontalBackground extends Background{
     }
 
     launch(){
-        if(!this.scene.introDone){
-            this.auxSpeed += 0.035;
-            if(this.scene.player.x != AST_INITIAL_X){
-                this.scene.player.speedX += this.auxSpeed;
-            }
-            else{ 
-                this.scene.player.speedX = 0;
-                //this.scene.player.play("standingRight",true);
-                this.scene.introDone = true;
-            }
-        }
+
+        
     }
 }

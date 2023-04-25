@@ -50,12 +50,19 @@ export default class NivelHorizontal extends Nivel {
 		super.create();
 
 		this.joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
-			x: 155,
-			y: SCREEN_HEIGHT-155,
-			radius: 100,
-			base: this.add.circle(0, 0, 50, 0x888888),
-			thumb: this.add.circle(0, 0, 25, 0xcccccc),
+			x: 200,
+			y: SCREEN_HEIGHT-200,
+			radius: 50,
+			base: this.add.circle(0, 0, 25, 0x888888),
+			thumb: this.add.circle(0, 0, 12, 0xcccccc),
 	  	});
+		
+		this.joystickCursors = this.joyStick.createCursorKeys();
+	 	this.jostickmovement='null';
+
+	 	this.joyStick.setScrollFactor(0);
+	 	this.joyStick.base.setDepth(999);
+	 	this.joyStick.thumb.setDepth(999);
 
 	 	
 		this.physics.world.gravity.y = GRAVITY_FACTOR * this.planetSettings["gravity"] ;
@@ -83,46 +90,26 @@ export default class NivelHorizontal extends Nivel {
 
 
 		this.cameras.main.setBounds(0, 0, 8000, 800);
-		this.cameras.main.setZoom(1.5);
+		this.cameras.main.setZoom(3);
   		this.cameras.main.startFollow(this.player, true,true);
   		//this.cameras.main.setDeadzone(SCREEN_WIDTH/2 - 400, SCREEN_HEIGHT/2+400 ,150, 300);
 
   		this.pauseButton = this.add.image(0,0,'button').setInteractive();
-			this.pauseButton.setDepth(999);
-			this.pauseButton.setScale(0.1);
-			//this.buttonSTART.setInteractive();
-			this.pauseButton.inputEnabled = true;
-			this.gameState = 'running';
-    
-			
-			// agrega un evento al botón para cambiar el estado del juego
-			this.pauseButton.on('pointerdown', function () {
+		this.pauseButton.setDepth(999);
+		this.pauseButton.setScale(0.1);
+		//this.buttonSTART.setInteractive();
+		this.pauseButton.inputEnabled = true;
+		this.gameState = 'running';
+
+		this.pauseButton.on('pointerup', function () {
 				//this.musicBG.pause();
 				this.scene.pause(this.key);
 				this.scene.launch('PauseScene',{clave:this.clave});				
 				this.gameState = 'paused';
 			  }, this);
 
-
-			// Crear el contenedor de la cámara y agregar el botón al contenedor
-		var cameraContainer = this.add.container(0, 0, [ this.pauseButton ]);
-		var joyStickContainer = this.add.container(this.joyStick.x, this.joyStick.y, [ this.joyStick.base, this.joyStick.thumb ]);
-
-		// Fijar el scrollFactor del contenedor a cero para que se fije a la posición de la cámara
-		cameraContainer.scrollFactorX = 0;
-		cameraContainer.scrollFactorY = 0;
-
-		joyStickContainer.scrollFactorX = 0;
-		joyStickContainer.scrollFactorY = 0;
-
-		this.joystickCursors = this.joyStick.createCursorKeys();
-	 	this.jostickmovement='null';
-
-
-		// Establecer la posición del botón en el centro de la cámara
-		this.pauseButton.setPosition(this.cameras.main.width*3/4, this.pauseButton.height / 2 - 30);
-		this.joyStick.setPosition(this.cameras.main.width/2, this.joyStick.height / 2 );
-		cameraContainer.setDepth(999);
+		this.pauseButton.setScrollFactor(0);
+		this.pauseButton.setPosition(SCREEN_WIDTH - 200, SCREEN_HEIGHT/2  - 220);
 	}
 
 	jostickMovement(){
@@ -160,8 +147,21 @@ export default class NivelHorizontal extends Nivel {
 		if(this.gameState==='paused')this.musicBG.resume();
 		console.log('ESTADO: '+this.gameState);
 
-		if(!this.introDone){ this.bg.launch(); }
-		this.player.handleMovement();
+		this.player.handleMovement(); 
+		if(!this.introDone){ 	
+			this.bg.launch();
+			this.joyStick.setVisible(false);
+			this.pauseButton.setVisible(false);
+			this.cameras.main.zoomTo(1.5, 2500);
+		}
+		else{
+			this.player.moviframe *= this.planetSettings["gravity"];
+    		this.player.idleframe *= this.planetSettings["gravity"];
+			this.pauseButton.setVisible(true);
+			this.joyStick.setVisible(true);
+		}
+		
+
 	}
 
 	victoryCondition(){}
