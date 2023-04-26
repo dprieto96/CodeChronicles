@@ -5,6 +5,7 @@
 import LevelSelector from "./LevelSelector.js";
 import ControlsScene from "./ControlsScene.js";
 import HistoryScene from "./HistoryScene.js";
+import Utils from "../Utils.js";
 
 export default class MenuScene extends Phaser.Scene {
 	/**
@@ -21,7 +22,9 @@ export default class MenuScene extends Phaser.Scene {
 
 
     preload(){
-      
+
+        this.load.image('pc', 'assets/img/pc.png');
+        this.load.image('mobile', 'assets/img/mobile.png');
         this.load.image('icon', 'assets/img/web/CodeChronicles.png');
         this.load.image('created', 'assets/img/web/Game-created-by.png');
         this.load.image('git','assets/img/git.png');
@@ -31,13 +34,26 @@ export default class MenuScene extends Phaser.Scene {
 
     create(){
         this.scale=0.3;
+
+
+      //BUTTON MOBILE
+        this.buttonMOBILE = this.add.image(SCREEN_MAX_WIDTH,100,'mobile');
+        this.buttonMOBILE.setScale(this.scale-0.15);
+        this.buttonMOBILE.setInteractive();
+        this.buttonMOBILE.on('pointerup', function () {Utils.setisMobile(true)}, this);
+
+        //BUTTON PC
+        this.buttonPCMODE = this.add.image(SCREEN_MAX_WIDTH,108,'pc');
+        this.buttonPCMODE.setScale(this.scale-0.09);
+        this.buttonPCMODE.setVisible(false);
+        this.buttonPCMODE.setInteractive();
+        this.buttonPCMODE.on('pointerup', function () {Utils.setisMobile(false)}, this);
         
 
-        this.buttonSCREEN = this.add.image(SCREEN_MAX_WIDTH,100,'screen');
-       // this.buttonSTART.setDepth(998);
+      //BUTTON FULL-SCREEN
+        this.buttonSCREEN = this.add.image(SCREEN_MAX_WIDTH+100,100,'screen');
         this.buttonSCREEN.setScale(this.scale-0.2);
         this.buttonSCREEN.setInteractive();
-        //this.buttonSCREEN.on('pointerup', function () {this.scale.startFullscreen();}, this);
     
 
         //BUTTON START
@@ -105,8 +121,8 @@ export default class MenuScene extends Phaser.Scene {
         this.buttonCOVER4 = this.add.image(SCREEN_MAX_WIDTH/2+100,500,'cover');
         this.buttonCOVER4.setScale(this.scale);
         this.buttonCOVER4.setVisible(false);
-    
 
+        
 
         this.buttonSTART.on('pointerover', () => {
             this.buttonCOVER.setVisible(true); // muestra la imagen del botón al colocar el cursor sobre él
@@ -154,11 +170,15 @@ export default class MenuScene extends Phaser.Scene {
             else this.game.scale.startFullscreen();
         }, this);
 
+        
+
     }
 
     update(){
         super.update();
 
+        if(Utils.isMobile())this.buttonPCMODE.setVisible(true);
+        else{this.buttonPCMODE.setVisible(false);}
        
     }
 

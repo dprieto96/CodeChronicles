@@ -1,6 +1,8 @@
 //FUNCIONES PARA OBTENER LAS RUTAS A RECURSOS:
 export default class Utils{
-    constructor(){}
+    constructor(){
+        this.mobile=false;
+    }
     
     static getImg(assetName)   { return IMAGES_PATH + assetName + ".png";  };
     static getImgV(assetName)  { return IMAG_PATH_V + assetName + ".png";  };
@@ -47,7 +49,15 @@ export default class Utils{
             repeat: _repeat,
         });
     }
-    
+
+    static isMobile() {
+       return this.mobile;
+      }
+
+    static setisMobile(mode){
+         this.mobile=mode;
+    }
+
     static createKeyBindings(obj){
         obj.a  = obj.input.keyboard.addKey("A");
         obj.s  = obj.input.keyboard.addKey("S");

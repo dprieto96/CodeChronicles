@@ -38,6 +38,8 @@ export default class NivelVertical extends Nivel {
 	preload(){
 		super.preload();
 
+		
+
 		let url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js';
    	    this.load.plugin('rexvirtualjoystickplugin', url, true);
 
@@ -64,6 +66,30 @@ export default class NivelVertical extends Nivel {
 	create() {
 		super.create();
 
+		this.scene.moveBelow(this.key,'PauseScene');
+		this.scene.moveBelow(this.key,'gameOverScene');
+
+		if (Utils.isMobile()){
+		console.log('ESTADO MOBILE: '+Utils.isMobile());
+		this.dispara=false;
+		this.rect = this.add.rectangle(
+			this.game.config.width-200 ,  // X central
+			320,                           // Y superior
+			this.game.config.width / 2,  // Ancho mitad derecha
+			this.game.config.height,     // Altura pantalla completa
+			0xffffff,                    // Color de relleno blanco
+  			0
+		  );
+
+		  this.rect.setInteractive();
+			this.rect.on('pointerdown', ()=> {
+			this.fire();
+		  });
+		
+		
+		
+		//JOYSTICK
+	  
 		this.joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
 			x: 155,
 			y: SCREEN_HEIGHT-155,
@@ -73,8 +99,8 @@ export default class NivelVertical extends Nivel {
 	  });
 
 	  this.joystickCursors = this.joyStick.createCursorKeys();
-
 	  this.jostickmovement='null';
+	  }
 
 	 
 		
@@ -86,11 +112,13 @@ export default class NivelVertical extends Nivel {
 		this.clave=this.key;
 		//this.gameState = 'running';
 
-		this.pauseButton = this.add.image(SCREEN_MAX_WIDTH,SCREEN_MAX_HEIGHT+100,'button').setInteractive();
+		this.pauseButton = this.add.image(SCREEN_MAX_WIDTH+80,SCREEN_MAX_HEIGHT+100,'button').setInteractive();
 			this.pauseButton.setDepth(999);
-			this.pauseButton.setScale(0.1);
+			this.pauseButton.setScale(0.15);
 			//this.buttonSTART.setInteractive();
 			this.pauseButton.inputEnabled = true;
+	  		this.pauseText=this.add.text(SCREEN_MAX_WIDTH+38,SCREEN_MAX_HEIGHT+87,'PAUSE',{ fontStyle: 'strong', font: '25px Arial', fill: '#ffffff'});
+			this.pauseText.setDepth(1000);
 			this.gameState = 'running';
     
 			
@@ -164,6 +192,8 @@ export default class NivelVertical extends Nivel {
 		this.physics.add.collider(this.enemiesGroup, this.player, this.hitPlayer, null, this);
 	}
 
+	 
+
 	colision(){
 		// calcula el ángulo de la colisión
 		this.angle = Phaser.Math.Angle.Between(this.player.x, this.player.y, this.enemiesGroup.x, this.enemiesGroup.y);
@@ -236,15 +266,16 @@ export default class NivelVertical extends Nivel {
 
 	handleMovement(){
 		let jt = false;
-		let txt = "", txt2;
+		let txt = "";
 		if (this.joystickCursors.up.isDown)   	   { txt = 'UP';    jt = true; }
 		else if (this.joystickCursors.down.isDown) { txt = 'DOWN';  jt = true; }
 
-		if (this.joystickCursors.left.isDown) 	   { txt2 = 'LEFT';  jt = true; }
-		else if (this.joystickCursors.right.isDown){ txt2 = 'RIGHT'; jt = true; }
+		if (this.joystickCursors.left.isDown) 	   { txt = 'LEFT';  jt = true; }
+		else if (this.joystickCursors.right.isDown){ txt = 'RIGHT'; jt = true; }
 		this.jostickmovement = txt;
 
 		console.log('EL JOSCTICK ES: '+this.jostickmovement);
+		
 		if (jt) { this.player.jostickMovement(this.jostickmovement); }
 		else    { this.player.handleMovement(); }
 		this.jostickmovement='null';
@@ -263,7 +294,6 @@ export default class NivelVertical extends Nivel {
 
 			
 		if(this.gameState==='paused')this.musicBG.resume();
-		console.log('ESTADO: '+this.gameState);
 		
 
 		if(!this.introDone) { 
@@ -286,6 +316,7 @@ export default class NivelVertical extends Nivel {
 			this.bulletIcon.setVisible(true);
 			this.lifesText.setVisible(true);
 			this.scoreText.setVisible(true);
+
 						
 			this.generateEnemy();
 			
@@ -309,7 +340,9 @@ export default class NivelVertical extends Nivel {
 				if (this.cursors.up.isDown){
 					
 				}
-				this.handleMovement();
+
+				if (Utils.isMobile())this.handleMovement();
+				else this.player.handleMovement();
 				
 				this.distanceReached++;
 			}
