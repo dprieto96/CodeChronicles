@@ -59,40 +59,33 @@ this.physics.add.collider(this.player,layer);
         if(this.scene.w.isDown){ 
             this.vDirection = "UP";
             this.speedY -= SPACESHIP_SPEED;
-
-            //if(this.y - centerY <= Math.abs(this.speedY)) { this.speedY = 0; }
         }
         else if(this.scene.s.isDown){
             this.vDirection = "DOWN";
             this.speedY += SPACESHIP_SPEED;
 
             let btmLimit = VERTICAL_LEVELS_HEIGHT - centerY;
-            //if(this.y + centerY + this.speedY >= btmLimit) { this.speedY = 0; }
         }
             
         //velocidad horizontal:
         if(this.scene.a.isDown){
             this.hDirection = "left";
             this.speedX -= SPACESHIP_SPEED;
-
-            //if(this.x - centerX <= Math.abs(this.speedX)) { this.speedX = 0; }
         }
         else if(this.scene.d.isDown){
             this.hDirection = "right";
             this.speedX += SPACESHIP_SPEED;
             let rightLimit = VERTICAL_LEVELS_WIDTH - centerX;
-            //if(this.x + centerX + this.speedX >= rightLimit) { this.speedX = 0; }
         }
         else{ this.hDirection = ""; }
 
         this.setVelocity(this.speedX,this.speedY);
-        //this.y += this.speedY;
         this.play(this.hDirection+this.vDirection,true);
     }
 
     jostickMovement(jostick){
-        this.jostick=jostick;
         super.handleMovement();
+        this.jostick=jostick;
         this.vDirection = "NE";
         
         let centerX = this.displayWidth  / 2;
@@ -102,8 +95,6 @@ this.physics.add.collider(this.player,layer);
         if(this.jostick==='UP'){ 
             this.vDirection = "UP";
             this.speedY -= SPACESHIP_SPEED;
-
-            //if(this.y - centerY <= Math.abs(this.speedY)) { this.speedY = 0; }
         }
         else if(this.jostick==='DOWN'){
             this.vDirection = "DOWN";
@@ -129,7 +120,6 @@ this.physics.add.collider(this.player,layer);
         else{ this.hDirection = ""; }
 
         this.setVelocity(this.speedX,this.speedY);
-        //this.y += this.speedY;
         this.play(this.hDirection+this.vDirection,true);
     }
 }

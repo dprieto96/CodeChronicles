@@ -1,10 +1,7 @@
 TO DO:
--Preguntar por lo de la pantalla completa
--Añadir gráficos definitivos de los planetas.
--Subir el joystick de capa y el cartel de game over
+-Preguntar por lo de la pantalla completa.
 -Decorar botón de pausa.
 -Añadir sonidos.
--Arreglar la errata del html
 
 -Añadir texto a la escena de la historia
 -Añadir otra pestaña en la escena de controles; terminar escena controles
@@ -20,5 +17,6 @@ TO DO:
 -Añadir tres puertas/portales/cosas en los niveles horizontales 
 ==========================================
 
+-Arreglar la errata del html
 -Revisar decoraciones.
 -Ajustar densidad de asteroides.

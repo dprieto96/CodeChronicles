@@ -234,31 +234,20 @@ export default class NivelVertical extends Nivel {
 		enemy.play("boomBeach");
     }
 
-	jostickMovement(){
+	handleMovement(){
+		let jt = false;
+		let txt = "", txt2;
+		if (this.joystickCursors.up.isDown)   	   { txt = 'UP';    jt = true; }
+		else if (this.joystickCursors.down.isDown) { txt = 'DOWN';  jt = true; }
 
-		if (this.joystickCursors.up.isDown){
-			this.jostickmovement='UP';
-
-		}
-
-		if (this.joystickCursors.down.isDown){
-			this.jostickmovement='DOWN';
-			
-		}
-
-		if (this.joystickCursors.left.isDown){
-			this.jostickmovement='LEFT';
-		}
-
-		if (this.joystickCursors.right.isDown){
-			this.jostickmovement='RIGHT';
-			
-		}
+		if (this.joystickCursors.left.isDown) 	   { txt2 = 'LEFT';  jt = true; }
+		else if (this.joystickCursors.right.isDown){ txt2 = 'RIGHT'; jt = true; }
+		this.jostickmovement = txt;
 
 		console.log('EL JOSCTICK ES: '+this.jostickmovement);
-		this.player.jostickMovement(this.jostickmovement);
+		if (jt) { this.player.jostickMovement(this.jostickmovement); }
+		else    { this.player.handleMovement(); }
 		this.jostickmovement='null';
-
 	}
 
 
@@ -320,8 +309,7 @@ export default class NivelVertical extends Nivel {
 				if (this.cursors.up.isDown){
 					
 				}
-				this.jostickMovement();
-				this.player.handleMovement(); 
+				this.handleMovement();
 				
 				this.distanceReached++;
 			}
