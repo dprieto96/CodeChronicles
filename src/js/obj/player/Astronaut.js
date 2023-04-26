@@ -26,7 +26,16 @@ export default class Astronaut extends Player{
 		
 	}
 
-
+	 create(){
+    this.setTexture(this.graphicName);
+    this.setFrame(this.initFrame);    
+    this.createAnimations();
+    this.scene.physics.add.existing(this);
+    this.scene.physics.world.enable(this);   
+    this.setDepth(999); //prioridad de capa
+    this.setCollideWorldBounds(true);
+    this.body.setCircle(23,8,13);
+  }
 
 	handleMovement(t, dt){
 		super.handleMovement();

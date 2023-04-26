@@ -73,15 +73,15 @@
         "planet": "MARS",
         "decorations": {
             "platform": [
-                { "sprite": "moonPlatforms.png", "x": 10, "y":  760},
-                { "sprite": "moonPlatforms.png", "x": 100, "y":  760},
-                { "sprite": "moonPlatforms.png", "x": 190, "y":  760},
-                { "sprite": "moonPlatforms.png", "x": 280, "y":  760},
-                { "sprite": "moonPlatforms.png", "x": 370, "y":  760},
-                { "sprite": "moonPlatforms.png", "x": 460, "y":  760},
-                { "sprite": "moonPlatforms.png", "x": 550, "y":  760},
-                { "sprite": "moonPlatforms.png", "x": 640, "y":  760},
-                { "sprite": "moonPlatforms.png", "x": 730, "y":  760}
+                { "sprite": "moonPlatforms.png", "x": 350, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 690, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 775, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 860, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 1795, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 120, "y":  610},
+                { "sprite": "moonPlatforms.png", "x": 550, "y":  0},
+                { "sprite": "moonPlatforms.png", "x": 640, "y":  0},
+                { "sprite": "moonPlatforms.png", "x": 730, "y":  0}
             ]}
 
     },
