@@ -70,14 +70,22 @@ export default class NivelHorizontal extends Nivel {
 		this.player.create();
 		this.bg.create();
 		var platGroup = this.physics.add.staticGroup();
-		var posx = 10;
+		var st = this.st["decorations"]["platform"];
+		let posx = 10;
+		let posy = 790;
 
-		// Bucle que itera en el json para colocar las plataformas en su sitio
-		for(var i = 0; i < 12; i++ )
+		// Plataformas del suelo
+		for(let i = 0; i < 20; i++)
 		{
-			platGroup.create(posx, 790, 'platform');
-			posx += 85;
-			
+			platGroup.create(posx, posy, 'platform');
+			posx += 87;
+		}
+		
+		// Plataformas del mapa
+		for(let i = 0; i < st.length; i++ )
+		{
+			let obj = st[i];
+			platGroup.create(obj["x"], obj["y"], 'platform');
 		}
 
 		platGroup.children.iterate(function(plat) {
