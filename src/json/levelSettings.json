@@ -77,20 +77,77 @@
                 { "sprite": "moonPlatforms.png", "x": 690, "y":  690},
                 { "sprite": "moonPlatforms.png", "x": 775, "y":  690},
                 { "sprite": "moonPlatforms.png", "x": 860, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 1500, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 120, "y":  610},
+		{ "sprite": "moonPlatforms.png", "x": 1000, "y":  610},
+		{ "sprite": "moonPlatforms.png", "x": 1620, "y":  610},
+		{ "sprite": "moonPlatforms.png", "x": 350, "y":  530},
+                { "sprite": "moonPlatforms.png", "x": 605, "y":  530},
+                { "sprite": "moonPlatforms.png", "x": 690, "y":  530},
+                { "sprite": "moonPlatforms.png", "x": 775, "y":  530},
+		{ "sprite": "moonPlatforms.png", "x": 860, "y":  530},
+		{ "sprite": "moonPlatforms.png", "x": 1330, "y":  530},
+		{ "sprite": "moonPlatforms.png", "x": 1415, "y":  530},
+		{ "sprite": "moonPlatforms.png", "x": 1500, "y":  530},
+		{ "sprite": "moonPlatforms.png", "x": 10, "y":  450},
+		{ "sprite": "moonPlatforms.png", "x": 50, "y":  450},
+		{ "sprite": "moonPlatforms.png", "x": 120, "y":  450},
+		{ "sprite": "moonPlatforms.png", "x": 1000, "y":  450},
+		{ "sprite": "moonPlatforms.png", "x": 1245, "y":  450},
+		{ "sprite": "moonPlatforms.png", "x": 350, "y":  370},
+		{ "sprite": "moonPlatforms.png", "x": 690, "y":  370},
+		{ "sprite": "moonPlatforms.png", "x": 775, "y":  370},
+		{ "sprite": "moonPlatforms.png", "x": 860, "y":  370},
+		{ "sprite": "moonPlatforms.png", "x": 1480, "y":  370},
+		{ "sprite": "moonPlatforms.png", "x": 120, "y":  290},
+		{ "sprite": "moonPlatforms.png", "x": 1290, "y":  290},
+		{ "sprite": "moonPlatforms.png", "x": 350, "y":  210},
+		{ "sprite": "moonPlatforms.png", "x": 430, "y":  210},
+		{ "sprite": "moonPlatforms.png", "x": 1205, "y":  190},
+		{ "sprite": "moonPlatforms.png", "x": 1290, "y":  190},
+		{ "sprite": "moonPlatforms.png", "x": 1375, "y":  190},
+		{ "sprite": "moonPlatforms.png", "x": 90, "y":  160},
+		{ "sprite": "moonPlatforms.png", "x": 350, "y":  80},
+		{ "sprite": "moonPlatforms.png", "x": 435, "y":  80},
+		{ "sprite": "moonPlatforms.png", "x": 520, "y":  80},
+		{ "sprite": "moonPlatforms.png", "x": 605, "y":  80},
+		{ "sprite": "moonPlatforms.png", "x": 690, "y":  80},
+		{ "sprite": "moonPlatforms.png", "x": 775, "y":  80},
+		{ "sprite": "moonPlatforms.png", "x": 860, "y":  80},
+		{ "sprite": "moonPlatforms.png", "x": 945, "y":  80}
+            ]}
+
+    },
+
+    "nivelHorizontal01":{
+        "planet": "VENUS",
+	"decorations": {
+            "platform": [
+                { "sprite": "moonPlatforms.png", "x": 350, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 690, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 775, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 860, "y":  690},
                 { "sprite": "moonPlatforms.png", "x": 1795, "y":  690},
                 { "sprite": "moonPlatforms.png", "x": 120, "y":  610},
                 { "sprite": "moonPlatforms.png", "x": 550, "y":  0},
                 { "sprite": "moonPlatforms.png", "x": 640, "y":  0},
                 { "sprite": "moonPlatforms.png", "x": 730, "y":  0}
             ]}
-
-    },
-
-    "nivelHorizontal01":{
-        "planet": "VENUS"
     },
 
     "nivelHorizontal02":{
-        "planet": "MOON"
+        "planet": "MOON",
+	"decorations": {
+            "platform": [
+                { "sprite": "moonPlatforms.png", "x": 350, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 690, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 775, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 860, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 1795, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 120, "y":  610},
+                { "sprite": "moonPlatforms.png", "x": 550, "y":  0},
+                { "sprite": "moonPlatforms.png", "x": 640, "y":  0},
+                { "sprite": "moonPlatforms.png", "x": 730, "y":  0}
+            ]}
     }
 }
