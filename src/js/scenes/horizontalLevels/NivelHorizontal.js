@@ -34,7 +34,7 @@ export default class NivelHorizontal extends Nivel {
 
 		this.planet = this.st["planet"];
 		this.bg 	= new HorizontalBackground(this);
-		this.player = new Astronaut(this,0,720);
+		this.player = new Astronaut(this,0,1150);
 
 		this.gameState='running';
 	}
@@ -72,7 +72,7 @@ export default class NivelHorizontal extends Nivel {
 		var platGroup = this.physics.add.staticGroup();
 		var st = this.st["decorations"]["platform"];
 		let posx = 10;
-		let posy = 790;
+		let posy = 1190;
 
 		// Plataformas del suelo
 		for(let i = 0; i < 20; i++)
@@ -95,10 +95,10 @@ export default class NivelHorizontal extends Nivel {
 		platGroup.setDepth(999); 
 		this.physics.add.collider(this.player,platGroup);
 
-		this.physics.world.setBounds(0, 0, 8000, 800);
+		this.physics.world.setBounds(0, 0, 8000, 1200);
 
 
-		this.cameras.main.setBounds(0, 0, 8000, 800);
+		this.cameras.main.setBounds(0, 0, 8000, 1200);
 		this.cameras.main.setZoom(3);
   		this.cameras.main.startFollow(this.player, true,true);
   		//this.cameras.main.setDeadzone(SCREEN_WIDTH/2 - 400, SCREEN_HEIGHT/2+400 ,150, 300);
