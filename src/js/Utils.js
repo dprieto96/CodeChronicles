@@ -2,6 +2,7 @@
 export default class Utils{
     constructor(){
         this.mobile=false;
+        this.sound=true;
     }
     
     static getImg(assetName)   { return IMAGES_PATH + assetName + ".png";  };
@@ -57,6 +58,14 @@ export default class Utils{
     static setisMobile(mode){
          this.mobile=mode;
     }
+
+    static isMute() {
+        return this.sound;
+       }
+ 
+     static setisMute(mode){
+          this.sound=mode;
+     }
 
     static createKeyBindings(obj){
         obj.a  = obj.input.keyboard.addKey("A");

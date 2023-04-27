@@ -18,6 +18,10 @@ export default class ProgressScene extends Phaser.Scene {
 		this.load.atlas('verticalAtlas', Utils.getImgV("templates"), Utils.getJson("verticalLevelElements"));
 
         //CARGAS MENU
+        this.load.image('mute', 'assets/img/mute.png'); 
+        this.load.image('sound', 'assets/img/sound.png');
+        this.load.image('pc', 'assets/img/pc.png');
+        this.load.image('mobile', 'assets/img/mobile.png');
         this.load.image('icon', 'assets/img/web/CodeChronicles.png');
         this.load.image('created', 'assets/img/web/Game-created-by.png');
         this.load.image('git','assets/img/git.png');

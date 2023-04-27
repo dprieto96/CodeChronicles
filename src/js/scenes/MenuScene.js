@@ -23,6 +23,8 @@ export default class MenuScene extends Phaser.Scene {
 
     preload(){
 
+        this.load.image('mute', 'assets/img/mute.png'); 
+        this.load.image('sound', 'assets/img/sound.png');
         this.load.image('pc', 'assets/img/pc.png');
         this.load.image('mobile', 'assets/img/mobile.png');
         this.load.image('icon', 'assets/img/web/CodeChronicles.png');
@@ -34,6 +36,21 @@ export default class MenuScene extends Phaser.Scene {
 
     create(){
         this.scale=0.3;
+
+        
+
+        //BUTTON MUTE
+        this.buttonMUTE = this.add.image(100,100,'mute');
+        this.buttonMUTE.setScale(this.scale-0.15);
+        this.buttonMUTE.setInteractive();
+        this.buttonMUTE.on('pointerup', function () {Utils.setisMute(true)}, this);
+
+        //BUTTON SOUND
+        this.buttonSOUND = this.add.image(100,100,'sound');
+        this.buttonSOUND.setScale(this.scale-0.15);
+        this.buttonSOUND.setInteractive();
+        this.buttonSOUND.setVisible(false)
+        this.buttonSOUND.on('pointerup', function () {Utils.setisMute(false)}, this);
 
 
       //BUTTON MOBILE
@@ -177,8 +194,14 @@ export default class MenuScene extends Phaser.Scene {
     update(){
         super.update();
 
+
         if(Utils.isMobile())this.buttonPCMODE.setVisible(true);
         else{this.buttonPCMODE.setVisible(false);}
+
+        if(Utils.isMute())this.buttonSOUND.setVisible(true);
+        else{this.buttonSOUND.setVisible(false);}
+
+
        
     }
 
