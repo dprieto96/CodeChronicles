@@ -34,10 +34,12 @@ export default class Astronaut extends Player{
     this.scene.physics.world.enable(this);   
     this.setDepth(999); //prioridad de capa
     this.setCollideWorldBounds(true);
-    this.body.setCircle(23,8,13);
+    //this.body.setCircle(23,8,13);
+	this.body.setSize(30, 55);
+
   }
 
-	handleMovement(t, dt){
+	handleMovement(jostick){
 		super.handleMovement();
         if(this.scene.introDone){
 
@@ -51,7 +53,7 @@ export default class Astronaut extends Player{
 	        }
             
             //velocidad vertical:
-            if(this.scene.w.isDown){ 
+            if(this.scene.w.isDown || jostick==='UP'){ 
             	if(!this.isJumping){
                 	this.movement = "up";
                 	this.body.velocity.y = this.jumpVelocity;
@@ -61,18 +63,18 @@ export default class Astronaut extends Player{
           
       
 
-            if(this.scene.a.isDown && this.scene.d.isDown){
+            if((this.scene.a.isDown && this.scene.d.isDown)||(jostick==='RIGHT' && jostick==='LEFT')){
             	if(!this.isJumping) this.movement = "standing";
             	this.speedX = 0;
             }
 			else {
             	//velocidad horizontal:
-	            if(this.scene.a.isDown){
+	            if(this.scene.a.isDown || jostick==='LEFT'){
 	            	if(!this.isJumping)this.movement = "running";
 	                this.hDirection = "Left";
 	                this.speedX = (-ASTRONAUT_SPEED * GRAVITIES[this.scene.planet] );
 	            }
-	            else if(this.scene.d.isDown){
+	            else if(this.scene.d.isDown ||jostick==='RIGHT'){
 	            	if(!this.isJumping) this.movement = "running";
 	                this.hDirection = "Right";
 	                this.speedX = (ASTRONAUT_SPEED * GRAVITIES[this.scene.planet]);
@@ -86,6 +88,10 @@ export default class Astronaut extends Player{
             this.body.velocity.x = this.speedX;
             this.play(this.movement+this.hDirection,true);
         }
+
+
+		
+
         else { 
 			//initial running cutscene:
 			this.play("runningRight",true);
@@ -96,5 +102,7 @@ export default class Astronaut extends Player{
 			//this.play(""+this.movement+this.hDirection,true);
 		}
     }
+
+	
 
 }

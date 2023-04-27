@@ -49,7 +49,7 @@ export default class NivelHorizontal extends Nivel {
 	create() {
 		super.create();
 
-
+		if (Utils.isMobile()){
 		this.joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
 			x: 200,
 			y: SCREEN_HEIGHT-200,
@@ -64,6 +64,7 @@ export default class NivelHorizontal extends Nivel {
 	 	this.joyStick.setScrollFactor(0);
 	 	this.joyStick.base.setDepth(999);
 	 	this.joyStick.thumb.setDepth(999);
+	}
 
 	 	
 		this.physics.world.gravity.y = GRAVITY_FACTOR * this.planetSettings["gravity"] ;
@@ -123,29 +124,35 @@ export default class NivelHorizontal extends Nivel {
 	}
 
 	jostickMovement(){
+		this.jostickmovement='null';
 
-		if (this.joystickCursors.up.isDown){
-			this.jostickmovement='UP';
+		if (Utils.isMobile()){
+			if (this.joystickCursors.up.isDown){
+				this.jostickmovement='UP';
 
-		}
+			}
 
-		if (this.joystickCursors.down.isDown){
-			this.jostickmovement='DOWN';
-			
-		}
+			else if (this.joystickCursors.down.isDown){
+				this.jostickmovement='DOWN';
+				
+			}
 
-		if (this.joystickCursors.left.isDown){
-			this.jostickmovement='LEFT';
-		}
+			else if (this.joystickCursors.left.isDown){
+				this.jostickmovement='LEFT';
+			}
 
-		if (this.joystickCursors.right.isDown){
-			this.jostickmovement='RIGHT';
-			
+			else if (this.joystickCursors.right.isDown){
+				this.jostickmovement='RIGHT';
+				
+			}
+
+			else this.jostickmovement='null';
 		}
 
 		console.log('EL JOSCTICK ES: '+this.jostickmovement);
-		this.player.jostickMovement(this.jostickmovement);
-		this.jostickmovement='null';
+		//this.player.jostickMovement(this.jostickmovement);
+		//this.jostickmovement='null';
+		return this.jostickmovement;
 
 	}
 	/**
@@ -163,17 +170,19 @@ export default class NivelHorizontal extends Nivel {
 		if(this.gameState==='paused')this.musicBG.resume();
 		console.log('ESTADO: '+this.gameState);
 
-		this.player.handleMovement(); 
+		this.player.handleMovement(this.jostickMovement()); 
+
 		if(!this.introDone){ 	
 			this.bg.launch();
-			this.joyStick.setVisible(false);
+			//this.joyStick.setVisible(false);
 			this.pauseButton.setVisible(false);
 			this.cameras.main.zoomTo(1.5, 2500);
 		}
 		else{
 		
 			this.pauseButton.setVisible(true);
-			this.joyStick.setVisible(true);
+			//this.joyStick.setVisible(true);
+			//this.jostickMovement();
 		}
 		
 
