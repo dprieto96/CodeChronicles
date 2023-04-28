@@ -6,10 +6,11 @@ export default class VerticalBackground extends Background{
         this.framesToReachSpace = 300;
 
         // Carga la imagen 'planet' usando 'load'
-        this.scene.load.image(this.scene.planet,      Utils.getImgV(this.scene.planet));
+        this.scene.load.image(this.scene.planet + "V",      Utils.getImgV(this.scene.planet));
         this.scene.load.image(this.scene.destination, Utils.getImgV(this.scene.destination));
         this.decorations = [];
         this.particles   = [];
+        this.mode = "V";
     }
 
     create(){
