@@ -5,8 +5,9 @@ export default class HorizontalBackground extends Background{
         super(scene);
 
         // Carga la imagen 'planet' usando 'load'
-        this.scene.load.image(this.scene.planet, Utils.getImgV(this.scene.planet));
+        this.scene.load.image(this.scene.planet, Utils.getImgH(this.scene.planet));
         this.scene.load.image('platform', Utils.getImgH('moonPlatforms'));
+        console.log(Utils.getImgH(this.scene.planet));
     }
 
     create(){
