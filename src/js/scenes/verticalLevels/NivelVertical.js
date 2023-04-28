@@ -45,7 +45,7 @@ export default class NivelVertical extends Nivel {
 
 
 		//this.load.image("bullet","assets\img\verticalLevels\bulletold.png");
-		this.load.image('button', 'assets/img/button.png');
+		this.load.image('pause', 'assets/img/pause.png');
 		this.load.audio('bgmusic', 'assets/music/bgm/bgVertical.mp3');
 
 
@@ -66,11 +66,15 @@ export default class NivelVertical extends Nivel {
 	create() {
 		super.create();
 
-		this.scene.moveBelow(this.key,'PauseScene');
-		this.scene.moveBelow(this.key,'gameOverScene');
+		this.game.sound.stopAll();
+
+		this.scene.bringToTop('PauseScene');
+		this.scene.bringToTop('gameOverScene');
+		//this.scene.moveBelow(this.key,'PauseScene');
+		//this.scene.moveBelow(this.key,'gameOverScene');
 
 		if (Utils.isMobile()){
-		console.log('ESTADO MOBILE: '+Utils.isMobile());
+		//console.log('ESTADO MOBILE: '+Utils.isMobile());
 		this.dispara=false;
 		this.rect = this.add.rectangle(
 			this.game.config.width-200 ,  // X central
@@ -102,9 +106,8 @@ export default class NivelVertical extends Nivel {
 	  this.jostickmovement='null';
 	  }
 
-	 
-		
-		this.musicBG=this.sound.add('bgmusic');
+	 // console.log('MUTE ESTA: '+Utils.isMute());
+		if(!Utils.isMute())this.musicBG=this.sound.add('bgmusic');
 		
 
 	
@@ -112,19 +115,19 @@ export default class NivelVertical extends Nivel {
 		this.clave=this.key;
 		//this.gameState = 'running';
 
-		this.pauseButton = this.add.image(SCREEN_MAX_WIDTH+80,SCREEN_MAX_HEIGHT+100,'button').setInteractive();
+		this.pauseButton = this.add.image(SCREEN_MAX_WIDTH+80,SCREEN_MAX_HEIGHT+100,'pause').setInteractive();
 			this.pauseButton.setDepth(999);
 			this.pauseButton.setScale(0.15);
 			//this.buttonSTART.setInteractive();
 			this.pauseButton.inputEnabled = true;
-	  		this.pauseText=this.add.text(SCREEN_MAX_WIDTH+38,SCREEN_MAX_HEIGHT+87,'PAUSE',{ fontStyle: 'strong', font: '25px Arial', fill: '#ffffff'});
-			this.pauseText.setDepth(1000);
+	  		//this.pauseText=this.add.text(SCREEN_MAX_WIDTH+38,SCREEN_MAX_HEIGHT+87,'PAUSE',{ fontStyle: 'strong', font: '25px Arial', fill: '#ffffff'});
+			//this.pauseText.setDepth(1000);
 			this.gameState = 'running';
     
 			
-			// agrega un evento al botón para cambiar el estado del juego
+
 			this.pauseButton.on('pointerdown', function () {
-				this.musicBG.pause();
+				if(!Utils.isMute())this.musicBG.pause();
 				this.scene.pause(this.key);
 				this.scene.launch('PauseScene',{clave:this.clave});				
 				this.gameState = 'paused';
@@ -274,7 +277,7 @@ export default class NivelVertical extends Nivel {
 		else if (this.joystickCursors.right.isDown){ txt = 'RIGHT'; jt = true; }
 		this.jostickmovement = txt;
 
-		console.log('EL JOSCTICK ES: '+this.jostickmovement);
+		//console.log('EL JOSCTICK ES: '+this.jostickmovement);
 		
 		if (jt) { this.player.jostickMovement(this.jostickmovement); }
 		else    { this.player.handleMovement(); }
@@ -286,14 +289,14 @@ export default class NivelVertical extends Nivel {
 		super.update();	
 		
 		if(this.numLifes<0){
-			this.musicBG.pause();
+			if(!Utils.isMute())this.musicBG.pause();
 			this.scene.launch('gameOverScene',{clave:this.clave});
 			this.scene.pause(this.key);			
 			this.gameState = 'paused';
 		}
 
 			
-		if(this.gameState==='paused')this.musicBG.resume();
+		if(this.gameState==='paused' && !Utils.isMute())this.musicBG.resume();
 		
 
 		if(!this.introDone) { 
@@ -304,7 +307,7 @@ export default class NivelVertical extends Nivel {
 			this.bulletIcon.setVisible(false);
 			this.lifesText.setVisible(false);
 			this.scoreText.setVisible(false);
-			this.musicBG.play();
+			if(!Utils.isMute())this.musicBG.play();
 		 }
 
 		else {
@@ -353,7 +356,7 @@ export default class NivelVertical extends Nivel {
 				this.bg.endOfGame();
 			}
 			else{ 
-				console.log('ENTRA');
+				//console.log('ENTRA');
 				this.finishLevel(); 
 				}
 		}

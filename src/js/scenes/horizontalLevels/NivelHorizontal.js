@@ -30,7 +30,7 @@ export default class NivelHorizontal extends Nivel {
 		let url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js';
    	    this.load.plugin('rexvirtualjoystickplugin', url, true);
 
-   	    this.load.image('button', 'assets/img/button.png');
+   	    this.load.image('pause', 'assets/img/pause.png');
 
 		this.planet = this.st["planet"];
 		this.bg 	= new HorizontalBackground(this);
@@ -48,6 +48,11 @@ export default class NivelHorizontal extends Nivel {
 	*/
 	create() {
 		super.create();
+
+		this.game.sound.stopAll();
+
+		this.scene.bringToTop('PauseScene');
+		//this.scene.moveBelow(this.key,'gameOverScene');TODAVIA NO IMPLEMENTADO
 
 		if (Utils.isMobile()){
 		this.joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
@@ -104,22 +109,26 @@ export default class NivelHorizontal extends Nivel {
   		this.cameras.main.startFollow(this.player, true,true);
   		//this.cameras.main.setDeadzone(SCREEN_WIDTH/2 - 400, SCREEN_HEIGHT/2+400 ,150, 300);
 
-  		this.pauseButton = this.add.image(0,0,'button').setInteractive();
+  		this.pauseButton = this.add.image(0,0,'pause').setInteractive();
 		this.pauseButton.setDepth(999);
 		this.pauseButton.setScale(0.1);
 		//this.buttonSTART.setInteractive();
 		this.pauseButton.inputEnabled = true;
 		this.gameState = 'running';
 
+
+
 		this.pauseButton.on('pointerup', function () {
 				//this.musicBG.pause();
 				this.scene.pause(this.key);
-				this.scene.launch('PauseScene',{clave:this.clave});				
+				this.scene.launch('PauseScene',{clave:this.key});				
 				this.gameState = 'paused';
+				
 			  }, this);
 
 		this.pauseButton.setScrollFactor(0);
 		this.pauseButton.setPosition(SCREEN_WIDTH - 200, SCREEN_HEIGHT/2  - 220);
+
 
 	}
 
@@ -149,7 +158,7 @@ export default class NivelHorizontal extends Nivel {
 			else this.jostickmovement='null';
 		}
 
-		console.log('EL JOSCTICK ES: '+this.jostickmovement);
+		//console.log('EL JOSCTICK ES: '+this.jostickmovement);
 		//this.player.jostickMovement(this.jostickmovement);
 		//this.jostickmovement='null';
 		return this.jostickmovement;
@@ -167,8 +176,8 @@ export default class NivelHorizontal extends Nivel {
 		//this.player.anims.get("standingLeft").setFrameRate(IDLE_FRAME_RATE * GRAVITIES[this.planet]);
 		//this.player.anims.get("runningRight").setFrameRate(MOVI_FRAME_RATE * GRAVITIES[this.planet]);
 		//this.player.anims.get("runningLeft").setFrameRate(MOVI_FRAME_RATE * GRAVITIES[this.planet]);
-		if(this.gameState==='paused')this.musicBG.resume();
-		console.log('ESTADO: '+this.gameState);
+		//if(this.gameState==='paused')this.musicBG.resume();
+		//console.log('ESTADO: '+this.gameState);
 
 		this.player.handleMovement(this.jostickMovement()); 
 

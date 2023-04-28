@@ -22,7 +22,7 @@ header{
 
 header img {
   height: 100%; /* establece la altura de la imagen al 100% de la altura del encabezado */
-  width: 45%; /* hace que el ancho de la imagen se ajuste automáticamente proporcionalmente al nuevo tamaño de la altura */
+  width: 30%; /* hace que el ancho de la imagen se ajuste automáticamente proporcionalmente al nuevo tamaño de la altura */
 }
 
 button{

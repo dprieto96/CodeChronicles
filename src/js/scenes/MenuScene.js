@@ -54,13 +54,13 @@ export default class MenuScene extends Phaser.Scene {
 
 
       //BUTTON MOBILE
-        this.buttonMOBILE = this.add.image(SCREEN_MAX_WIDTH,100,'mobile');
+        this.buttonMOBILE = this.add.image(SCREEN_MAX_WIDTH+90,100,'mobile');
         this.buttonMOBILE.setScale(this.scale-0.15);
         this.buttonMOBILE.setInteractive();
         this.buttonMOBILE.on('pointerup', function () {Utils.setisMobile(true)}, this);
 
         //BUTTON PC
-        this.buttonPCMODE = this.add.image(SCREEN_MAX_WIDTH,108,'pc');
+        this.buttonPCMODE = this.add.image(SCREEN_MAX_WIDTH+90,108,'pc');
         this.buttonPCMODE.setScale(this.scale-0.09);
         this.buttonPCMODE.setVisible(false);
         this.buttonPCMODE.setInteractive();
@@ -68,9 +68,9 @@ export default class MenuScene extends Phaser.Scene {
         
 
       //BUTTON FULL-SCREEN
-        this.buttonSCREEN = this.add.image(SCREEN_MAX_WIDTH+100,100,'screen');
+        /*this.buttonSCREEN = this.add.image(SCREEN_MAX_WIDTH+100,100,'screen');
         this.buttonSCREEN.setScale(this.scale-0.2);
-        this.buttonSCREEN.setInteractive();
+        this.buttonSCREEN.setInteractive();*/
     
 
         //BUTTON START
@@ -182,10 +182,10 @@ export default class MenuScene extends Phaser.Scene {
 
           
           //console.log("LA VARIABLE ES: "+ this.game.scale.isFullscreen);
-          this.buttonSCREEN.on('pointerup', function ()  {
+        /*  this.buttonSCREEN.on('pointerup', function ()  {
             if (this.game.scale.isFullscreen)this.game.scale.startFullscreen();
             else this.game.scale.startFullscreen();
-        }, this);
+        }, this);*/
 
         
 

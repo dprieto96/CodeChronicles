@@ -40,7 +40,7 @@ export default class ProgressScene extends Phaser.Scene {
 		
         /*this.scene.load.spritesheet(this.graphicName, Utils.getImgH(this.graphicName), {
 			frameWidth: SPRITE_WIDTH,
-			frameHeight: SPRITE_HEIGHT
+			frameHeight: SPRITE_HEIGHTsss
 		});
 
         /*this.planetImg = this.scene.add.image(0, VERTICAL_LEVELS_HEIGHT, this.scene.planet).setOrigin(0, 1);
@@ -52,7 +52,7 @@ export default class ProgressScene extends Phaser.Scene {
         this.load.image('controls', 'assets/img/controls.png');
         this.load.image('arrow', 'assets/img/arrow.png');
 
-
+        this.load.image('pause', 'assets/img/pause.png');
 
 
         this.progressBar = this.add.graphics();

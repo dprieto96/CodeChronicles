@@ -1,5 +1,6 @@
 TO DO:
--Preguntar por lo de la pantalla completa.
+(HAY CONFLICTOS CON EL TAMAÑO MÁX Y MIN, AL CENTRAR TODO EL OBJETO LO DESPLAZA)
+(DESCARTADO)-Preguntar por lo de la pantalla completa.
 (OK)-Decorar botón de pausa.
 -Añadir sonidos.
 
@@ -10,7 +11,7 @@ TO DO:
 (OK)-Añadir alguna forma de disparar en móvil.
 (OK)-Animación en el joystick.
 
--Arreglar música.
+(OK)-Arreglar música.
 -Arreglar despegue en marte y venus.
 
 -Añadir cinemática de inicio.
@@ -19,8 +20,9 @@ TO DO:
 (OK)-Modo mobile y desktop
 (OK)-Prioridad pausa y game over scene
 (OK)-Tocar pantalla para salir de pausa
+-Hacer una última revisiónde los preloads
 ==========================================
 
--Arreglar la errata del html
+(OK)-Arreglar la errata del html
 -Revisar decoraciones.
 -Ajustar densidad de asteroides.

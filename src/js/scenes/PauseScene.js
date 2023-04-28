@@ -35,7 +35,7 @@ export default class PauseScene extends Phaser.Scene{
         this.scale=0.03;
         
 
-        //BUTTON MUTE
+        /*//BUTTON MUTE
         this.buttonMUTE = this.add.image(100,100,'mute');
         this.buttonMUTE.setScale(this.scale-0.15);
         this.buttonMUTE.setInteractive();
@@ -46,7 +46,7 @@ export default class PauseScene extends Phaser.Scene{
         this.buttonSOUND.setScale(this.scale-0.15);
         this.buttonSOUND.setInteractive();
         this.buttonSOUND.setVisible(false)
-        this.buttonSOUND.on('pointerup', function () {Utils.setisMute(false)}, this);
+        this.buttonSOUND.on('pointerup', function () {Utils.setisMute(false)}, this);*/
         
         
         //BUTTON CROSS
@@ -99,8 +99,8 @@ export default class PauseScene extends Phaser.Scene{
     update(){
         super.update();
 
-        if(Utils.isMute())this.buttonSOUND.setVisible(true);
-        else{this.buttonSOUND.setVisible(false);}
+       /* if(Utils.isMute())this.buttonSOUND.setVisible(true);
+        else{this.buttonSOUND.setVisible(false);}*/
     }
 
 
