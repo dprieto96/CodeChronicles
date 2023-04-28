@@ -41,6 +41,7 @@ export default class Astronaut extends Player{
 
 	handleMovement(jostick){
 		super.handleMovement();
+		this.factor = 0.6;
         if(this.scene.introDone){
 
             if( this.body.touching.down){
@@ -69,15 +70,16 @@ export default class Astronaut extends Player{
             }
 			else {
             	//velocidad horizontal:
+            	if(this.isJumping) this.factor = GRAVITIES[this.scene.planet];
 	            if(this.scene.a.isDown || jostick==='LEFT'){
 	            	if(!this.isJumping)this.movement = "running";
 	                this.hDirection = "Left";
-	                this.speedX = (-ASTRONAUT_SPEED * GRAVITIES[this.scene.planet] );
+	                this.speedX = (-ASTRONAUT_SPEED * this.factor );
 	            }
 	            else if(this.scene.d.isDown ||jostick==='RIGHT'){
 	            	if(!this.isJumping) this.movement = "running";
 	                this.hDirection = "Right";
-	                this.speedX = (ASTRONAUT_SPEED * GRAVITIES[this.scene.planet]);
+	                this.speedX = (ASTRONAUT_SPEED * this.factor);
 	            }
 	            else{
 	            	if(!this.isJumping) this.movement = "standing";
@@ -102,4 +104,7 @@ export default class Astronaut extends Player{
 			//this.play(""+this.movement+this.hDirection,true);
 		}
     }
+
+	
+
 }
