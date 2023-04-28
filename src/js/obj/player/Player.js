@@ -30,4 +30,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.setCollideWorldBounds(true);
     //this.body.setCircle(20,20,20);
   }
+
+	setVelocity(x,y,step){
+		super.setVelocity(x,y,step);
+		this.speedX = x;
+		this.speedY = y;
+	}
 }
