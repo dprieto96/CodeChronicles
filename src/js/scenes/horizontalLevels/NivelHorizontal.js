@@ -11,9 +11,10 @@ export default class NivelHorizontal extends Nivel {
 	 * Escena principal.
 	 * @extends Phaser.Scene
 	 */
-	constructor(ctrl) {
+	constructor(ctrl,secondRound) {
 		super("nivelHorizontal"+Utils.digitsToStr(ctrl.getCurrentHId(),2),ctrl);
 		this.introDone 	= false;
+		this.secondRound = secondRound;
 	}
 
 	continuar(){
@@ -34,7 +35,7 @@ export default class NivelHorizontal extends Nivel {
 
 		this.planet = this.st["planet"];
 		this.bg 	= new HorizontalBackground(this);
-		this.player = new Astronaut(this,0,1150);
+		this.player = new Astronaut(this,0,this.st["initPos"]);
 
 		this.gameState='running';
 	}
@@ -76,14 +77,14 @@ export default class NivelHorizontal extends Nivel {
 		this.player.create();
 		this.bg.create();
 		var platGroup = this.physics.add.staticGroup();
+		var stConfig = this.st["decorations"];
 		var st = this.st["decorations"]["platform"];
 		let posx = 10;
-		let posy = 1190;
 
 		// Plataformas del suelo
-		for(let i = 0; i < 20; i++)
+		for(let i = 0; i < stConfig["floor"]["nPlats"]; i++)
 		{
-			platGroup.create(posx, posy, 'platform');
+			platGroup.create(posx, stConfig["floor"]["posy"], 'platform');
 			posx += 87;
 		}
 		
@@ -101,10 +102,8 @@ export default class NivelHorizontal extends Nivel {
 		platGroup.setDepth(999); 
 		this.physics.add.collider(this.player,platGroup);
 
-		this.physics.world.setBounds(0, 0, 8000, 1200);
-
-
-		this.cameras.main.setBounds(0, 0, 8000, 1200);
+		this.physics.world.setBounds(0, 0, this.st["bounds"]["x"], this.st["bounds"]["y"]);
+		this.cameras.main.setBounds(0, 0, this.st["bounds"]["x"], this.st["bounds"]["y"]);
 		this.cameras.main.setZoom(3);
   		this.cameras.main.startFollow(this.player, true,true);
   		//this.cameras.main.setDeadzone(SCREEN_WIDTH/2 - 400, SCREEN_HEIGHT/2+400 ,150, 300);

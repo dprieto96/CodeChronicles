@@ -71,7 +71,11 @@
 
     "nivelHorizontal00":{
         "planet": "MARS",
+	"bounds": {"x": 1750, "y":1200},
+	"initPos": 1150,
         "decorations": {
+	    "floor":
+                { "posy": 1190, "nPlats": 21},
             "platform": [
                 { "sprite": "moonPlatforms.png", "x": 350, "y":  1090},
                 { "sprite": "moonPlatforms.png", "x": 690, "y":  1090},
@@ -124,7 +128,11 @@
 
     "nivelHorizontal01":{
         "planet": "VENUS",
+	"initPos": 750,
+	"bounds": {"x": 1200, "y":810},
 	"decorations": {
+	    "floor":
+                { "posy": 800, "nPlats": 21},
             "platform": [
                 { "sprite": "moonPlatforms.png", "x": 350, "y":  690},
                 { "sprite": "moonPlatforms.png", "x": 690, "y":  690},
@@ -140,17 +148,48 @@
 
     "nivelHorizontal02":{
         "planet": "MOON",
+	"bounds": {"x": 1750, "y":2000},
+	"initPos": 1150,
 	"decorations": {
+	    "floor":
+                { "posy": 1190, "nPlats": 21},
             "platform": [
-                { "sprite": "moonPlatforms.png", "x": 350, "y":  690},
-                { "sprite": "moonPlatforms.png", "x": 690, "y":  690},
-                { "sprite": "moonPlatforms.png", "x": 775, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 1620, "y":  1050},
+                { "sprite": "moonPlatforms.png", "x": 1450, "y":  850},
+		{ "sprite": "moonPlatforms.png", "x": 1365, "y":  850},
+		{ "sprite": "moonPlatforms.png", "x": 1280, "y":  850},
+		{ "sprite": "moonPlatforms.png", "x": 1195, "y":  850},
+		{ "sprite": "moonPlatforms.png", "x": 270, "y":  850},
+		{ "sprite": "moonPlatforms.png", "x": 185, "y":  850},
+		{ "sprite": "moonPlatforms.png", "x": 100, "y":  850},
+                { "sprite": "moonPlatforms.png", "x": 1700, "y":  830},
+		{ "sprite": "moonPlatforms.png", "x": 690, "y":  830},
+		{ "sprite": "moonPlatforms.png", "x": 605, "y":  830},
+		{ "sprite": "moonPlatforms.png", "x": 520, "y":  830},
                 { "sprite": "moonPlatforms.png", "x": 860, "y":  690},
-                { "sprite": "moonPlatforms.png", "x": 1795, "y":  690},
-                { "sprite": "moonPlatforms.png", "x": 120, "y":  610},
-                { "sprite": "moonPlatforms.png", "x": 550, "y":  0},
-                { "sprite": "moonPlatforms.png", "x": 640, "y":  0},
-                { "sprite": "moonPlatforms.png", "x": 730, "y":  0}
+                { "sprite": "moonPlatforms.png", "x": 775, "y":  690},
+                { "sprite": "moonPlatforms.png", "x": 690, "y":  690},
+		{ "sprite": "moonPlatforms.png", "x": 10, "y":  630},
+		{ "sprite": "moonPlatforms.png", "x": 95, "y":  630},
+		{ "sprite": "moonPlatforms.png", "x": 1620, "y":  610},
+		{ "sprite": "moonPlatforms.png", "x": 1365, "y":  570},
+                { "sprite": "moonPlatforms.png", "x": 1280, "y":  570},
+		{ "sprite": "moonPlatforms.png", "x": 1195, "y":  570},
+		{ "sprite": "moonPlatforms.png", "x": 210, "y":  430},
+		{ "sprite": "moonPlatforms.png", "x": 295, "y":  430},
+		{ "sprite": "moonPlatforms.png", "x": 380, "y":  430},
+		{ "sprite": "moonPlatforms.png", "x": 1175, "y":  370},
+		{ "sprite": "moonPlatforms.png", "x": 1090, "y":  370},
+		{ "sprite": "moonPlatforms.png", "x": 1005, "y":  370},
+		{ "sprite": "moonPlatforms.png", "x": 210, "y":  230},
+		{ "sprite": "moonPlatforms.png", "x": 10, "y":  150},
+		{ "sprite": "moonPlatforms.png", "x": 85, "y":  150},
+		{ "sprite": "moonPlatforms.png", "x": 1320, "y":  150},
+		{ "sprite": "moonPlatforms.png", "x": 1365, "y":  150},
+		{ "sprite": "moonPlatforms.png", "x": 1450, "y":  150},
+		{ "sprite": "moonPlatforms.png", "x": 1535, "y":  150},
+		{ "sprite": "moonPlatforms.png", "x": 1620, "y":  150}
+		
             ]}
     }
 }
