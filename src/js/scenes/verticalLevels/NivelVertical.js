@@ -10,7 +10,6 @@ import Spaceship from '../../obj/player/Spaceship.js';
 import Asteroid from "../../obj/Asteroid.js";
 import Bullet from "../../obj/player/Bullet.js"
 
-
 export default class NivelVertical extends Nivel {
 	/**
 	 * Escena principal.
@@ -106,26 +105,17 @@ export default class NivelVertical extends Nivel {
 	  this.jostickmovement='null';
 	  }
 
-	 // console.log('MUTE ESTA: '+Utils.isMute());
 		if(!Utils.isMute())this.musicBG=this.sound.add('bgmusic');
 		
-
-	
-		this.scaleProgress=3.5;//AÑADIR ESCALADO BARRA PROGRASO
+		this.scaleProgress=3.5;
 		this.clave=this.key;
-		//this.gameState = 'running';
 
 		this.pauseButton = this.add.image(SCREEN_MAX_WIDTH+80,SCREEN_MAX_HEIGHT+100,'pause').setInteractive();
 			this.pauseButton.setDepth(999);
 			this.pauseButton.setScale(0.15);
-			//this.buttonSTART.setInteractive();
 			this.pauseButton.inputEnabled = true;
-	  		//this.pauseText=this.add.text(SCREEN_MAX_WIDTH+38,SCREEN_MAX_HEIGHT+87,'PAUSE',{ fontStyle: 'strong', font: '25px Arial', fill: '#ffffff'});
-			//this.pauseText.setDepth(1000);
 			this.gameState = 'running';
     
-			
-
 			this.pauseButton.on('pointerdown', function () {
 				if(!Utils.isMute())this.musicBG.pause();
 				this.scene.pause(this.key);
@@ -133,8 +123,6 @@ export default class NivelVertical extends Nivel {
 				this.gameState = 'paused';
 			  }, this);
 
-
-		//this.numBullets=this.bullets;
 		this.scoreText = this.add.text(this.sys.game.canvas.width / 2 +20, 20, 'X' + this.numBullets, { fontStyle: 'strong', font: '30px Arial', fill: '#ffffff'});
 		this.scoreText.setDepth(1000);
 
@@ -144,6 +132,7 @@ export default class NivelVertical extends Nivel {
 
 		this.bg.create();
 		this.player.create();	
+
 		//bullet icon
 		this.bulletIcon=this.add.sprite(5, 10, 'verticalAtlas', 'shoot00');
 		this.bulletIcon.x=SCREEN_WIDTH /2;
@@ -176,12 +165,10 @@ export default class NivelVertical extends Nivel {
 		this.enemiesGroup = this.add.group();
 		this.physics.world.gravity.y = 0;
 		
-
-        //this.numRocks = st["numAsteroids"];
         this.density  = this.st["density"];
         this.thrownAsteroids = 0;
 		this.distanceReached = 0;
-
+		this.musicStarted = false;
 
 		this.cursors = this.input.keyboard.createCursorKeys();
 		this.bulletsGroup = new Bullet(this.physics.world, this);
@@ -189,7 +176,6 @@ export default class NivelVertical extends Nivel {
 
 		this.physics.world.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-		//this.physics.add.collider(this.player,this.enemiesGroup);
 		this.physics.add.collider(this.enemiesGroup,this.enemiesGroup);
 		this.physics.add.collider(this.bulletsGroup, this.enemiesGroup, this.hitEnemies, null, this);
 		this.physics.add.collider(this.enemiesGroup, this.player, this.hitPlayer, null, this);
@@ -204,9 +190,6 @@ export default class NivelVertical extends Nivel {
 		// ajusta los vectores de velocidad de los objetos
 		this.player.speedX = Math.cos(this.angle) * this.player.speed;
 		this.player.speedY = Math.sin(this.angle) * this.player.speed;
-		//this.enemiesGroup.setVelocity(Math.cos(this.angle + Math.PI) * this.enemiesGroup.speed,Math.sin(this.angle + Math.PI) * this.enemiesGroup.speed );
-		/*this.enemiesGroup.velocity.x = Math.cos(this.angle + Math.PI) * this.enemiesGroup.speed;
-		this.enemiesGroup.velocity.y = Math.sin(this.angle + Math.PI) * this.enemiesGroup.speed;*/
 	  }
 
 	generateEnemy() {
@@ -245,7 +228,6 @@ export default class NivelVertical extends Nivel {
 	fire(){ this.bulletsGroup.newItem(); }
 
 	hitEnemies(enemy, bullet) {
-		//this.pauseButton.setVisible(false);
 		bullet.setVisible(false);
         bullet.setActive(false);
         bullet.destroy();
@@ -276,8 +258,6 @@ export default class NivelVertical extends Nivel {
 		if (this.joystickCursors.left.isDown) 	   { txt = 'LEFT';  jt = true; }
 		else if (this.joystickCursors.right.isDown){ txt = 'RIGHT'; jt = true; }
 		this.jostickmovement = txt;
-
-		//console.log('EL JOSCTICK ES: '+this.jostickmovement);
 		
 		if (jt) { this.player.jostickMovement(this.jostickmovement); }
 		else    { this.player.handleMovement(); }
@@ -295,42 +275,28 @@ export default class NivelVertical extends Nivel {
 			this.gameState = 'paused';
 		}
 
-			
 		if(this.gameState==='paused' && !Utils.isMute())this.musicBG.resume();
 		
-
 		if(!this.introDone) { 
 			this.bg.launch();
-			this.pBar.setVisible(false);
-			this.icon.setVisible(false);
-			this.lifeIcon.setVisible(false);
-			this.bulletIcon.setVisible(false);
-			this.lifesText.setVisible(false);
-			this.scoreText.setVisible(false);
-			if(!Utils.isMute())this.musicBG.play();
-		 }
-
+			this.setVisibility(false);
+		}
 		else {
-			//this.buttonSTART.setVisible(true);
 			this.bg.update();
-			this.pBar.setVisible(true);
-			this.icon.setVisible(true);
-			this.lifeIcon.setVisible(true);
-			this.bulletIcon.setVisible(true);
-			this.lifesText.setVisible(true);
-			this.scoreText.setVisible(true);
-
-						
+			this.setVisibility(true);
 			this.generateEnemy();
+			if(!Utils.isMute() && !this.musicStarted) {
+				this.musicBG.play();
+				this.musicStarted = true;
+			}
 			
-			if(this.numLifes>=0)this.lifesText.setText('X' + this.numLifes);
+			if(this.numLifes>=0) this.lifesText.setText('X' + this.numLifes);
 
 			if (!this.checkEndOfGame() || this.enemiesGroup.getLength() > 0) {
 				//progress bar logic:
 				if (this.icon.y > 10){
 					this.icon.y = 10 + this.pBar.height - Math.floor((this.distanceReached / this.st["levelLength"])*this.pBar.height);
 					this.icon.y *=this.scaleProgress;
-					
 				}
 	
 				//check space key to shoot bullet:
@@ -340,26 +306,29 @@ export default class NivelVertical extends Nivel {
 					this.bullets--;
 					this.scoreText.setText('X' + this.numBullets);
 				}
-				if (this.cursors.up.isDown){
-					
-				}
+				if (this.cursors.up.isDown){}
 
-				if (Utils.isMobile())this.handleMovement();
+				if (Utils.isMobile()) this.handleMovement();
 				else this.player.handleMovement();
 				
 				this.distanceReached++;
 			}
-
 			else if(!this.levelCleared){ 
 				this.player.setVelocity(0,0);
 				this.player.play("DOWN",true);
 				this.bg.endOfGame();
 			}
-			else{ 
-				//console.log('ENTRA');
-				this.finishLevel(); 
-				}
+			else{ this.finishLevel(); }
 		}
+	}
+
+	setVisibility(mode){
+		this.pBar.setVisible(true);
+		this.icon.setVisible(true);
+		this.lifeIcon.setVisible(true);
+		this.bulletIcon.setVisible(true);
+		this.lifesText.setVisible(true);
+		this.scoreText.setVisible(true);
 	}
 		
 	victoryCondition(){ return this.distanceReached >= this.st["levelLength"]; }

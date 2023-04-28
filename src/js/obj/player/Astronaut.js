@@ -102,7 +102,4 @@ export default class Astronaut extends Player{
 			//this.play(""+this.movement+this.hDirection,true);
 		}
     }
-
-	
-
 }

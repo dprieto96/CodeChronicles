@@ -52,7 +52,6 @@ export default class LevelSelector extends Phaser.Scene {
     }
     
     create(){
-        console.log("a")
         // Iniciar la primera escena
         Utils.createKeyBindings(this);
         this.planetSettings = this.cache.json.get("config");

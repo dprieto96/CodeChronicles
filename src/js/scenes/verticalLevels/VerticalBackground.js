@@ -25,11 +25,9 @@ export default class VerticalBackground extends Background{
                 "x": objSt["x"], "y": objSt["y"], "z": objSt["z"],
                 "speedX": objSt["speedX"], "speedY": objSt["speedY"]
             }
-            //this.scene.physics.add.existing(obj.sprite);
-            //this.scene.physics.world.enable(obj.sprite); 
+
             obj.sprite.x = obj.x;
             obj.sprite.y = obj.y;
-            //obj.sprite.setVelocity(objSt["speedX"],objSt["speedY"]);
             this.decorations.push(obj);
             if (numFrames > 0) { obj.sprite.play(objSt["sprite"]+"0"+i); }
         }
@@ -55,7 +53,8 @@ export default class VerticalBackground extends Background{
         this.destinImg = this.scene.add.image(VERTICAL_LEVELS_WIDTH/2, 0, this.scene.destination).setOrigin(0.5, 0);
         this.destinImg.rotation += Math.PI;
         this.destinImg.setDepth(2);
-        this.countdown = 150;
+        this.countdown = 50;
+        this.auxSpeed = 0.00;
     }
 
     launch(){
@@ -67,11 +66,11 @@ export default class VerticalBackground extends Background{
                 this.planetImg.y += this.auxSpeed;
             }
             else if (this.atmosphere.alpha > 0){
-                this.atmosphere.alpha -= 0.004;
-                this.scene.player.y   -= SPACESHIP_SPEED;
+                this.atmosphere.alpha -= 0.006;
+                this.scene.player.setVelocity(0,-SPACESHIP_SPEED*2);
             }
-            else{ 
-                this.scene.player.speedY = -SPACESHIP_SPEED*2;
+            else{
+                this.scene.player.setVelocity(0,-SPACESHIP_SPEED*2);
                 this.scene.introDone = true;
             }
         }
