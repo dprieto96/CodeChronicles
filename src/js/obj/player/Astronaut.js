@@ -41,7 +41,7 @@ export default class Astronaut extends Player{
 
 	handleMovement(jostick){
 		super.handleMovement();
-		this.factor = 0.6;
+		this.factor = 0.4;
         if(this.scene.introDone){
 
             if( this.body.touching.down){
