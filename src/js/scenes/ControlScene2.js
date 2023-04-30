@@ -7,27 +7,24 @@
 
 
 
-export default class ControlsScene extends Phaser.Scene {
+export default class ControlsScene2 extends Phaser.Scene {
 	/**
 	 * Escena principal.
 	 * @extends Phaser.Scene
 	 */
 	constructor() {
-		super({ key: 'ControlsScene' });    
+		super({ key: 'ControlsScene2' });    
 	}
 
     preload(){
         this.load.image('cross', 'assets/img/cross.png');
         this.load.image('book', 'assets/img/book.gif');
-        this.load.image('controls', 'assets/img/controls.png');
-        this.load.image('right-arrow', 'assets/img/right-arrow.png');
+        this.load.image('left-arrow', 'assets/img/left-arrow.png');
         
     }
 
     create(){
-        this.scale=0.03;
 
-        
          //BUTTON CROSS
          this.buttonCROSS = this.add.image(SCREEN_MAX_WIDTH+50,50,'cross');
          this.buttonCROSS.setDepth(999);
@@ -39,18 +36,12 @@ export default class ControlsScene extends Phaser.Scene {
          this.book.setDepth(1);
          this.book.setScale(1.8);
 
-         this.controls=this.add.image(SCREEN_MAX_WIDTH/2 -80,SCREEN_MAX_HEIGHT/2+40,'controls');
-         this.controls.setDepth(999);
-         this.controls.setScale(0.5);
 
-         this.arrow=this.add.image(SCREEN_MAX_WIDTH+30,SCREEN_MAX_HEIGHT-50,'right-arrow');
+         this.arrow=this.add.image(100,SCREEN_MAX_HEIGHT-50,'leftt-arrow');
          this.arrow.setInteractive();
          this.arrow.setDepth(999);
-         this.arrow.setScale(0.1);
-         this.arrow.on('pointerup', function () {
-            this.scene.stop();
-            this.scene.start('ControlsScene2');
-        }, this);
+         this.arrow.setScale(1);
+         this.arrow.on('pointerup', function () {this.scene.start('ControlScene')}, this);
 
 
     }
@@ -61,5 +52,4 @@ export default class ControlsScene extends Phaser.Scene {
 
 
 }
-    
     

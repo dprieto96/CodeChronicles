@@ -16,6 +16,7 @@ export default class ProgressScene extends Phaser.Scene {
         this.load.image('button', 'assets/img/button.png');
 		this.load.audio('bgmusic', 'assets/music/bgm/bgVertical.mp3');
 		this.load.atlas('verticalAtlas', Utils.getImgV("templates"), Utils.getJson("verticalLevelElements"));
+        this.load.image('skip', 'assets/img/Skip.png');   
 
         //CARGAS MENU
         this.load.image('mute', 'assets/img/mute.png'); 

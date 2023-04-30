@@ -5,6 +5,8 @@ import HistoryScene from './scenes/HistoryScene.js';
 import PauseScene from './scenes/PauseScene.js';
 import ProgressScene from './scenes/ProgessScene.js';
 import GameOverScene from './scenes/GameOverScene.js';
+import LoreScene from './scenes/LoreScene.js';
+import ControlsScene2 from './scenes/ControlScene2.js';
 
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
@@ -40,6 +42,8 @@ let config = {
         ProgressScene,
         MenuScene,
         ControlsScene,
+        ControlsScene2,
+        LoreScene,
         HistoryScene,
         PauseScene,
         GameOverScene,
