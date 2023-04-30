@@ -63,6 +63,7 @@ export default class ProgressScene extends Phaser.Scene {
         
         // Registra un evento de actualización de carga
         this.load.on('progress', this.actualizarBarraDeProgreso, this);
+        this.load.audio('shoot', 'assets/music/bgm/shoot.mp3');
    
     }
 
