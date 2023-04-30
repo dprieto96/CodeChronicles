@@ -84,7 +84,12 @@ export default class NivelHorizontal extends Nivel {
 		// Plataformas del suelo
 		for(let i = 0; i < stConfig["floor"]["nPlats"]; i++)
 		{
-			platGroup.create(posx, stConfig["floor"]["posy"], 'platform');
+			if(this.planet == "MOON" && i == 9)
+			{}
+			else{
+				platGroup.create(posx, stConfig["floor"]["posy"], 'platform');
+				
+			}
 			posx += 87;
 		}
 		
