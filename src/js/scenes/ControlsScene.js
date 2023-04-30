@@ -48,9 +48,7 @@ export default class ControlsScene extends Phaser.Scene {
          this.arrow.setDepth(999);
          this.arrow.setScale(0.1);
          this.arrow.on('pointerup', function () {
-            this.scene.stop();
-            this.scene.start('ControlsScene2');
-        }, this);
+            this.scene.switch('ControlsScene2');}, this);
 
 
     }

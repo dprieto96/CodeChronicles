@@ -72,8 +72,6 @@ export default class LoreScene extends Phaser.Scene {
              callbackScope: this
          });
 
-        
-
     }
 
     update(){
