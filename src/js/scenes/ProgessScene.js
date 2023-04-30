@@ -54,7 +54,7 @@ export default class ProgressScene extends Phaser.Scene {
         this.load.image('arrow', 'assets/img/arrow.png');
 
         this.load.image('pause', 'assets/img/pause.png');
-
+        this.load.json("texts",Utils.getJson('texts')); 
 
         this.progressBar = this.add.graphics();
         this.progressBox = this.add.graphics();

@@ -60,12 +60,9 @@ export default class ControlsScene2 extends Phaser.Scene {
          this.explain=this.add.image(220,SCREEN_MAX_HEIGHT/2+50,'explain');
          this.explain.setDepth(1000);
          this.explain.setScale(0.3);
-
     }
 
-    update(){
-        super.update();
-    }
+    update(){ super.update(); }
 
 
 }
