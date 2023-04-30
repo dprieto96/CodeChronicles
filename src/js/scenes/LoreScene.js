@@ -58,12 +58,19 @@ export default class LoreScene extends Phaser.Scene {
 
          //SKIP BUTTON
 
-         var text = this.add.text(100, 100, '');
-         var content = 'A note on performance: Every time the contents of a Text object changes,\n\n i.e. changing the text being\n\n displayed\n\n, or the style of the text\n\n, it needs to remake .';
+         var text = this.add.text(100, 100, '',{ fontStyle: 'strong',font: '20px Arial', fill: '#ffffff' });
+         var content = "SPACE LOG, DAY 2314:\n\n"+
+         "I am about to leave the Moon to reach Mars, where an exploration and\n"+
+         "resource gathering mission awaits me. According to the reports, it is a\n"+
+         "hostile world, full of dangers and mysteries.\n\n"+
+         "I will have to use my cunning and my equipment to survive and achieve my\n"+
+         "goal. I don't know what I will find there, but I am ready for anything.\n"+
+         "This is the biggest challenge of my career as astronaut, and I can't fail.\n\n"+
+         "May luck be with me.";
      
          var i = 0;
          var timer = this.time.addEvent({
-             delay: 50, // tiempo entre cada letra en milisegundos
+             delay: 30, // tiempo entre cada letra en milisegundos
              repeat: content.length - 1, // cantidad de letras a agregar
              callback: function() {
                  text.setText(text.text + content[i]);

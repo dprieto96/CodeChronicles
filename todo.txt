@@ -4,7 +4,6 @@ TO DO:
 
 -Añadir texto a la escena de la historia
 -Añadir otra pestaña en la escena de controles; terminar escena controles
--Arreglar despegue en marte y venus.
 -Añadir cinemática de inicio.
 -Añadir una puerta o nave final en los niveles horizontales 
 -Hacer una última revisiónde los preloads
@@ -13,6 +12,7 @@ TO DO:
 -Ajustar densidad de asteroides.
 ==========================================
 
+(OK)-Arreglar despegue en marte y venus.
 (DESCARTADO)-Añadir astronauta a la barra de carga (process scene)
 (DESCARTADO)-Preguntar por lo de la pantalla completa.
 (OK)-Decorar botón de pausa.
