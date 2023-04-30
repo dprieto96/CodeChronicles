@@ -46,6 +46,7 @@ export default class NivelVertical extends Nivel {
 		//this.load.image("bullet","assets\img\verticalLevels\bulletold.png");
 		this.load.image('pause', 'assets/img/pause.png');
 		this.load.audio('bgmusic', 'assets/music/bgm/bgVertical.mp3');
+		this.load.audio('shoot', 'assets/music/bgm/shoot.mp3');
 
 
 		this.load.atlas('verticalAtlas', Utils.getImgV("templates"), Utils.getJson("verticalLevelElements"));
@@ -105,7 +106,10 @@ export default class NivelVertical extends Nivel {
 	  this.jostickmovement='null';
 	  }
 
-		if(!Utils.isMute())this.musicBG=this.sound.add('bgmusic');
+		if(!Utils.isMute()){
+			this.musicBG=this.sound.add('bgmusic');
+			this.musicSHOOT=this.sound.add('shoot');
+		}
 		
 		this.scaleProgress=3.5;
 		this.clave=this.key;
@@ -117,7 +121,11 @@ export default class NivelVertical extends Nivel {
 			this.gameState = 'running';
     
 			this.pauseButton.on('pointerdown', function () {
-				if(!Utils.isMute())this.musicBG.pause();
+				if(!Utils.isMute()){
+				this.musicBG.pause();
+				this.musicSHOOT.pause();
+
+				}
 				this.scene.pause(this.key);
 				this.scene.launch('PauseScene',{clave:this.clave});				
 				this.gameState = 'paused';
@@ -269,13 +277,21 @@ export default class NivelVertical extends Nivel {
 		super.update();	
 		
 		if(this.numLifes<0){
-			if(!Utils.isMute())this.musicBG.pause();
+			if(!Utils.isMute()){
+			this.musicBG.pause();
+			this.musicSHOOT.pause();
+
+			}
 			this.scene.launch('gameOverScene',{clave:this.clave});
 			this.scene.pause(this.key);			
 			this.gameState = 'paused';
 		}
 
-		if(this.gameState==='paused' && !Utils.isMute())this.musicBG.resume();
+		if(this.gameState==='paused' && !Utils.isMute()){
+			this.musicBG.resume();
+			this.musicSHOOT.resume();
+
+		}
 		
 		if(!this.introDone) { 
 			this.bg.launch();
@@ -302,6 +318,7 @@ export default class NivelVertical extends Nivel {
 				//check space key to shoot bullet:
 				if (this.input.keyboard.checkDown(this.cursors.space, 500) && this.numBullets>0) {
 					this.fire();
+					this.musicSHOOT.play();
 					this.numBullets--;
 					this.bullets--;
 					this.scoreText.setText('X' + this.numBullets);

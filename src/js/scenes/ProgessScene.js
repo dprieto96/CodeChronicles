@@ -16,6 +16,7 @@ export default class ProgressScene extends Phaser.Scene {
         this.load.image('button', 'assets/img/button.png');
 		this.load.audio('bgmusic', 'assets/music/bgm/bgVertical.mp3');
 		this.load.atlas('verticalAtlas', Utils.getImgV("templates"), Utils.getJson("verticalLevelElements"));
+        this.load.image('skip', 'assets/img/Skip.png');   
 
         //CARGAS MENU
         this.load.image('mute', 'assets/img/mute.png'); 
@@ -53,7 +54,7 @@ export default class ProgressScene extends Phaser.Scene {
         this.load.image('arrow', 'assets/img/arrow.png');
 
         this.load.image('pause', 'assets/img/pause.png');
-
+        this.load.json("texts",Utils.getJson('texts')); 
 
         this.progressBar = this.add.graphics();
         this.progressBox = this.add.graphics();
@@ -62,6 +63,7 @@ export default class ProgressScene extends Phaser.Scene {
         
         // Registra un evento de actualización de carga
         this.load.on('progress', this.actualizarBarraDeProgreso, this);
+        this.load.audio('shoot', 'assets/music/bgm/shoot.mp3');
    
     }
 

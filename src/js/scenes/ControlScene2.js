@@ -7,25 +7,24 @@
 
 
 
-export default class ControlsScene extends Phaser.Scene {
+export default class ControlsScene2 extends Phaser.Scene {
 	/**
 	 * Escena principal.
 	 * @extends Phaser.Scene
 	 */
 	constructor() {
-		super({ key: 'ControlsScene' });    
+		super({ key: 'ControlsScene2' });    
 	}
 
     preload(){
         this.load.image('cross', 'assets/img/cross.png');
-        this.load.image('book', 'assets/img/book.gif');
-        this.load.image('controls', 'assets/img/controls.png');
-        this.load.image('right-arrow', 'assets/img/right-arrow.png');
+        this.load.image('explain', 'assets/img/Explain.png');
+        this.load.image('left-arrow', 'assets/img/left-arrow.png');
+     
         
     }
 
     create(){
-        this.scale=0.03;
 
         this.text= this.add.text(SCREEN_MAX_WIDTH/2+100, 200, '',{ fontStyle: 'strong',font: '15px Arial', fill: '##606060' });
          var content = "SPACE LOG, DAY 2314:\n\n"+
@@ -39,7 +38,6 @@ export default class ControlsScene extends Phaser.Scene {
 
          this.text.setText(this.text + content);
          this.text.setDepth(1000);
-
         
          //BUTTON CROSS
          this.buttonCROSS = this.add.image(SCREEN_MAX_WIDTH+50,50,'cross');
@@ -52,25 +50,20 @@ export default class ControlsScene extends Phaser.Scene {
          this.book.setDepth(1);
          this.book.setScale(1.8);
 
-         this.controls=this.add.image(SCREEN_MAX_WIDTH/2 -80,SCREEN_MAX_HEIGHT/2+40,'controls');
-         this.controls.setDepth(999);
-         this.controls.setScale(0.5);
 
-         this.arrow=this.add.image(SCREEN_MAX_WIDTH+30,SCREEN_MAX_HEIGHT-50,'right-arrow');
-         this.arrow.setInteractive();
-         this.arrow.setDepth(999);
-         this.arrow.setScale(0.1);
-         this.arrow.on('pointerup', function () {
-            this.scene.switch('ControlsScene2');}, this);
+         this.buttonARROW=this.add.image(100,SCREEN_MAX_HEIGHT-50,'left-arrow');
+         this.buttonARROW.setInteractive();
+         this.buttonARROW.setDepth(999);
+         this.buttonARROW.setScale(0.1);
+         this.buttonARROW.on('pointerup', function () {this.scene.switch('ControlsScene')}, this);
 
-
+         this.explain=this.add.image(220,SCREEN_MAX_HEIGHT/2+50,'explain');
+         this.explain.setDepth(1000);
+         this.explain.setScale(0.3);
     }
 
-    update(){
-        super.update();
-    }
+    update(){ super.update(); }
 
 
 }
-    
     

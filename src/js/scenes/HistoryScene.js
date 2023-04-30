@@ -23,8 +23,11 @@ export default class HistoryScene extends Phaser.Scene {
 
     create(){
         this.scale=0.03;
-
-        
+        this.texts = this.cache.json.get("texts");
+        this.text= this.add.text(SCREEN_MAX_WIDTH/2+95, 200, '',{ fontStyle: 'strong',font: '16px Arial', fill: '##606060' });
+        this.text.setText(this.texts["history"]);
+         this.text.setDepth(1000);
+         
         //BUTTON CROSS
         this.buttonCROSS = this.add.image(SCREEN_MAX_WIDTH+50,50,'cross');
         this.buttonCROSS.setDepth(999);

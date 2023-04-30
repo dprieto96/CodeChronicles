@@ -5,7 +5,7 @@
         "rockMaxSpeedX":  30,
         "rockMinSpeedY":  20,
         "rockMaxSpeedY": 100,
-        "density":        8,
+        "density":        24,
         "planet":      "MOON",
         "destination": "MARS",
         "decorations": {
@@ -29,7 +29,7 @@
         "rockMaxSpeedX":  30,
         "rockMinSpeedY":  40,
         "rockMaxSpeedY": 100,
-        "density":        12,
+        "density":        36,
         "planet":      "MARS",
         "destination": "VENUS",
         "decorations": {
@@ -52,7 +52,7 @@
         "rockMaxSpeedX":  30,
         "rockMinSpeedY":  40,
         "rockMaxSpeedY": 120,
-        "density":        18,
+        "density":        100,
         "planet":      "VENUS",
         "destination": "MOON",
         "decorations": {

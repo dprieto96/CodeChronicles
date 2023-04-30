@@ -78,7 +78,8 @@ export default class MenuScene extends Phaser.Scene {
        // this.buttonSTART.setDepth(998);
         this.buttonSTART.setScale(this.scale);
         this.buttonSTART.setInteractive();
-        this.buttonSTART.on('pointerup', function () {this.scene.start('levelSelector')}, this);
+       // this.buttonSTART.on('pointerup', function () {this.scene.start('levelSelector')}, this);
+       this.buttonSTART.on('pointerup', function () {this.scene.start('LoreScene')}, this);
         this.textSTART=this.add.text(SCREEN_MAX_WIDTH/2+50,185, "START",{ fontStyle: 'strong',font: '30px Arial', fill: '#ffffff' });
         this.textSTART.setDepth(999);
 
