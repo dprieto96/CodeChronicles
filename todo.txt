@@ -1,15 +1,12 @@
 TO DO:
-(HAY CONFLICTOS CON EL TAMAÑO MÁX Y MIN, AL CENTRAR TODO EL OBJETO LO DESPLAZA)
 -Añadir sonidos.
 
--Añadir texto a la escena de la historia
--Añadir otra pestaña en la escena de controles; terminar escena controles
--Añadir cinemática de inicio.
 -Añadir una puerta o nave final en los niveles horizontales 
--Hacer una última revisiónde los preloads
+
 ==========================================
 -Revisar decoraciones.
 -Ajustar densidad de asteroides.
+-Hacer una última revisiónde los preloads
 ==========================================
 
 (OK)-Arreglar despegue en marte y venus.
@@ -23,3 +20,6 @@ TO DO:
 (OK)-Prioridad pausa y game over scene
 (OK)-Tocar pantalla para salir de pausa
 (OK)-Arreglar la errata del html
+(OK)-Añadir texto a la escena de la historia
+(OK)-Añadir otra pestaña en la escena de controles; terminar escena controles
+(OK)-Añadir cinemática de inicio.
