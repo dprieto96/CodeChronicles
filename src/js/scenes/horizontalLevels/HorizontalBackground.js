@@ -19,4 +19,8 @@ export default class HorizontalBackground extends Background{
 
         
     }
+
+    endOfGame(){
+        this.scene.levelCleared = true; 
+    }
 }

@@ -32,6 +32,7 @@ export default class NivelHorizontal extends Nivel {
    	    this.load.plugin('rexvirtualjoystickplugin', url, true);
 
    	    this.load.image('pause', 'assets/img/pause.png');
+   	    this.load.image('door', 'assets/img/horizontalLevels/gate.png');
 
 		this.planet = this.st["planet"];
 		this.bg 	= new HorizontalBackground(this);
@@ -40,8 +41,8 @@ export default class NivelHorizontal extends Nivel {
 		this.gameState='running';
 	}
 	
-	continuar(){
-		this.resume();
+	reloadLVL(){
+		this.restart();
 	}
 
 	/**
@@ -70,9 +71,10 @@ export default class NivelHorizontal extends Nivel {
 	 	this.joyStick.setScrollFactor(0);
 	 	this.joyStick.base.setDepth(999);
 	 	this.joyStick.thumb.setDepth(999);
-	}
+	}		
 
-	 	
+		var door = this.add.sprite(this.st["door"]["x"], this.st["door"]["y"], 'door');
+	 	door.setDepth(998);
 		this.physics.world.gravity.y = GRAVITY_FACTOR * this.planetSettings["gravity"] ;
 		this.player.create();
 		this.bg.create();
@@ -80,6 +82,8 @@ export default class NivelHorizontal extends Nivel {
 		var stConfig = this.st["decorations"];
 		var st = this.st["decorations"]["platform"];
 		let posx = 10;
+
+
 
 		// Plataformas del suelo
 		for(let i = 0; i < stConfig["floor"]["nPlats"]; i++)
@@ -185,6 +189,11 @@ export default class NivelHorizontal extends Nivel {
 
 		this.player.handleMovement(this.jostickMovement()); 
 
+		if(this.st["bounds"]["y"]-28 < this.player.y)
+		{
+			this.scene.restart();
+		}
+
 		if(!this.introDone){ 	
 			this.bg.launch();
 			//this.joyStick.setVisible(false);
@@ -197,9 +206,16 @@ export default class NivelHorizontal extends Nivel {
 			//this.joyStick.setVisible(true);
 			//this.jostickMovement();
 		}
+
+		if(this.checkEndOfGame())
+		{
+			this.cameras.main.zoomTo(2.5, 2500);
+			this.finishLevel();
+		}
 		
+		console.log((this.player.x > this.st["door"]["x"] - 50 && this.player.x < this.st["door"]["x"] + 50) && (this.player.y > this.st["door"]["y"]-50 && this.player.y < this.st["door"]["y"] + 50));
 
 	}
 
-	victoryCondition(){}
+	victoryCondition(){ return (this.player.x > this.st["door"]["x"] - 50 && this.player.x < this.st["door"]["x"] + 50) && (this.player.y > this.st["door"]["y"]-50 && this.player.y < this.st["door"]["y"] + 50);}
 }

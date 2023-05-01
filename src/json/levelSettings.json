@@ -72,6 +72,7 @@
     "nivelHorizontal00":{
         "planet": "MARS",
 	"bounds": {"x": 1750, "y":1200},
+	"door": {"x": 1450, "y": 430},
 	"initPos": 1150,
         "decorations": {
 	    "floor":
@@ -113,8 +114,8 @@
         		{ "sprite": "moonPlatforms.png", "x": 90, "y":  560},
         		{ "sprite": "moonPlatforms.png", "x": 300, "y":  460},
 			{ "sprite": "moonPlatforms.png", "x": 500, "y":  520},
-                { "sprite": "moonPlatforms.png", "x": 150, "y":  380},
-                { "sprite": "moonPlatforms.png", "x": 350, "y":  280},
+                	{ "sprite": "moonPlatforms.png", "x": 150, "y":  380},
+                	{ "sprite": "moonPlatforms.png", "x": 350, "y":  280},
         		{ "sprite": "moonPlatforms.png", "x": 435, "y":  280},
         		{ "sprite": "moonPlatforms.png", "x": 520, "y":  280},
         		{ "sprite": "moonPlatforms.png", "x": 605, "y":  280},
@@ -129,6 +130,7 @@
     "nivelHorizontal01":{
         "planet": "VENUS",
 	"initPos": 750,
+	"door": {"x": 1100, "y": 760},
 	"bounds": {"x": 1200, "y":810},
 	"decorations": {
 	    "floor":
@@ -150,7 +152,7 @@
         "planet": "MOON",
 	"bounds": {"x": 1750, "y":2000},
 	"initPos": 1150,
-	"door": {"x": 0, "y": 0},
+	"door": {"x": 30, "y": 70},
 	"decorations": {
 	    "floor":
                 { "posy": 1190, "nPlats": 21},
