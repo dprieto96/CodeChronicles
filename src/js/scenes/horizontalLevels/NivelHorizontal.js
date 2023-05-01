@@ -33,13 +33,16 @@ export default class NivelHorizontal extends Nivel {
 
    	    this.load.image('pause', 'assets/img/pause.png');
    	    this.load.image('door', 'assets/img/horizontalLevels/gate.png');
-		this.load.audio('bgH', 'assets/music/bgm/bgHorizontal.mp3');
+		this.load.audio('backgroundh', 'assets/music/bgm/bgHorizontal.mp3');
+
 
 		this.planet = this.st["planet"];
 		this.bg 	= new HorizontalBackground(this);
 		this.player = new Astronaut(this,0,this.st["initPos"]);
 
 		this.gameState='running';
+
+		
 	}
 	
 	reloadLVL(){
@@ -51,13 +54,14 @@ export default class NivelHorizontal extends Nivel {
 	*/
 	create() {
 		super.create();
+				
+		//this.game.sound.stopAll();
+		
+			
+		
+		
 
-		this.game.sound.stopAll();
-			if(!Utils.isMute()){
-			this.musicBGH=this.sound.add('bgH');
-		}
-
-
+		this.musicBGH=this.sound.add('backgroundh');
 
 
 		this.scene.bringToTop('PauseScene');
@@ -132,19 +136,20 @@ export default class NivelHorizontal extends Nivel {
 		this.gameState = 'running';
 
 
-
+		if(!Utils.isMute())this.musicBGH.play();
 		this.pauseButton.on('pointerup', function () {
-				//this.musicBG.pause();
-				this.musicBGH.pause();
+				if(!Utils.isMute()){
+					this.musicBGH.pause();
+				}
 				this.scene.pause(this.key);
 				this.scene.launch('PauseScene',{clave:this.key});				
 				this.gameState = 'paused';
+				
 				
 			  }, this);
 
 		this.pauseButton.setScrollFactor(0);
 		this.pauseButton.setPosition(SCREEN_WIDTH - 200, SCREEN_HEIGHT/2  - 220);
-
 
 	}
 
@@ -178,6 +183,8 @@ export default class NivelHorizontal extends Nivel {
 		//this.player.jostickMovement(this.jostickmovement);
 		//this.jostickmovement='null';
 		return this.jostickmovement;
+	
+
 
 	}
 	/**
@@ -185,9 +192,14 @@ export default class NivelHorizontal extends Nivel {
 	*/
     update(){ 
     	super.update();
+
+		if(this.gameState==='paused' && !Utils.isMute()) {
+			this.musicBGH.resume();
+		}
 		//console.log(this.player.anims.currentAnim);
-		console.log('MUTE ES: '+Utils.isMute());
-		if(!Utils.isMute())this.musicBGH.play();
+
+		//if(this.gameState==='paused' && !Utils.isMute())this.musicBGH.pause();
+		//if(this.gameState==='running' && !Utils.isMute())this.musicBGH.resume();
 
 
 		//this.player.anims.currentAnim.setFrameRate(IDLE_FRAME_RATE * GRAVITIES[this.planet]);
@@ -211,12 +223,11 @@ export default class NivelHorizontal extends Nivel {
 			this.cameras.main.zoomTo(1.5, 2500);
 		}
 		else{
-		
+			
 			this.pauseButton.setVisible(true);
-			//this.joyStick.setVisible(true);
-			//this.jostickMovement();
-			if(!Utils.isMute())this.musicBGH.resume();
+			
 		}
+		
 
 		if(this.checkEndOfGame())
 		{

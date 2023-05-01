@@ -16,8 +16,9 @@ export default class MenuScene extends Phaser.Scene {
 		super({ key: 'menuScene' });    
         this.levels = [ 
             new LevelSelector(),
-            new ControlsScene()
+            new ControlsScene(),
         ];  
+        new Utils();
 	}
 
 

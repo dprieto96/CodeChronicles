@@ -36,7 +36,10 @@ export default class NivelVertical extends Nivel {
 	 */
 	preload(){
 		super.preload();
-
+		
+		if(Utils.isMute()===undefined){
+			Utils.setisMute(false);
+		}
 		
 
 		let url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js';
