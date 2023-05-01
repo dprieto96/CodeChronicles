@@ -47,6 +47,8 @@ export default class NivelVertical extends Nivel {
 		this.load.image('pause', 'assets/img/pause.png');
 		this.load.audio('bgmusic', 'assets/music/bgm/bgVertical.mp3');
 		this.load.audio('shoot', 'assets/music/bgm/shoot.mp3');
+		this.load.audio('explosion', 'assets/music/bgm/explosion.mp3');
+		this.load.audio('hurt', 'assets/music/bgm/hurt.mp3');
 
 
 		this.load.atlas('verticalAtlas', Utils.getImgV("templates"), Utils.getJson("verticalLevelElements"));
@@ -109,6 +111,8 @@ export default class NivelVertical extends Nivel {
 		if(!Utils.isMute()){
 			this.musicBG=this.sound.add('bgmusic');
 			this.musicSHOOT=this.sound.add('shoot');
+			this.musicEXPLOSION=this.sound.add('explosion');
+			this.musicHURT=this.sound.add('hurt');
 		}
 		
 		this.scaleProgress=3.5;
@@ -124,6 +128,8 @@ export default class NivelVertical extends Nivel {
 				if(!Utils.isMute()){
 				this.musicBG.pause();
 				this.musicSHOOT.pause();
+				this.musicEXPLOSION.pause();
+				this.musicHURT.pause();
 
 				}
 				this.scene.pause(this.key);
@@ -245,11 +251,12 @@ export default class NivelVertical extends Nivel {
 		enemy.angle = 0;
 		enemy.body.checkCollision.none = true;
 		enemy.play("boomBeach");
+		if(!Utils.isMute())this.musicEXPLOSION.play();
     }
 
 	hitPlayer(enemy, player) {
 		if(this.numLifes>=0)this.numLifes--;
-
+		if(!Utils.isMute())this.musicHURT.play();
 		enemy.setAngularVelocity(0);
 		enemy.setVelocity(0,0);
 		enemy.angle = 0;
@@ -280,6 +287,8 @@ export default class NivelVertical extends Nivel {
 			if(!Utils.isMute()){
 			this.musicBG.pause();
 			this.musicSHOOT.pause();
+			this.musicEXPLOSION.pause();
+			this.musicHURT.pause();
 
 			}
 			this.scene.launch('gameOverScene',{clave:this.clave});
@@ -290,6 +299,8 @@ export default class NivelVertical extends Nivel {
 		if(this.gameState==='paused' && !Utils.isMute()){
 			this.musicBG.resume();
 			this.musicSHOOT.resume();
+			this.musicEXPLOSION.pause();
+			this.musicHURT.pause();
 
 		}
 		
@@ -318,7 +329,7 @@ export default class NivelVertical extends Nivel {
 				//check space key to shoot bullet:
 				if (this.input.keyboard.checkDown(this.cursors.space, 500) && this.numBullets>0) {
 					this.fire();
-					this.musicSHOOT.play();
+					if(!Utils.isMute())this.musicSHOOT.play();
 					this.numBullets--;
 					this.bullets--;
 					this.scoreText.setText('X' + this.numBullets);

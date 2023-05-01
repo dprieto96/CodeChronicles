@@ -32,10 +32,17 @@ export default class MenuScene extends Phaser.Scene {
         this.load.image('git','assets/img/git.png');
         this.load.image('cover','assets/img/buttonHover.png');
         this.load.image('screen','assets/img/screen.png');
+        this.load.audio('menuMusic', 'assets/music/bgm/menuMusic.mp3');
+
     }
 
     create(){
         this.scale=0.3;
+
+        this.musicMENU=this.sound.add('menuMusic');
+        this.musicMENU.play({
+          loop: true
+      });;
 
         
 
@@ -43,14 +50,18 @@ export default class MenuScene extends Phaser.Scene {
         this.buttonMUTE = this.add.image(100,100,'mute');
         this.buttonMUTE.setScale(this.scale-0.15);
         this.buttonMUTE.setInteractive();
-        this.buttonMUTE.on('pointerup', function () {Utils.setisMute(true)}, this);
+        this.buttonMUTE.on('pointerup', function () {Utils.setisMute(true);
+          this.musicMENU.pause();  
+        }, this);
 
         //BUTTON SOUND
         this.buttonSOUND = this.add.image(100,100,'sound');
         this.buttonSOUND.setScale(this.scale-0.15);
         this.buttonSOUND.setInteractive();
         this.buttonSOUND.setVisible(false)
-        this.buttonSOUND.on('pointerup', function () {Utils.setisMute(false)}, this);
+        this.buttonSOUND.on('pointerup', function () {Utils.setisMute(false);
+        this.musicMENU.play();
+        }, this);
 
 
       //BUTTON MOBILE

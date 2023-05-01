@@ -33,6 +33,7 @@ export default class NivelHorizontal extends Nivel {
 
    	    this.load.image('pause', 'assets/img/pause.png');
    	    this.load.image('door', 'assets/img/horizontalLevels/gate.png');
+		this.load.audio('bgH', 'assets/music/bgm/bgHorizontal.mp3');
 
 		this.planet = this.st["planet"];
 		this.bg 	= new HorizontalBackground(this);
@@ -52,6 +53,12 @@ export default class NivelHorizontal extends Nivel {
 		super.create();
 
 		this.game.sound.stopAll();
+			if(!Utils.isMute()){
+			this.musicBGH=this.sound.add('bgH');
+		}
+
+
+
 
 		this.scene.bringToTop('PauseScene');
 		//this.scene.moveBelow(this.key,'gameOverScene');TODAVIA NO IMPLEMENTADO
@@ -128,6 +135,7 @@ export default class NivelHorizontal extends Nivel {
 
 		this.pauseButton.on('pointerup', function () {
 				//this.musicBG.pause();
+				this.musicBGH.pause();
 				this.scene.pause(this.key);
 				this.scene.launch('PauseScene',{clave:this.key});				
 				this.gameState = 'paused';
@@ -178,6 +186,8 @@ export default class NivelHorizontal extends Nivel {
     update(){ 
     	super.update();
 		//console.log(this.player.anims.currentAnim);
+		console.log('MUTE ES: '+Utils.isMute());
+		if(!Utils.isMute())this.musicBGH.play();
 
 
 		//this.player.anims.currentAnim.setFrameRate(IDLE_FRAME_RATE * GRAVITIES[this.planet]);
@@ -205,6 +215,7 @@ export default class NivelHorizontal extends Nivel {
 			this.pauseButton.setVisible(true);
 			//this.joyStick.setVisible(true);
 			//this.jostickMovement();
+			if(!Utils.isMute())this.musicBGH.resume();
 		}
 
 		if(this.checkEndOfGame())

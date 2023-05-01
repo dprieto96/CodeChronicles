@@ -21,6 +21,7 @@ export default class LoreScene extends Phaser.Scene {
 
     preload(){
         this.load.image('skip', 'assets/img/Skip.png'); 
+        this.load.audio('typing', 'assets/music/bgm/typing.mp3');
     }
 
     create(){
@@ -29,6 +30,12 @@ export default class LoreScene extends Phaser.Scene {
         this.buttonSKIP.setInteractive();
         this.buttonSKIP.setDepth(999);
         this.buttonSKIP.setScale(0.15);
+
+        if(!Utils.isMute()){
+			this.musicTYPING=this.sound.add('typing');
+            this.musicTYPING.play();
+		}
+        
         
         this.buttonSKIP.on('pointerup', function () {
            this.scene.start('levelSelector');

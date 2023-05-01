@@ -6,6 +6,7 @@
 
 //import NivelVertical from "./verticalLevels/NivelVertical.js";
 //import NivelVertical from "./verticalLevels/NivelVertical";
+import Utils from "../Utils.js";
 
 export default class GameOverScene extends Phaser.Scene{
 
@@ -27,10 +28,20 @@ export default class GameOverScene extends Phaser.Scene{
         
         this.load.image('gameover', 'assets/img/GAME-OVER.png');
         this.load.image('bg', 'assets/img/button.png');
+        this.load.audio('goverSound', 'assets/music/bgm/goverSound.mp3');
         
     }
 
     create(){
+        this.game.sound.stopAll();
+        if(!Utils.isMute()){
+			this.musicOVER=this.sound.add('goverSound');
+            this.musicOVER.play();
+		}
+        
+
+
+
         this.click=false;
 
         this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
