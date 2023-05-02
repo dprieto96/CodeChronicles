@@ -7,6 +7,7 @@ import ProgressScene from './scenes/ProgessScene.js';
 import GameOverScene from './scenes/GameOverScene.js';
 import LoreScene from './scenes/LoreScene.js';
 import ControlsScene2 from './scenes/ControlScene2.js';
+import FinalSCene from './scenes/Final.js';
 
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
@@ -41,6 +42,7 @@ let config = {
     scene: [
         ProgressScene,
         MenuScene,
+        FinalSCene,
         ControlsScene,
         ControlsScene2,
         LoreScene,

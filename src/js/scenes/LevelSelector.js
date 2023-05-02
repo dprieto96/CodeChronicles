@@ -19,11 +19,11 @@ export default class LevelSelector extends Phaser.Scene {
         this.levelsPassed = 0;
         
         this.levels = [ 
-            new NivelVertical(this,30),
-            new NivelHorizontal(this,this.secondRound),
-            new NivelVertical(this,60),
-            new NivelHorizontal(this,this.secondRound),
             new NivelVertical(this,100),
+            new NivelHorizontal(this,this.secondRound),
+            new NivelVertical(this,200),
+            new NivelHorizontal(this,this.secondRound),
+            new NivelVertical(this,300),
             new NivelHorizontal(this, this.secondRound)
         ];
 	}

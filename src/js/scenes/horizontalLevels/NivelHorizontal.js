@@ -67,15 +67,15 @@ export default class NivelHorizontal extends Nivel {
 				this.scare.setDepth(1000);
 				this.scare.setScale(0.6);
 				this.scareSound = this.sound.add('jsSound');
+
+			
 				if(this.planet == "MOON")
 				{
 					this.theEND = new Astronaut(this,1690,1700);
 					this.theEND.play("standingLeft", true);
 					this.theEND.setDepth(999);
 					this.theEND.setScale(2.5);
-					this.physics.add.overlap(this.player, this.theEND, function() {
-    					console.log('Los personajes se están tocando');
-						});
+					
 				}
 			}
 		else this.timer = this.st["timer"];
@@ -223,6 +223,14 @@ export default class NivelHorizontal extends Nivel {
 		return this.jostickmovement;
 
 	}
+
+
+	final(){
+		console.log('CHOCAN');
+		this.scene.start('FinalSCene');
+		this.scene.stop();
+
+	}
 	/**
 	* Loop del juego
 	*/
@@ -231,6 +239,14 @@ export default class NivelHorizontal extends Nivel {
 		//console.log(this.player.anims.currentAnim);
 		//console.log('MUTE ES: '+Utils.isMute());
 		//if(!Utils.isMute())this.musicBGH.play();
+
+		if(Utils.getSecondRound() && this.planet == "MOON" ) {
+			if((this.player.x > 1690 - 50 && this.player.x < 1690 + 50) && 
+				(this.player.y > 1700-50 && this.player.y < 1700 + 50)){
+					this.scene.start('FinalSCene');
+					this.scene.stop();
+				}
+		}
 		
 		if(this.gameState==='paused' && !Utils.isMute()) {
 			this.musicBGH.resume();

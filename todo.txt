@@ -1,9 +1,9 @@
 TO DO:
 
--Añadir una puerta o nave final en los niveles horizontales 
+(OK)-Añadir una puerta o nave final en los niveles horizontales 
 
 ==========================================
--Revisar decoraciones.
+()-Revisar decoraciones.
 ==========================================
 
 (OK)-Arreglar despegue en marte y venus.
@@ -23,3 +23,4 @@ TO DO:
 (OK)-Añadir sonidos.
 (OK)-Ajustar densidad de asteroides.
 (OK)-Hacer una última revisiónde los preloads
+(OK)-Añadir una puerta o nave final en los niveles horizontales 
