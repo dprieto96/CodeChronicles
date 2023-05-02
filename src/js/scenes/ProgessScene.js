@@ -11,6 +11,13 @@ export default class ProgressScene extends Phaser.Scene {
         this.load.image('fondo', 'ruta/a/la/imagen/fondo.png');
         this.load.spritesheet('jugador', 'ruta/al/spritesheet/jugador.png', { frameWidth: 32, frameHeight: 48 });
         */
+        this.load.image('pause', 'assets/img/pause.png');
+        this.load.image('door', 'assets/img/horizontalLevels/gate.png');
+        this.load.audio('bgH', 'assets/music/bgm/bgHorizontal.mp3');
+        this.load.audio('bgmusic', 'assets/music/bgm/bgVertical.mp3');
+		this.load.audio('shoot', 'assets/music/bgm/shoot.mp3');
+		this.load.audio('explosion', 'assets/music/bgm/explosion.mp3');
+		this.load.audio('hurt', 'assets/music/bgm/hurt.mp3');
 
         //CARGAS VERTICAL
         this.load.image('button', 'assets/img/button.png');
@@ -52,7 +59,9 @@ export default class ProgressScene extends Phaser.Scene {
         this.load.image('book', 'assets/img/book.gif');
         this.load.image('controls', 'assets/img/controls.png');
         this.load.image('arrow', 'assets/img/arrow.png');
+        this.load.audio('menuMusic', 'assets/music/bgm/menuMusic.mp3');
 
+        
         this.load.image('pause', 'assets/img/pause.png');
         this.load.json("texts",Utils.getJson('texts')); 
 
