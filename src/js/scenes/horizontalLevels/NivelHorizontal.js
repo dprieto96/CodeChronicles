@@ -50,9 +50,8 @@ export default class NivelHorizontal extends Nivel {
 		super.create();
 
 		this.game.sound.stopAll();
-			if(!Utils.isMute()){
-			this.musicBGH=this.sound.add('bgH');
-		}
+		this.musicBGH=this.sound.add('bgH');
+
 
 		this.textoContador = this.add.text(10, 10, '00:00', { fontFamily: 'Arial', fontSize: 24, color: '#ffffff' });
 
@@ -131,10 +130,12 @@ export default class NivelHorizontal extends Nivel {
 		this.gameState = 'running';
 
 
-
+		if(!Utils.isMute())this.musicBGH.play();
 		this.pauseButton.on('pointerup', function () {
 				//this.musicBG.pause();
-				this.musicBGH.pause();
+				if(!Utils.isMute()){
+					this.musicBGH.pause();
+				}
 				this.scene.pause(this.key);
 				this.scene.launch('PauseScene',{clave:this.key});				
 				this.gameState = 'paused';
@@ -198,7 +199,11 @@ export default class NivelHorizontal extends Nivel {
     	super.update();
 		//console.log(this.player.anims.currentAnim);
 		//console.log('MUTE ES: '+Utils.isMute());
-		if(!Utils.isMute())this.musicBGH.play();
+		//if(!Utils.isMute())this.musicBGH.play();
+		
+		if(this.gameState==='paused' && !Utils.isMute()) {
+			this.musicBGH.resume();
+		}
 
 		this.timer--;
 		//this.player.anims.currentAnim.setFrameRate(IDLE_FRAME_RATE * GRAVITIES[this.planet]);
@@ -226,7 +231,7 @@ export default class NivelHorizontal extends Nivel {
 			this.pauseButton.setVisible(true);
 			//this.joyStick.setVisible(true);
 			//this.jostickMovement();
-			if(!Utils.isMute())this.musicBGH.resume();
+			//if(!Utils.isMute())this.musicBGH.resume();
 		}
 
 		if(this.checkEndOfGame())

@@ -93,6 +93,7 @@ export default class NivelVertical extends Nivel {
 		  this.rect.setInteractive();
 			this.rect.on('pointerdown', ()=> {
 			this.fire();
+			this.numBullets--;
 		  });
 		
 		
@@ -331,6 +332,8 @@ export default class NivelVertical extends Nivel {
 					this.icon.y = 10 + this.pBar.height - Math.floor((this.distanceReached / this.st["levelLength"])*this.pBar.height);
 					this.icon.y *=this.scaleProgress;
 				}
+
+				if(Utils.isMobile())this.scoreText.setText('X' + this.numBullets);
 	
 				//check space key to shoot bullet:
 				if (this.input.keyboard.checkDown(this.cursors.space, 500) && this.numBullets>0) {
