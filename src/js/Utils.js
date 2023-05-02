@@ -3,6 +3,7 @@ export default class Utils{
     constructor(){
         this.mobile=false;
         this.sound=true;
+        this.sR = false;
     }
     
     static getImg(assetName)   { return IMAGES_PATH + assetName + ".png";  };
@@ -95,4 +96,12 @@ export default class Utils{
         return ret;
     }
 
+    static setSecondRound(mode){
+        this.sR = mode;
+    }
+
+    static getSecondRound()
+    {
+        return this.sR;
+    }
 }

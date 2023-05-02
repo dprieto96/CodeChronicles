@@ -31,16 +31,21 @@ export default class NivelHorizontal extends Nivel {
 		let url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js';
    	    this.load.plugin('rexvirtualjoystickplugin', url, true);
 
+
+   	    this.load.image('jumpscare', 'assets/img/horizontalLevels/jumpscare.png')
    	    this.load.image('pause', 'assets/img/pause.png');
    	    this.load.image('door', 'assets/img/horizontalLevels/gate.png');
 		this.load.audio('bgH', 'assets/music/bgm/bgHorizontal.mp3');
+		this.load.audio('jsSound', 'assets/music/bgm/jumpScare.mp3');
 
+		this.bgST = this.st;
 		this.planet = this.st["planet"];
 		this.bg 	= new HorizontalBackground(this);
 		this.player = new Astronaut(this,0,this.st["initPos"]);
 
 		this.gameState='running';
-		this.timer = this.st["timer"];
+		this.numeroAleatorio = 0;
+
 	}
 
 	/**
@@ -48,6 +53,29 @@ export default class NivelHorizontal extends Nivel {
 	*/
 	create() {
 		super.create();
+
+		this.cursors = this.input.keyboard.createCursorKeys();
+
+		if(Utils.getSecondRound()) 
+			{
+				this.timer = this.st["timer2"];
+				this.numeroAleatorio = Phaser.Math.Between(600, this.st["timer2"] + 1200);
+				this.scare = this.add.image(0,0,'jumpscare');
+				this.scare.setVisible(false);
+				this.scare.setScrollFactor(0);
+				this.scare.setPosition(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+				this.scare.setDepth(1000);
+				this.scare.setScale(0.6);
+				this.scareSound = this.sound.add('jsSound');
+				if(this.planet == "MOON")
+				{
+					this.theEND = new Astronaut(this,1690,1700);
+					this.theEND.play("standingLeft", true);
+					this.theEND.setDepth(999);
+					this.theEND.setScale(2.5);
+				}
+			}
+		else this.timer = this.st["timer"];
 
 		this.game.sound.stopAll();
 		this.musicBGH=this.sound.add('bgH');
@@ -206,6 +234,21 @@ export default class NivelHorizontal extends Nivel {
 		}
 
 		this.timer--;
+
+		if(Utils.getSecondRound())
+		{
+			if(this.timer == this.numeroAleatorio){
+				this.scare.setVisible(true);
+				this.scareSound.play();
+			}
+			if(this.numeroAleatorio - 60 == this.timer) 
+			{
+				this.scare.setVisible(false);
+				this.scareSound.pause();
+			}
+		}
+
+		
 		//this.player.anims.currentAnim.setFrameRate(IDLE_FRAME_RATE * GRAVITIES[this.planet]);
 		//this.player.anims.get("standingLeft").setFrameRate(IDLE_FRAME_RATE * GRAVITIES[this.planet]);
 		//this.player.anims.get("runningRight").setFrameRate(MOVI_FRAME_RATE * GRAVITIES[this.planet]);
@@ -239,8 +282,9 @@ export default class NivelHorizontal extends Nivel {
 			this.cameras.main.zoomTo(2.5, 2500);
 			this.finishLevel();
 		}
+
 		var minutos = this.pad(Math.floor(this.timer / 3600),2);
-    	var segundos = this.pad(Math.floor(this.timer / 60),2);
+    	var segundos = this.pad(Math.floor((this.timer % 3600) / 60),2);
     
 		this.textoContador.setText(minutos + ':' + segundos);
 

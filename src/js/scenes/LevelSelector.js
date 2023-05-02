@@ -73,6 +73,6 @@ export default class LevelSelector extends Phaser.Scene {
         super.update();
         this.startNextLevel();
         this.levelsPassed++;
-        if(this.levelsPassed >= this.levels.length) this.secondRound = true;
+        if(this.levelsPassed-1 > this.levels.length) Utils.setSecondRound(true);
     }
 }

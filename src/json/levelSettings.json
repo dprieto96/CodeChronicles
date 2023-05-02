@@ -73,8 +73,10 @@
         "planet": "MARS",
     	"bounds": {"x": 1750, "y":1200},
     	"door": {"x": 1450, "y": 430},
+        "background": {"x": 0, "y": 1200, "scale":2.2},
     	"initPos": 1150,
-        "timer": 3600,
+        "timer": 5400,
+        "timer2": 2400,
         "decorations": {
     	    "floor":{ "posy": 1190, "nPlats": 21},
             "platform": [
@@ -134,7 +136,9 @@
     	"initPos": 740,
     	"door": {"x": 7900, "y": 760},
     	"bounds": {"x": 8000, "y":800},
-        "timer": 6000000,
+        "background": {"x": 0, "y": 800, "scale":2.2},
+        "timer": 7200,
+        "timer2": 7200,
     	"decorations": {
     	    "floor": { "posy": 790, "nPlats": 130},
             "platform": [
@@ -160,7 +164,9 @@
     	"bounds": {"x": 1750, "y":2000},
     	"initPos": 1150,
     	"door": {"x": 30, "y": 70},
-        "timer": 60000,
+        "background": {"x": 0, "y": 2000, "scale":1.2},
+        "timer": 7200,
+        "timer2": 3600,
     	"decorations": {
     	    "floor":
                     { "posy": 1190, "nPlats": 21},
