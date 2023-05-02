@@ -27,16 +27,9 @@ export default class ControlsScene2 extends Phaser.Scene {
     create(){
 
         this.text= this.add.text(SCREEN_MAX_WIDTH/2+100, 200, '',{ fontStyle: 'strong',font: '15px Arial', fill: '##606060' });
-         var content = "SPACE LOG, DAY 2314:\n\n"+
-         "I am about to leave the Moon to reach Mars, where an exploration and\n"+
-         "resource gathering mission awaits me. According to the reports, it is a\n"+
-         "hostile world, full of dangers and mysteries.\n\n"+
-         "I will have to use my cunning and my equipment to survive and achieve my\n"+
-         "goal. I don't know what I will find there, but I am ready for anything.\n"+
-         "This is the biggest challenge of my career as astronaut, and I can't fail.\n\n"+
-         "May luck be with me.";
+         var content = "To move the spacecraft and astronaut,\n\n use the left joystick located \n\non the screen's left side. \n\nUse the right side of the screen\n\n to fire weapons and take down enemies.";
 
-         this.text.setText(this.text + content);
+         this.text.setText( content);
          this.text.setDepth(1000);
         
          //BUTTON CROSS

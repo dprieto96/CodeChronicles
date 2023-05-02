@@ -1,5 +1,5 @@
 TO DO:
--Añadir sonidos.
+
 
 -Añadir una puerta o nave final en los niveles horizontales 
 
@@ -23,3 +23,4 @@ TO DO:
 (OK)-Añadir texto a la escena de la historia
 (OK)-Añadir otra pestaña en la escena de controles; terminar escena controles
 (OK)-Añadir cinemática de inicio.
+(OK)-Añadir sonidos.
