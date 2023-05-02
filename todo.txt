@@ -1,12 +1,9 @@
 TO DO:
 
-
 -Añadir una puerta o nave final en los niveles horizontales 
 
 ==========================================
 -Revisar decoraciones.
--Ajustar densidad de asteroides.
--Hacer una última revisiónde los preloads
 ==========================================
 
 (OK)-Arreglar despegue en marte y venus.
@@ -24,3 +21,5 @@ TO DO:
 (OK)-Añadir otra pestaña en la escena de controles; terminar escena controles
 (OK)-Añadir cinemática de inicio.
 (OK)-Añadir sonidos.
+(OK)-Ajustar densidad de asteroides.
+(OK)-Hacer una última revisiónde los preloads
