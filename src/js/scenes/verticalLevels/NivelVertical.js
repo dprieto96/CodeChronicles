@@ -36,7 +36,10 @@ export default class NivelVertical extends Nivel {
 	 */
 	preload(){
 		super.preload();
-
+		
+		if(Utils.isMute()===undefined){
+			Utils.setisMute(false);
+		}
 		
 
 		let url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js';
@@ -256,7 +259,10 @@ export default class NivelVertical extends Nivel {
 
 	hitPlayer(enemy, player) {
 		if(this.numLifes>=0)this.numLifes--;
-		if(!Utils.isMute())this.musicHURT.play();
+		if(!Utils.isMute()){
+			this.musicHURT.play();
+			this.musicEXPLOSION.play();
+		}
 		enemy.setAngularVelocity(0);
 		enemy.setVelocity(0,0);
 		enemy.angle = 0;
