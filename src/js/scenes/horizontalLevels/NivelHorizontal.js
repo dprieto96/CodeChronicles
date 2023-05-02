@@ -73,6 +73,9 @@ export default class NivelHorizontal extends Nivel {
 					this.theEND.play("standingLeft", true);
 					this.theEND.setDepth(999);
 					this.theEND.setScale(2.5);
+					this.physics.add.overlap(this.player, this.theEND, function() {
+    					console.log('Los personajes se están tocando');
+						});
 				}
 			}
 		else this.timer = this.st["timer"];
