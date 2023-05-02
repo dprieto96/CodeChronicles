@@ -54,7 +54,7 @@ export default class NivelHorizontal extends Nivel {
 			this.musicBGH=this.sound.add('bgH');
 		}
 
-		this.textoContador = this.add.text(10, 10, 'Contador: 0', { fontFamily: 'Arial', fontSize: 24, color: '#ffffff' });
+		this.textoContador = this.add.text(10, 10, '00:00', { fontFamily: 'Arial', fontSize: 24, color: '#ffffff' });
 
 		this.scene.bringToTop('PauseScene');
 		//this.scene.moveBelow(this.key,'gameOverScene');TODAVIA NO IMPLEMENTADO
@@ -151,6 +151,14 @@ export default class NivelHorizontal extends Nivel {
 
 	}
 
+	pad(number, length) {
+	    var str = "" + number;
+	    while (str.length < length) {
+	        str = "0" + str;
+	    }
+	    return str;
+	}
+
 	jostickMovement(){
 		this.jostickmovement='null';
 
@@ -226,7 +234,10 @@ export default class NivelHorizontal extends Nivel {
 			this.cameras.main.zoomTo(2.5, 2500);
 			this.finishLevel();
 		}
-		this.textoContador.setText('Contador: ' + this.timer);
+		var minutos = this.pad(Math.floor(this.timer / 3600),2);
+    	var segundos = this.pad(Math.floor(this.timer / 60),2);
+    
+		this.textoContador.setText(minutos + ':' + segundos);
 
 		if(this.timer <= 0) this.scene.restart();
 
