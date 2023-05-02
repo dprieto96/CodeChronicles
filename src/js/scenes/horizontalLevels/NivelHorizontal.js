@@ -42,10 +42,6 @@ export default class NivelHorizontal extends Nivel {
 		this.gameState='running';
 		this.timer = this.st["timer"];
 	}
-	
-	reloadLVL(){
-		this.restart();
-	}
 
 	/**
 	* Creación de los elementos de la escena principal de juego
