@@ -17,6 +17,7 @@ export default class Astronaut extends Player{
 		this.movement = "standing";
 		this.isJumping = false;
 		this.scene.introDone = false;
+		this.venus = false;
 
 		//load of graphics:
 		this.scene.load.spritesheet(this.graphicName, Utils.getImgH(this.graphicName), {
@@ -55,17 +56,18 @@ export default class Astronaut extends Player{
 	        }
             
             //velocidad vertical:
-            if(this.scene.w.isDown || jostick==='UP'){ 
-            	if(!this.isJumping){
-                	this.movement = "up";
-                	this.body.velocity.y = this.jumpVelocity;
-   					this.isJumping = true;
-            	} 
-            }
+        if(this.scene.w.isDown || jostick==='UP'){ 
+        	if(!this.isJumping){
+            	this.movement = "up";
+            	this.body.velocity.y = this.jumpVelocity;
+				this.isJumping = true;
+        	} 
+        }
           
-      
-
-            if((this.scene.a.isDown && this.scene.d.isDown)||(jostick==='RIGHT' && jostick==='LEFT')){
+      	console.log(this.scene.st["planet"]);
+        if(!this.venus)
+        {
+        	if((this.scene.a.isDown && this.scene.d.isDown)||(jostick==='RIGHT' && jostick==='LEFT')){
             	if(!this.isJumping) this.movement = "standing";
             	this.speedX = 0;
             }
@@ -87,6 +89,13 @@ export default class Astronaut extends Player{
             		this.speedX = 0;
 	            }
             }
+        }else
+        {
+        	this.movement = "running";
+        	this.hDirection = "Right";
+	        this.speedX = (ASTRONAUT_SPEED * GRAVITIES[this.scene.planet]);
+        }
+            
 
             this.body.velocity.x = this.speedX;
             this.play(this.movement+this.hDirection,true);

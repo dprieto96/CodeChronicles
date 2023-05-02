@@ -40,6 +40,7 @@ export default class NivelHorizontal extends Nivel {
 		this.player = new Astronaut(this,0,this.st["initPos"]);
 
 		this.gameState='running';
+		this.timer = this.st["timer"];
 	}
 	
 	reloadLVL(){
@@ -57,8 +58,7 @@ export default class NivelHorizontal extends Nivel {
 			this.musicBGH=this.sound.add('bgH');
 		}
 
-
-
+		this.textoContador = this.add.text(10, 10, 'Contador: 0', { fontFamily: 'Arial', fontSize: 24, color: '#ffffff' });
 
 		this.scene.bringToTop('PauseScene');
 		//this.scene.moveBelow(this.key,'gameOverScene');TODAVIA NO IMPLEMENTADO
@@ -89,19 +89,22 @@ export default class NivelHorizontal extends Nivel {
 		var stConfig = this.st["decorations"];
 		var st = this.st["decorations"]["platform"];
 		let posx = 10;
-
-
+		let j = 0;
+		let encontrado = false;
 
 		// Plataformas del suelo
 		for(let i = 0; i < stConfig["floor"]["nPlats"]; i++)
 		{
-			if(this.planet == "MOON" && i == 9)
-			{}
-			else{
-				platGroup.create(posx, stConfig["floor"]["posy"], 'platform');
-				
+
+			while(j < stConfig["holes"].length && !encontrado)
+			{
+				if(stConfig["holes"][j]["n"] == i) encontrado = true;
+				j++;
 			}
+			if(!encontrado) platGroup.create(posx, stConfig["floor"]["posy"], 'platform');
+			encontrado = false;
 			posx += 87;
+			j = 0;
 		}
 		
 		// Plataformas del mapa
@@ -115,7 +118,7 @@ export default class NivelHorizontal extends Nivel {
     		plat.body.immovable = true;
 		});
 		platGroup.enableBody = true;
-		platGroup.setDepth(999); 
+		platGroup.setDepth(998); 
 		this.physics.add.collider(this.player,platGroup);
 
 		this.physics.world.setBounds(0, 0, this.st["bounds"]["x"], this.st["bounds"]["y"]);
@@ -144,6 +147,10 @@ export default class NivelHorizontal extends Nivel {
 
 		this.pauseButton.setScrollFactor(0);
 		this.pauseButton.setPosition(SCREEN_WIDTH - 200, SCREEN_HEIGHT/2  - 220);
+
+		this.textoContador.setDepth(999);
+		this.textoContador.setScrollFactor(0);
+		this.textoContador.setPosition(150, SCREEN_HEIGHT/2  - 220);
 
 
 	}
@@ -186,17 +193,17 @@ export default class NivelHorizontal extends Nivel {
     update(){ 
     	super.update();
 		//console.log(this.player.anims.currentAnim);
-		console.log('MUTE ES: '+Utils.isMute());
+		//console.log('MUTE ES: '+Utils.isMute());
 		if(!Utils.isMute())this.musicBGH.play();
 
-
+		this.timer--;
 		//this.player.anims.currentAnim.setFrameRate(IDLE_FRAME_RATE * GRAVITIES[this.planet]);
 		//this.player.anims.get("standingLeft").setFrameRate(IDLE_FRAME_RATE * GRAVITIES[this.planet]);
 		//this.player.anims.get("runningRight").setFrameRate(MOVI_FRAME_RATE * GRAVITIES[this.planet]);
 		//this.player.anims.get("runningLeft").setFrameRate(MOVI_FRAME_RATE * GRAVITIES[this.planet]);
 		//if(this.gameState==='paused')this.musicBG.resume();
 		//console.log('ESTADO: '+this.gameState);
-
+		if(this.planet == "VENUS") this.player.venus = true;
 		this.player.handleMovement(this.jostickMovement()); 
 
 		if(this.st["bounds"]["y"]-28 < this.player.y)
@@ -223,8 +230,9 @@ export default class NivelHorizontal extends Nivel {
 			this.cameras.main.zoomTo(2.5, 2500);
 			this.finishLevel();
 		}
-		
-		console.log((this.player.x > this.st["door"]["x"] - 50 && this.player.x < this.st["door"]["x"] + 50) && (this.player.y > this.st["door"]["y"]-50 && this.player.y < this.st["door"]["y"] + 50));
+		this.textoContador.setText('Contador: ' + this.timer);
+
+		if(this.timer <= 0) this.scene.restart();
 
 	}
 
